@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -292,7 +293,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <p class="text-slate-400 text-sm italic mb-16 pl-10">Transmisiones desde la Estación de Trelew. Seguí en Instagram.</p>
     <div class="reels-grid">
       <a href="https://www.instagram.com/reel/DWcYhl0kZO9/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center transition group-hover:scale-110">
+        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-content-center justify-center transition group-hover:scale-110">
           <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 01</span>
@@ -425,6 +426,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     </form>
   </div>
 </section>
+
 <!-- ══ APP AUTORES ══ -->
 <section class="py-20 px-6 bg-black text-center border-b border-iron">
   <div class="max-w-2xl mx-auto">
@@ -437,6 +439,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <p class="text-slate-600 text-xs italic mt-6 uppercase tracking-widest">Acceso exclusivo · Credenciales provistas por Soberanía Editorial</p>
   </div>
 </section>
+
 <!-- ══ FOOTER ══ -->
 <footer class="py-24 px-6 bg-black border-t-4 border-sky-500/30">
   <div class="max-w-6xl mx-auto text-center italic">
@@ -459,7 +462,8 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic leading-none">SOBERANÍA EDITORIAL</p>
       <p class="text-slate-400 text-sm italic">Trelew, Patagonia Argentina — Estación de Transmisión de Pensamiento Soberano</p>
       <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 shadow-2xl italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
-      <p class="text-slate-600 text-[11px] uppercase tracking-[0.7em] font-bold mt-16 italic">Patagonia Argentina © 2026 | @demiantestinoautor</p><a href="terminos.html" style="display:inline-block;margin-top:16px;color:#7dd3fc;font-size:10px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(125,211,252,0.2);padding:6px 20px;border-radius:8px;font-style:italic;font-weight:700;">Términos y Condiciones</a>
+      <p class="text-slate-600 text-[11px] uppercase tracking-[0.7em] font-bold mt-16 italic">Patagonia Argentina © 2026 | @demiantestinoautor</p>
+      <a href="terminos.html" style="display:inline-block;margin-top:16px;color:#7dd3fc;font-size:10px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(125,211,252,0.2);padding:6px 20px;border-radius:8px;font-style:italic;font-weight:700;">Términos y Condiciones</a>
     </div>
   </div>
 </footer>
@@ -476,12 +480,13 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   </svg>
 </a>
 
-<!-- ══ PURCHASE CONFIRMATION MODAL ══ -->
+<!-- ══ PURCHASE CONFIRMATION MODAL — CORREGIDO ══ -->
 <div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
   <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;box-shadow:0 0 60px rgba(0,0,0,0.8);">
     <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#475569'">✕</button>
     <div style="font-size:2.5rem;margin-bottom:1rem;">⚠️</div>
-    <h5 style="color:white;font-size:1.2rem;font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:1rem;">Antes de Continuar</h5>
+    <h5 style="color:white;font-size:1.2rem;font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:0.75rem;">Antes de Continuar</h5>
+    <p id="purchaseProductLabel" style="color:#38bdf8;font-style:italic;font-size:0.95rem;font-weight:900;margin-bottom:1rem;"></p>
     <p style="color:#94a3b8;font-style:italic;font-size:0.875rem;line-height:1.7;margin-bottom:1.5rem;">Guardá tu comprobante de pago. Para confirmación final y coordinar la entrega de tu obra, comunicate a nuestro WhatsApp.</p>
     <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85rem;font-style:italic;text-decoration:none;margin-bottom:0.75rem;transition:background 0.2s;" onmouseover="this.style.background='#38bdf8'" onmouseout="this.style.background='#0ea5e9'">Ir al Pago con Mercado Pago →</a>
     <a href="https://wa.me/542804841846" target="_blank" style="display:block;width:100%;background:#16a34a;color:white;font-weight:900;padding:0.75rem;border-radius:12px;text-transform:uppercase;letter-spacing:0.08em;font-size:0.75rem;font-style:italic;text-decoration:none;margin-bottom:1.5rem;">WhatsApp para Coordinar Entrega</a>
@@ -578,15 +583,29 @@ window.addEventListener('click',function(e){
   if(e.target===pm){closePurchaseModal();}
 });
 
-// ── PURCHASE ──
-const purchaseLinks={ente:'https://mpago.la/2L3PFuK',kaukel:'https://mpago.la/2HcSsX4',combo:'https://mpago.la/1DA4uYq'};
-function openPurchase(type){
-  const pm=document.getElementById('purchaseModal');
-  document.getElementById('purchaseLink').href=purchaseLinks[type]||'#';
-  pm.style.display='flex';
-  document.body.style.overflow='hidden';
+// ── PURCHASE — CORREGIDO ──
+// Cada producto tiene su link y label propios. Imposible cruzarlos.
+const purchaseLinks = {
+  kaukel: { url: 'https://mpago.la/2HcSsX4', label: 'Saga Káukel — $35.000 ARS' },
+  ente:   { url: 'https://mpago.la/2L3PFuK', label: 'El Ente de la Frecuencia Cero — $20.000 ARS' },
+  combo:  { url: 'https://mpago.la/1DA4uYq', label: 'Combo Soberanía (Káukel + El Ente) — $50.000 ARS' }
+};
+
+function openPurchase(type) {
+  const data = purchaseLinks[type];
+  if (!data) return;
+  // Asignar link y label ANTES de mostrar el modal
+  document.getElementById('purchaseLink').href = data.url;
+  document.getElementById('purchaseProductLabel').textContent = data.label;
+  const pm = document.getElementById('purchaseModal');
+  pm.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
-function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';document.body.style.overflow='auto';}
+
+function closePurchaseModal(){
+  document.getElementById('purchaseModal').style.display='none';
+  document.body.style.overflow='auto';
+}
 
 // ── COUNTDOWN ──
 const phase1End=new Date('2026-04-11T00:00:00-03:00');
@@ -620,8 +639,7 @@ updateCountdown();setInterval(updateCountdown,1000);
 let audioPlaying=false;
 const audioEl=new Audio();
 audioEl.loop=true;
-// URL de audio libre de derechos — reemplazar con audio de viento patagónico si disponible
-audioEl.src = 'viento.mp3.mp3';
+audioEl.src='viento.mp3.mp3';
 const pathMuted='M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z';
 const pathUnmuted='M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0 2.26-1.06 4.27-2.7 5.6l1.46 1.46C19.13 17.43 20.5 14.88 20.5 12c0-2.88-1.37-5.43-3.24-7.06l-1.46 1.46C17.44 7.73 18.5 9.74 18.5 12z';
 function toggleAudio(){
