@@ -426,7 +426,36 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     </form>
   </div>
 </section>
+<!-- ══ RESEÑAS ══ -->
+<section id="resenas" class="py-20 px-6 bg-black border-b border-iron text-center">
+  <div class="max-w-3xl mx-auto">
+    <div class="inline-block bg-sky-500/10 border border-sky-500/30 px-6 py-2 rounded-full text-sky-400 text-[10px] font-black uppercase tracking-widest italic mb-8">★ Voces del Proceso</div>
+    <h3 class="text-4xl font-black uppercase italic tracking-tighter text-white leading-none mb-12">Lo que dicen <span class="text-sky-400">nuestros autores</span></h3>
+    <div id="resenas-grid" class="grid gap-6 text-left"></div>
+    <p id="resenas-empty" class="text-slate-600 italic text-sm hidden">Las primeras voces están en camino.</p>
+  </div>
+</section>
 
+<script>
+(async () => {
+  const SUPABASE_URL = 'https://wjsxlwsqjvuyjrdngvyo.supabase.co'
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indqc3hsd3Nxanl1eWpyZG5neXZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNDI0OTYsImV4cCI6MjA1OTgxODQ5Nn0.YHDNkO78B26HMvBLfFHsqKcr-FqCHLWNiuFGCmhvXiQ'
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/resenas?aprobada=eq.true&order=created_at.desc`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+  })
+  const data = await res.json()
+  const grid = document.getElementById('resenas-grid')
+  const empty = document.getElementById('resenas-empty')
+  if (!data.length) { empty.classList.remove('hidden'); return }
+  grid.innerHTML = data.map(r => `
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.5rem 2rem;">
+      <div style="color:#facc15;font-size:18px;margin-bottom:8px">${'★'.repeat(r.estrellas)}${'☆'.repeat(5-r.estrellas)}</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:#e2e8f0;margin:0 0 12px">"${r.texto}"</p>
+      <p style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:.1em;margin:0">${r.author_name}</p>
+    </div>
+  `).join('')
+})()
+</script>
 <!-- ══ APP AUTORES ══ -->
 <section class="py-20 px-6 bg-black text-center border-b border-iron">
   <div class="max-w-2xl mx-auto">
