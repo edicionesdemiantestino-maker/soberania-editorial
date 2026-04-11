@@ -585,11 +585,9 @@ window.addEventListener('click',function(e){
 
 // ── PURCHASE — CORREGIDO ──
 // Cada producto tiene su link y label propios. Imposible cruzarlos.
-const purchaseLinks = {
-  kaukel: { url: 'https://mpago.la/2L3PFuK', label: 'Saga Káukel — $35.000 ARS' },
-  ente:   { url: 'https://mpago.la/1DA4uYq', label: 'El Ente de la Frecuencia Cero — $20.000 ARS' },
-  combo:  { url: 'https://mpago.la/2HcSsX4', label: 'Combo Soberanía (Káukel + El Ente) — $50.000 ARS' }
-};
+kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
+  ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente de la Frecuencia Cero — $20.000 ARS' },
+  combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía (Káukel + El Ente) — $50.000 ARS' },
 
 function openPurchase(type) {
   const data = purchaseLinks[type];
