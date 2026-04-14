@@ -298,6 +298,11 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
         <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
       </a>
     </div>
+    <div class="text-center mt-10">
+      <a href="https://instagram.com/demiantestinoautor" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-black uppercase italic text-[11px] tracking-widest px-8 py-4 rounded-full hover:opacity-90 transition shadow-2xl">
+        Seguir en Instagram → @demiantestinoautor
+      </a>
+    </div>
   </div>
 </section>
 
@@ -306,19 +311,19 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">01. Gestión Legal</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">ISBN, DNDA y Depósito Legal. Blindamos la soberanía de tu obra desde el registro de manuscrito original.</p>
+      <p class="text-[13px] text-slate-300 italic leading-relaxed">ISBN, DNDA y Depósito Legal.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">02. Curaduría</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Diseño de autor, corrección literaria y maquetación técnica profesional con estética de vanguardia.</p>
+      <p class="text-[13px] text-slate-300 italic leading-relaxed">Diseño de autor y maquetación técnica profesional.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">03. Masterización</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Producción técnica optimizada para Amazon KDP, formatos eBook (EPUB/PDF) y sistemas offset.</p>
+      <p class="text-[13px] text-slate-300 italic leading-relaxed">Producción técnica para Amazon KDP y eBooks.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">04. Distribución</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Lanzamiento global sincronizado en 12 países y logística de stock nacional estratégica desde Patagonia.</p>
+      <p class="text-[13px] text-slate-300 italic leading-relaxed">Lanzamiento global sincronizado en 12 países.</p>
     </div>
   </div>
 </section>
@@ -326,94 +331,93 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
 <section id="contacto" class="py-32 px-6 bg-black text-center border-b border-iron">
   <div class="max-w-4xl mx-auto text-left italic">
     <h3 class="text-4xl font-black uppercase italic mb-4 text-white">Portal de Recepción</h3>
-    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] shadow-[0_0_50px_rgba(0,0,0,0.5)] space-y-10">
+    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-sky-500 tracking-widest italic">Nombre y Apellido *</label>
-          <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl outline-none transition">
-        </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-sky-500 tracking-widest italic">Email de Contacto *</label>
-          <input type="email" name="email" required placeholder="frecuencia@soberania.com" class="w-full p-5 rounded-2xl outline-none transition">
-        </div>
+        <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl">
       </div>
-      <div class="space-y-3">
-        <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label>
-        <textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea>
-      </div>
-
+      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl italic"></textarea>
+      
       <div style="border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:1.5rem;background:rgba(56,189,248,0.04);">
         <label style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;">
-          <div style="position:relative;flex-shrink:0;">
-            <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)" style="position:absolute;opacity:0;width:0;height:0;">
-            <div id="ext-bg" style="width:48px;height:26px;background:rgba(255,255,255,0.1);border-radius:99px;transition:background .2s;"></div>
-            <div id="ext-dot" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;"></div>
-          </div>
-          <div>
-            <p style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;margin:0 0 3px;">Soy autor/a extranjero/a</p>
-            <p style="color:#475569;font-size:11px;font-style:italic;margin:0;">Busco traducción o adaptación al español latinoamericano</p>
-          </div>
+          <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)">
+          <span style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;">Soy autor/a extranjero/a</span>
         </label>
       </div>
 
       <div id="campos-ext" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);">
-        <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-style:italic;margin:0 0 1.5rem;">· Servicio Internacional de Traducción y Adaptación ·</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-          <div><input type="text" name="pais_origen" placeholder="País" style="width:100%;padding:1rem;border-radius:12px;"></div>
-          <div><input type="text" name="idioma_original" placeholder="Idioma" style="width:100%;padding:1rem;border-radius:12px;"></div>
-        </div>
+        <input type="text" name="pais_origen" placeholder="País" style="width:100%;padding:1rem;margin-bottom:1rem;border-radius:12px;">
+        <input type="text" name="idioma_original" placeholder="Idioma" style="width:100%;padding:1rem;border-radius:12px;">
       </div>
 
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
+      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition">Enviar para Evaluación Técnica</button>
     </form>
   </div>
 </section>
 
-<footer class="py-24 px-6 bg-black border-t-4 border-sky-500/30">
-  <div class="max-w-6xl mx-auto text-center italic">
-    <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic">SOBERANÍA EDITORIAL</p>
-    <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 mt-8 italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
-    <p class="text-slate-600 text-[11px] uppercase tracking-[0.7em] font-bold mt-16 italic">Patagonia Argentina © 2026</p>
-  </div>
+<footer class="py-24 px-6 bg-black border-t-4 border-sky-500/30 text-center">
+  <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic">SOBERANÍA EDITORIAL</p>
+  <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 mt-8 italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
 </footer>
 
+<button class="audio-fab" id="audioBtn" onclick="toggleAudio()"><svg id="audioIcon" width="22" height="22" fill="#475569"><path id="audioPath" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg></button>
+<a href="https://wa.me/542804841846" target="_blank" class="wa-fab"><svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg></a>
+
+<div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;">
+    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;">✕</button>
+    <p id="purchaseProductLabel" style="color:#38bdf8;font-weight:900;margin-bottom:1.5rem;"></p>
+    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;text-decoration:none;">Ir al Pago →</a>
+  </div>
+</div>
+
+<div id="modal-cubismo" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-cubismo')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Cubismo</h5><p class="text-slate-300 text-base italic leading-relaxed">Mapa de señales recuperadas del "ruido blanco" del olvido.</p></div></div></div></div>
+<div id="modal-patria" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-patria')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Patria Grande</h5><p class="text-slate-300 text-base italic leading-relaxed">Maquinaria de despojo del galeón al algoritmo.</p></div></div></div></div>
+<div id="modal-sintonia" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-sintonia')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Sintonía Soberana</h5><p class="text-slate-300 text-base italic leading-relaxed">Manual de sabotaje metafísico para un continente libre.</p></div></div></div></div>
+<div id="modal-kaukel" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-kaukel')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-orange-500 pb-2 text-white">Saga Káukel</h5><p class="text-slate-300 text-base italic leading-relaxed">La transformación mística del guerrero ancestral.</p></div></div></div></div>
+<div id="modal-ente" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-ente')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">El Ente</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del poder y la maquinaria de la mentira.</p></div></div></div></div>
+<div id="modal-cronicas" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative"><button onclick="closeModal('modal-cronicas')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white leading-tight">Crónicas del Viento</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del presente narrada desde el polvillo de la ruta.</p></div></div></div></div>
+
 <script>
-// --- MODALS ---
 function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
 function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='auto';}
-
-// --- TOGGLE EXTRANJERO ---
 function toggleExt(cb) {
   const c = document.getElementById('campos-ext');
-  const bg = document.getElementById('ext-bg');
-  const dot = document.getElementById('ext-dot');
-  if (cb.checked) { c.style.display='block'; bg.style.background='#0ea5e9'; dot.style.transform='translateX(22px)'; }
-  else { c.style.display='none'; bg.style.background='rgba(255,255,255,0.1)'; dot.style.transform='translateX(0)'; }
+  if (cb.checked) { c.style.display='block'; } else { c.style.display='none'; }
 }
 
-// --- COUNTDOWN ---
-const phase1End=new Date('2026-04-11T00:00:00-03:00');
-const phase2End=new Date('2026-04-26T23:59:59-03:00');
-function updateCountdown(){
-  const now=new Date();
-  let target, label;
-  if(now < phase1End){ target = phase1End; label = 'Lanzamiento de Preventa en:'; }
-  else if(now < phase2End){ target = phase2End; label = 'La Preventa Finaliza en:'; }
-  else { 
-    document.getElementById('countdown').style.display='none';
-    document.getElementById('cdExpired').classList.remove('hidden');
-    return;
-  }
-  document.getElementById('cdLabelText').textContent = label;
-  const diff = target - now;
-  const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+const pl = {
+  kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
+  ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente — $20.000 ARS' },
+  combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía — $50.000 ARS' }
+};
+function openPurchase(t) {
+  const d = pl[t];
+  document.getElementById('purchaseLink').href = d.url;
+  document.getElementById('purchaseProductLabel').textContent = d.label;
+  document.getElementById('purchaseModal').style.display = 'flex';
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';document.body.style.overflow='auto';}
+
+const p1=new Date('2026-04-11T00:00:00-03:00'), p2=new Date('2026-04-26T23:59:59-03:00');
+function upCD(){
+  const now=new Date(); let t,l;
+  if(now<p1){t=p1;l='Lanzamiento en:';} else if(now<p2){t=p2;l='Preventa Finaliza en:';}
+  else {document.getElementById('countdown').style.display='none'; document.getElementById('cdExpired').classList.remove('hidden'); return;}
+  document.getElementById('cdLabelText').textContent=l;
+  const diff=t-now;
+  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+setInterval(upCD,1000); upCD();
+
+let ap=false; const ae=new Audio('viento.mp3.mp3'); ae.loop=true;
+function toggleAudio(){
+  if(ap){ae.pause();ap=false;document.getElementById('audioIcon').style.fill='#475569';}
+  else{ae.play().catch(()=>{});ap=true;document.getElementById('audioIcon').style.fill='#38bdf8';}
+}
 </script>
 </body>
 </html>
