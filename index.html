@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQVZBFB446"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -56,9 +54,6 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 h1,h2,h3,h4,h5,h6 { color: #ffffff; }
 input,textarea,select { background: #0f172a !important; border: 1px solid #1e293b !important; color: white !important; }
 input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outline: none; }
-.btn-amazon { background-color: #c2410c; }
-.btn-ml { background-color: #1d4ed8; }
-.btn-wa-color { background-color: #0ea5e9; }
 
 /* REELS */
 .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -73,7 +68,6 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
 </head>
 <body class="antialiased selection:bg-sky-500 selection:text-white">
 
-<!-- ══ TICKER ══ -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew, Chubut <span class="ticker-sep">·</span> Estación de Transmisión <span class="ticker-sep">·</span> 6 Obras — 23 Años de Investigación <span class="ticker-sep">·</span> DNDA Ley 11.723 <span class="ticker-sep">·</span> Edison 48, Patagonia Argentina &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -81,8 +75,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   </div>
 </div>
 
-<!-- ══ NAV ══ -->
-<nav class="sticky top-0 z-50 bg-black border-b border-iron shadow-2xl p-4">
+<nav class="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-iron shadow-2xl p-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <div class="flex items-center gap-4">
       <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-10 h-10 rounded-full border border-sky-500 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
@@ -91,24 +84,49 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
         <span class="text-[7px] text-slate-500 uppercase tracking-widest font-bold italic">Soberanía Editorial</span>
       </div>
     </div>
-    <div class="flex gap-4 md:gap-6 items-center font-black uppercase italic text-[9px] tracking-widest">
-      <a href="#catalogo" class="text-white hover:text-sky-400 transition hidden md:block">Catálogo</a>
-      <a href="#preview" class="text-white hover:text-sky-400 transition hidden md:block">Preview</a>
-      <a href="#reels" class="text-white hover:text-sky-400 transition hidden md:block">Frecuencia</a>
-      <a href="#servicios" class="text-white hover:text-sky-400 transition hidden md:block">Servicios</a>
-      <a href="#contacto" class="text-white hover:text-sky-400 transition hidden md:block">Contacto</a>
-      <a href="https://instagram.com/demiantestinoautor" target="_blank" class="bg-gradient-to-tr from-purple-600 to-pink-500 px-4 py-2 rounded text-white hover:opacity-80 transition">Instagram</a>
+
+    <div class="hidden lg:flex gap-8 items-center font-black uppercase italic text-[9px] tracking-[0.2em]">
+      <div class="relative group">
+        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Vault <span class="text-[7px]">▼</span></button>
+        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
+          <a href="#catalogo" class="block py-2 text-slate-400 hover:text-white transition">Blindaje SHA-256</a>
+          <a href="#servicios" class="block py-2 text-slate-400 hover:text-white transition">Certificados</a>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Oráculo <span class="text-[7px]">▼</span></button>
+        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
+          <a href="#servicios" class="block py-2 text-slate-400 hover:text-white transition">Masterización</a>
+          <a href="#contacto" class="block py-2 text-slate-400 hover:text-white transition">Salud de Obra</a>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Recursos <span class="text-[7px]">▼</span></button>
+        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
+          <a href="#reels" class="block py-2 text-slate-400 hover:text-white transition">Frecuencia Visual</a>
+          <a href="https://v0-editorial-control-station.vercel.app" class="block py-2 text-sky-400 hover:text-white transition">Blog del Búnker</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/30 rounded-full">
+        <span class="w-1.5 h-1.5 bg-green-500 rounded-full pulse"></span>
+        <span class="text-sky-400 font-mono" id="live-counter">SINTONIZANDO...</span>
+      </div>
     </div>
+
+    <a href="https://v0-editorial-control-station.vercel.app" target="_blank" class="bg-sky-500 px-5 py-2.5 rounded-lg text-black font-black uppercase italic text-[10px] hover:bg-white transition shadow-lg">
+      Estación de Control
+    </a>
   </div>
 </nav>
 
-<!-- ══ HEADER + COUNTDOWN ══ -->
 <header class="py-32 px-6 text-center bg-gradient-to-b from-slate-900 to-black border-b border-iron">
   <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-32 h-32 mx-auto mb-8 rounded-full border-4 border-sky-500 shadow-2xl object-cover">
   <h2 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter text-white leading-none">Soberanía <br><span class="text-sky-400">Editorial</span></h2>
   <p class="text-[11px] tracking-[0.6em] uppercase text-slate-500 mt-8 italic font-bold">Estación de Transmisión | Trelew, Patagonia</p>
 
-  <!-- COUNTDOWN -->
   <div class="mt-16 max-w-xl mx-auto">
     <div class="flex items-center justify-center gap-3 mb-6">
       <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
@@ -125,29 +143,23 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   </div>
 </header>
 
-<!-- ══ CATÁLOGO ══ -->
 <main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto">
   <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-sky-500 pl-6 italic">Frecuencias Literarias Registradas</h3>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-    <!-- CUBISMO -->
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
         <img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Cubismo</h4>
       <button onclick="openModal('modal-cubismo')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">
-        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        Sintonizar Primer Capítulo
-      </a>
+      <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
-        <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM" target="_blank" class="block w-full text-center btn-ml text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Mercado Libre AR</a>
+        <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
+        <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM" target="_blank" class="block w-full text-center bg-blue-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Mercado Libre AR</a>
       </div>
     </div>
 
-    <!-- PATRIA GRANDE -->
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
       <span class="absolute top-6 right-6 bg-amber-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Preventa 26/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
@@ -156,11 +168,10 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Patria Grande</h4>
       <button onclick="openModal('modal-patria')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-8 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
       <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0330AZLN" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
+        <a href="https://a.co/d/0330AZLN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
       </div>
     </div>
 
-    <!-- SINTONÍA SOBERANA -->
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
       <span class="absolute top-6 right-6 bg-sky-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Preventa 26/05</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
@@ -169,11 +180,10 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Sintonía Soberana</h4>
       <button onclick="openModal('modal-sintonia')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-8 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
       <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0fTJNTte" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
+        <a href="https://a.co/d/0fTJNTte" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
       </div>
     </div>
 
-    <!-- SAGA KÁUKEL -->
     <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-orange-500/60 group">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
@@ -181,19 +191,14 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-none">Saga Káukel</h4>
       <button onclick="openModal('modal-kaukel')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">
-        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        Sintonizar Primer Capítulo
-      </a>
+      <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 transition cursor-pointer border-0">Comprar — $35.000 ARS (Mercado Pago)</button>
-        <a href="https://a.co/d/0j8FPUNq" target="_blank" class="block w-full text-center bg-orange-800/40 border border-orange-500 text-orange-400 text-[10px] font-black py-2 rounded-lg uppercase italic">Amazon Global</a>
-        <a href="https://articulo.mercadolibre.com.ar/MLA-3073529696-saga-kaukel-trilogia-identidad-patagonica-ebook-pdf-_JM" target="_blank" class="block w-full text-center btn-ml text-white text-[10px] font-black py-2 rounded-lg uppercase italic">Mercado Libre AR</a>
-        <a href="https://wa.me/542804841846?text=Preventa%20Káukel%20Físico" target="_blank" class="block w-full text-center btn-wa-color text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">WhatsApp Preventa</a>
+        <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 border-0">Comprar — $35.000 ARS</button>
+        <a href="https://a.co/d/0j8FPUNq" target="_blank" class="block w-full text-center bg-orange-800/40 border border-orange-500 text-orange-400 text-[10px] font-black py-2 rounded-lg uppercase italic text-center">Amazon Global</a>
+        <a href="https://wa.me/542804841846?text=Preventa%20Káukel%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg text-center">WhatsApp Preventa</a>
       </div>
     </div>
 
-    <!-- EL ENTE -->
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
@@ -201,36 +206,26 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">El Ente</h4>
       <button onclick="openModal('modal-ente')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">
-        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        Sintonizar Primer Capítulo
-      </a>
+      <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('ente')" class="w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-sky-500 transition cursor-pointer border-0">Comprar — $20.000 ARS (Mercado Pago)</button>
-        <a href="https://a.co/d/0eAXztWV" target="_blank" class="block w-full text-center bg-orange-800/40 border border-orange-500 text-orange-400 text-[10px] font-black py-2 rounded-lg uppercase italic">Amazon Global</a>
-        <a href="https://articulo.mercadolibre.com.ar/MLA-3073819336-saga-el-ente-de-la-frecuencia-cero-trilogia-completa-ebook-_JM" target="_blank" class="block w-full text-center btn-ml text-white text-[10px] font-black py-2 rounded-lg uppercase italic">Mercado Libre AR</a>
-        <a href="https://wa.me/542804841846?text=Preventa%20El%20Ente%20Físico" target="_blank" class="block w-full text-center btn-wa-color text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">WhatsApp Preventa</a>
+        <button onclick="openPurchase('ente')" class="w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-sky-500 border-0">Comprar — $20.000 ARS</button>
+        <a href="https://wa.me/542804841846?text=Preventa%20El%20Ente%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg text-center">WhatsApp Preventa</a>
       </div>
     </div>
 
-    <!-- CRÓNICAS DEL VIENTO -->
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
         <img src="https://i.ibb.co/DH22FjNY/Tapa-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Crónicas del Viento</h4>
       <button onclick="openModal('modal-cronicas')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">
-        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        Sintonizar Primer Capítulo
-      </a>
+      <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
+        <a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
       </div>
     </div>
   </div>
 
-  <!-- COMBO PACK -->
   <div class="mt-16 p-10 rounded-[40px] border-2 border-sky-500/40 bg-gradient-to-br from-slate-900 to-black text-center shadow-2xl relative overflow-hidden">
     <span class="inline-block bg-sky-500 text-black text-[10px] font-black px-6 py-2 rounded-full uppercase italic tracking-widest mb-6 shadow-xl">⚡ Oferta Combo Exclusiva</span>
     <h4 class="text-4xl font-black uppercase italic text-white mb-2">Káukel + El Ente</h4>
@@ -240,486 +235,168 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <span class="text-5xl font-black text-sky-400 italic">$50.000</span>
       <span class="text-sky-500 text-sm font-bold italic">ARS</span>
     </div>
-    <button onclick="openPurchase('combo')" class="bg-sky-500 text-black font-black py-5 px-16 rounded-2xl uppercase tracking-[0.3em] text-sm italic shadow-2xl hover:bg-white hover:scale-[1.02] transition border-0 cursor-pointer">Comprar Combo — Mercado Pago</button>
+    <button onclick="openPurchase('combo')" class="bg-sky-500 text-black font-black py-5 px-16 rounded-2xl uppercase tracking-[0.3em] text-sm italic shadow-2xl hover:bg-white transition border-0 cursor-pointer">Comprar Combo — Mercado Pago</button>
   </div>
 </main>
 
-<!-- ══ PREVIEW SECTION ══ -->
 <section id="preview" class="py-24 px-6 bg-slate-950 border-y border-iron">
   <div class="max-w-7xl mx-auto">
     <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Sintonizar Primer Capítulo</h3>
-    <p class="text-slate-400 text-sm italic mb-16 pl-10">Accedé gratis a las primeras páginas. Sin registro.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center">
-          <svg width="20" height="20" fill="#38bdf8" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        </div>
         <h5 class="font-black uppercase italic text-white text-sm">Cubismo</h5>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest italic">Saga Exilio Latinoamericano</p>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview en Drive</span>
+        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
       </a>
       <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-orange-500/20 rounded-[30px] flex flex-col gap-4 hover:border-orange-500/50 transition shadow-xl">
-        <div class="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-          <svg width="20" height="20" fill="#f97316" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        </div>
         <h5 class="font-black uppercase italic text-white text-sm">Saga Káukel</h5>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest italic">Identidad Patagónica</p>
-        <span class="text-orange-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview en Drive</span>
+        <span class="text-orange-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
       </a>
       <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center">
-          <svg width="20" height="20" fill="#38bdf8" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        </div>
         <h5 class="font-black uppercase italic text-white text-sm">El Ente</h5>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest italic">Frecuencia Cero</p>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview en Drive</span>
+        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
       </a>
       <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center">
-          <svg width="20" height="20" fill="#38bdf8" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        </div>
         <h5 class="font-black uppercase italic text-white text-sm">Crónicas del Viento</h5>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest italic">Ciclo I · Patagonia</p>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview en Drive</span>
+        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ══ FRECUENCIA VISUAL — REELS ══ -->
 <section id="reels" class="py-24 px-6 bg-black border-b border-iron">
   <div class="max-w-7xl mx-auto">
     <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Frecuencia Visual</h3>
-    <p class="text-slate-400 text-sm italic mb-16 pl-10">Transmisiones desde la Estación de Trelew. Seguí en Instagram.</p>
     <div class="reels-grid">
-      <a href="https://www.instagram.com/reel/DWcYhl0kZO9/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-content-center justify-center transition group-hover:scale-110">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 01</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-      <a href="https://www.instagram.com/reel/DWprvL5Ef26/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 02</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-      <a href="https://www.instagram.com/reel/DWptglHkU3N/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 03</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-      <a href="https://www.instagram.com/reel/DWttklaEUM9/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 04</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-      <a href="https://www.instagram.com/reel/DV4bWmuRrgi/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 05</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-      <a href="https://www.instagram.com/reel/DV93oLbETVM/" target="_blank" class="reel-card">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 italic">Ver Reel 06</span>
-        <span class="text-[9px] text-slate-600 uppercase tracking-widest">@demiantestinoautor</span>
-      </a>
-    </div>
-    <div class="text-center mt-10">
-      <a href="https://instagram.com/demiantestinoautor" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-black uppercase italic text-[11px] tracking-widest px-8 py-4 rounded-full hover:opacity-90 transition shadow-2xl">
-        Seguir en Instagram → @demiantestinoautor
-      </a>
+      <a href="https://www.instagram.com/reel/DWcYhl0kZO9/" target="_blank" class="reel-card">Ver Reel 01</a>
+      <a href="https://www.instagram.com/reel/DWprvL5Ef26/" target="_blank" class="reel-card">Ver Reel 02</a>
+      <a href="https://www.instagram.com/reel/DWptglHkU3N/" target="_blank" class="reel-card">Ver Reel 03</a>
     </div>
   </div>
 </section>
 
-<!-- ══ SERVICIOS ══ -->
 <section id="servicios" class="py-32 px-6 bg-slate-950 border-y border-iron">
   <h3 class="text-5xl font-black uppercase italic tracking-tighter mb-20 text-white leading-none text-center">Editor Productor</h3>
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">01. Gestión Legal</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">ISBN, DNDA y Depósito Legal. Blindamos la soberanía de tu obra desde el registro de manuscrito original.</p>
+      <p class="text-[13px] text-slate-300 italic">ISBN, DNDA y Depósito Legal. Blindamos la soberanía de tu obra.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">02. Curaduría</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Diseño de autor, corrección literaria y maquetación técnica profesional con estética de vanguardia.</p>
+      <p class="text-[13px] text-slate-300 italic">Diseño de autor, corrección literaria y maquetación técnica.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">03. Masterización</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Producción técnica optimizada para Amazon KDP, formatos eBook (EPUB/PDF) y sistemas offset.</p>
+      <p class="text-[13px] text-slate-300 italic">Producción técnica optimizada para Amazon KDP y eBook.</p>
     </div>
     <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
       <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">04. Distribución</h6>
-      <p class="text-[13px] text-slate-300 italic leading-relaxed">Lanzamiento global sincronizado en 12 países y logística de stock nacional estratégica desde Patagonia.</p>
+      <p class="text-[13px] text-slate-300 italic">Lanzamiento global sincronizado y logística nacional.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ BUSCAMOS SEÑALES ══ -->
-<section class="py-24 px-6 bg-black border-b border-iron">
-  <div class="max-w-3xl mx-auto text-center">
-    <div class="inline-block bg-sky-500/10 border border-sky-500/30 px-6 py-2 rounded-full text-sky-400 text-[10px] font-black uppercase tracking-widest italic mb-8">📡 Señal Abierta</div>
-    <h3 class="text-5xl font-black uppercase italic tracking-tighter text-white leading-none mb-6">Buscamos <span class="text-sky-400">Señales</span></h3>
-    <p class="text-slate-300 italic text-base leading-relaxed mb-4">¿Tenés un manuscrito que quiere ser escuchado? Soberanía Editorial recibe proyectos literarios con identidad, territorialidad y urgencia narrativa.</p>
-    <p class="text-slate-500 italic text-sm mb-12">Evaluamos tu obra y te acompañamos en todo el proceso: desde el ISBN hasta la distribución internacional.</p>
-    <a href="#contacto" class="inline-block bg-sky-500 text-black font-black py-5 px-12 rounded-2xl uppercase tracking-[0.3em] text-sm italic shadow-2xl hover:bg-white hover:scale-[1.02] transition">Enviar Manuscrito</a>
-  </div>
-</section>
-
-<!-- ══ CONTACTO ══ -->
 <section id="contacto" class="py-32 px-6 bg-black text-center border-b border-iron">
   <div class="max-w-4xl mx-auto text-left italic">
     <h3 class="text-4xl font-black uppercase italic mb-4 text-white">Portal de Recepción</h3>
-    <p class="text-slate-500 text-xs uppercase tracking-[0.4em] mb-12 italic">Evaluación Técnica de Proyectos Literarios</p>
-    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] shadow-[0_0_50px_rgba(0,0,0,0.5)] space-y-10">
+    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-sky-500 tracking-widest italic">Nombre y Apellido *</label>
-          <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl outline-none transition">
-        </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-sky-500 tracking-widest italic">Email de Contacto *</label>
-          <input type="email" name="email" required placeholder="frecuencia@soberania.com" class="w-full p-5 rounded-2xl outline-none transition">
-        </div>
+        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl">
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Género de la Obra</label>
-          <select name="genero" class="w-full p-5 rounded-2xl outline-none italic cursor-pointer">
-            <option>Investigación Geopolítica</option>
-            <option>Ensayos de Identidad</option>
-            <option>Narrativa / Ficción</option>
-            <option>Crónica / Bitácora</option>
-          </select>
-        </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Estado del Material *</label>
-          <select name="estado" required class="w-full p-5 rounded-2xl outline-none italic cursor-pointer">
-            <option value="" disabled selected>Seleccione estado...</option>
-            <option value="consulta">Consulta / Idea de Obra</option>
-            <option value="borrador">Borrador en Proceso</option>
-            <option value="manuscrito">Manuscrito Finalizado</option>
-            <option value="registrada">Obra ya Registrada</option>
-          </select>
-        </div>
-      </div>
-      <div class="space-y-3">
-        <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Link a Referencia / Manuscrito (Opcional)</label>
-        <input type="url" name="link" placeholder="Drive, Dropbox, Redes Sociales..." class="w-full p-5 rounded-2xl outline-none italic transition">
-      </div>
-      <div class="space-y-3 text-left">
-        <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label>
-        <textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje y cuál es tu objetivo con esta obra..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea>
-      </div><!-- TOGGLE AUTOR EXTRANJERO -->
-<div style="border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:1.5rem;background:rgba(56,189,248,0.04);">
-  <label style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;">
-    <div style="position:relative;flex-shrink:0;">
-      <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)" style="position:absolute;opacity:0;width:0;height:0;">
-      <div id="ext-bg" style="width:48px;height:26px;background:rgba(255,255,255,0.1);border-radius:99px;transition:background .2s;"></div>
-      <div id="ext-dot" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;"></div>
-    </div>
-    <div>
-      <p style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;margin:0 0 3px;">Soy autor/a extranjero/a</p>
-      <p style="color:#475569;font-size:11px;font-style:italic;margin:0;">Busco traducción o adaptación al español latinoamericano</p>
-    </div>
-  </label>
-</div>
-
-<!-- CAMPOS EXTRANJERO -->
-<div id="campos-ext" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);">
-  <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-style:italic;margin:0 0 1.5rem;">· Servicio Internacional de Traducción y Adaptación ·</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">País de origen</label>
-      <input type="text" name="pais_origen" placeholder="Ej: España, Italia..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
-    </div>
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Idioma original</label>
-      <input type="text" name="idioma_original" placeholder="Ej: Inglés, Italiano..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Estado de la obra</label>
-      <select name="estado_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-        <option value="">Seleccioná</option>
-        <option value="manuscrito">Manuscrito sin publicar</option>
-        <option value="publicado">Obra publicada</option>
-        <option value="registrado">Obra registrada / con derechos</option>
-      </select>
-    </div>
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Servicio requerido</label>
-      <select name="servicio_requerido" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-        <option value="">Seleccioná</option>
-        <option value="traduccion">Traducción al español latinoamericano</option>
-        <option value="adaptacion">Adaptación conceptual y cultural</option>
-        <option value="maquetado">Maquetado editorial profesional</option>
-        <option value="completo">Servicio completo</option>
-      </select>
-    </div>
-  </div>
-  <div style="margin-bottom:1.5rem;">
-    <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Extensión aproximada</label>
-    <select name="extension_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-      <option value="">Seleccioná</option>
-      <option value="corta">Hasta 50 páginas</option>
-      <option value="media">50 a 150 páginas</option>
-      <option value="larga">150 a 300 páginas</option>
-      <option value="extensa">Más de 300 páginas</option>
-    </select>
-  </div>
-  <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:1.25rem;">
-    <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-style:italic;margin:0 0 8px;">💳 Método de pago internacional</p>
-    <p style="color:#94a3b8;font-size:13px;font-style:italic;line-height:1.7;margin:0;">Honorarios <strong style="color:#e2e8f0;">negociables</strong> según extensión y complejidad. Pagos vía <strong style="color:#e2e8f0;">Payoneer</strong>. Presupuesto personalizado por email tras la consulta.</p>
-  </div>
-</div>
-
-<script>
-function toggleExt(cb) {
-  const c = document.getElementById('campos-ext')
-  const bg = document.getElementById('ext-bg')
-  const dot = document.getElementById('ext-dot')
-  if (cb.checked) { c.style.display='block'; bg.style.background='#0ea5e9'; dot.style.transform='translateX(22px)'; }
-  else { c.style.display='none'; bg.style.background='rgba(255,255,255,0.1)'; dot.style.transform='translateX(0)'; }
-}
-</script>
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
+      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl italic"></textarea>
+      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition">Enviar para Evaluación</button>
     </form>
   </div>
 </section>
 
-<!-- ══ APP AUTORES ══ -->
-<section class="py-20 px-6 bg-black text-center border-b border-iron">
-  <div class="max-w-2xl mx-auto">
-    <div class="inline-block bg-sky-500/10 border border-sky-500/30 px-6 py-2 rounded-full text-sky-400 text-[10px] font-black uppercase tracking-widest italic mb-8">📡 Sistema de Seguimiento en Vivo</div>
-    <h3 class="text-4xl font-black uppercase italic tracking-tighter text-white leading-none mb-6">Tu obra, <span class="text-sky-400">en tiempo real</span></h3>
-    <p class="text-slate-300 italic text-base leading-relaxed mb-10">Si ya sos autor de Soberanía Editorial, accedé a tu panel privado. Seguí el progreso de tu obra, descargá materiales, grabá ideas con tu voz y mantené comunicación directa con el editor — desde cualquier dispositivo.</p>
-    <a href="https://v0-editorial-control-station.vercel.app" target="_blank" class="inline-block bg-sky-500 text-black font-black py-5 px-14 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.02]">
-      Ingresar a mi Panel de Autor →
-    </a>
-    <p class="text-slate-600 text-xs italic mt-6 uppercase tracking-widest">Acceso exclusivo · Credenciales provistas por Soberanía Editorial</p>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
 <footer class="py-24 px-6 bg-black border-t-4 border-sky-500/30">
   <div class="max-w-6xl mx-auto text-center italic">
-    <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-20 h-20 mx-auto mb-8 rounded-full border-2 border-sky-500/50 shadow-xl object-cover">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24 text-center">
-      <div class="space-y-4">
-        <span class="block text-[11px] font-black uppercase text-sky-500 tracking-[0.3em] italic">Estación Trelew</span>
-        <p class="text-2xl text-white font-black italic tracking-tighter">Edison 48, Chubut</p>
-      </div>
-      <div class="space-y-4">
-        <span class="block text-[11px] font-black uppercase text-sky-500 tracking-[0.3em] italic">WhatsApp Directo</span>
-        <a href="https://wa.me/542804841846" class="text-2xl text-white font-black italic tracking-tighter hover:text-sky-400 transition">+54 2804 841846</a>
-      </div>
-      <div class="space-y-4">
-        <span class="block text-[11px] font-black uppercase text-sky-500 tracking-[0.3em] italic">Redacción Central</span>
-        <a href="mailto:edicionesdemiantestino@gmail.com" class="text-md text-white hover:text-sky-400 transition underline underline-offset-8 decoration-sky-500 font-bold italic tracking-tighter">edicionesdemiantestino@gmail.com</a>
-      </div>
-    </div>
-    <div class="pt-16 border-t border-white/10 space-y-8 italic text-center">
-      <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic leading-none">SOBERANÍA EDITORIAL</p>
-      <p class="text-slate-400 text-sm italic">Trelew, Patagonia Argentina — Estación de Transmisión de Pensamiento Soberano</p>
-      <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 shadow-2xl italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
-      <p class="text-slate-600 text-[11px] uppercase tracking-[0.7em] font-bold mt-16 italic">Patagonia Argentina © 2026 | @demiantestinoautor</p>
-      <a href="terminos.html" style="display:inline-block;margin-top:16px;color:#7dd3fc;font-size:10px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(125,211,252,0.2);padding:6px 20px;border-radius:8px;font-style:italic;font-weight:700;">Términos y Condiciones</a>
-    </div>
+    <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic">SOBERANÍA EDITORIAL</p>
+    <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 mt-8 italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
+    <br><br>
+    <a href="terminos.html" style="color:#7dd3fc;font-size:10px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(125,211,252,0.2);padding:6px 20px;border-radius:8px;font-style:italic;">Términos y Condiciones</a>
   </div>
 </footer>
 
-<!-- ══ FABs ══ -->
-<button class="audio-fab" id="audioBtn" onclick="toggleAudio()" title="Audio ambiente">
-  <svg id="audioIcon" width="22" height="22" viewBox="0 0 24 24" fill="#475569">
-    <path id="audioPath" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-  </svg>
-</button>
-<a href="https://wa.me/542804841846" target="_blank" class="wa-fab">
-  <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+<button class="audio-fab" id="audioBtn" onclick="toggleAudio()"><svg id="audioIcon" width="22" height="22" fill="#475569"><path id="audioPath" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg></button>
+<a href="https://wa.me/542804841846" target="_blank" class="wa-fab"><svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg></a>
 
-<!-- ══ PURCHASE CONFIRMATION MODAL — CORREGIDO ══ -->
 <div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
   <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;box-shadow:0 0 60px rgba(0,0,0,0.8);">
-    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#475569'">✕</button>
+    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;">✕</button>
     <div style="font-size:2.5rem;margin-bottom:1rem;">⚠️</div>
     <h5 style="color:white;font-size:1.2rem;font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:0.75rem;">Antes de Continuar</h5>
     <p id="purchaseProductLabel" style="color:#38bdf8;font-style:italic;font-size:0.95rem;font-weight:900;margin-bottom:1rem;"></p>
-    <p style="color:#94a3b8;font-style:italic;font-size:0.875rem;line-height:1.7;margin-bottom:1.5rem;">Guardá tu comprobante de pago. Para confirmación final y coordinar la entrega de tu obra, comunicate a nuestro WhatsApp.</p>
-    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85rem;font-style:italic;text-decoration:none;margin-bottom:0.75rem;transition:background 0.2s;" onmouseover="this.style.background='#38bdf8'" onmouseout="this.style.background='#0ea5e9'">Ir al Pago con Mercado Pago →</a>
-    <a href="https://wa.me/542804841846" target="_blank" style="display:block;width:100%;background:#16a34a;color:white;font-weight:900;padding:0.75rem;border-radius:12px;text-transform:uppercase;letter-spacing:0.08em;font-size:0.75rem;font-style:italic;text-decoration:none;margin-bottom:1.5rem;">WhatsApp para Coordinar Entrega</a>
-    <p style="color:#38bdf8;font-size:0.875rem;font-weight:900;font-style:italic;">✨ ¡Gracias por apostar a la soberanía regional y a la identidad narrativa de los patagónicos!</p>
+    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;text-decoration:none;margin-bottom:1rem;font-style:italic;">Ir al Pago con Mercado Pago →</a>
+    <p style="color:#38bdf8;font-size:0.875rem;font-weight:900;font-style:italic;">✨ ¡Gracias por apostar a la soberanía regional!</p>
   </div>
 </div>
 
-<!-- ══ BOOK MODALS ══ -->
-<div id="modal-cubismo" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-cubismo')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis Crítica</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Cubismo</h5><p class="text-slate-300 text-base italic leading-relaxed">Mapa de señales recuperadas del "ruido blanco" del olvido. Construida bajo la óptica del cubismo, la narrativa fragmenta la realidad para mostrar todas las caras del desarraigo: el dolor de la partida, la disonancia del nuevo idioma y el brillo de la resistencia.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes Temáticos</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">La Estática del Despegue:</span> La burocracia del silencio forzado.</li><li>• <span class="text-white font-bold">La Química del Olvido:</span> La destrucción de la identidad física.</li><li>• <span class="text-white font-bold">Frecuencias de Resistencia:</span> El arte como conductor soberano.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-sky-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha Técnica</span><div class="space-y-3 text-[11px] font-bold uppercase text-slate-400"><p>ISBN: <span class="text-white italic">978-631-01-4407-8</span></p><p>Páginas: <span class="text-white italic">~340 (Frecuencia Maestra)</span></p><p>Registro: <span class="text-white italic">DNDA Ley 11.723</span></p></div></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"A los que descubrieron que al meter su vida en una maleta de veinte kilos, el alma pesaba mucho más. Este libro es su espejo."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
+<div id="modal-cubismo" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cubismo')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Cubismo</h5><p class="text-slate-300 text-base italic">Mapa de señales recuperadas del "ruido blanco" del olvido.</p></div></div></div></div>
+<div id="modal-patria" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-patria')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Patria Grande</h5><p class="text-slate-300 text-base italic">Maquinaria de despojo evolucionada del galeón al algoritmo.</p></div></div></div></div>
+<div id="modal-sintonia" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-sintonia')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Sintonía Soberana</h5><p class="text-slate-300 text-base italic">Manual de sabotaje metafísico para un continente libre.</p></div></div></div></div>
+<div id="modal-kaukel" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-kaukel')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-orange-500 pb-2 text-white">Saga Káukel</h5><p class="text-slate-300 text-base italic">La transformación mística del guerrero ancestral.</p></div></div></div></div>
+<div id="modal-ente" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-ente')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">El Ente</h5><p class="text-slate-300 text-base italic">Autopsia del poder y la maquinaria de la mentira.</p></div></div></div></div>
+<div id="modal-cronicas" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cronicas')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Crónicas del Viento</h5><p class="text-slate-300 text-base italic">Autopsia del presente narrada desde el polvillo de la ruta.</p></div></div></div></div>
 
-<div id="modal-patria" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-patria')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Patria Grande</h5><p class="text-slate-300 text-base italic leading-relaxed">Nace de la urgencia de nombrar al "Ente": maquinaria de despojo que ha evolucionado desde el galeón al algoritmo. Revela cómo el fusilamiento de un obrero en 1921 ocurre en la misma frecuencia que el bloqueo de una cuenta hoy.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">Anatomía de la Deuda:</span> Firma digital militarizada.</li><li>• <span class="text-white font-bold">Litio y Energía:</span> Arquitectura del shock regional.</li><li>• <span class="text-white font-bold">Frecuencia III:</span> El despertar de la Patria Grande.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-sky-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha</span><p class="text-[11px] font-bold uppercase text-slate-400">ISBN: <span class="text-white italic">978-631-01-4462-7</span></p></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Usted deja de ser un usuario para convertirse en un Telegrafista de la Patria Grande. No lea para dormir, lea para despertar."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
-
-<div id="modal-sintonia" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-sintonia')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white leading-none">Sintonía Soberana</h5><p class="text-slate-300 text-base italic leading-relaxed">La crónica de una Revelación. Es el momento en que el Gigante anestesiado abre un ojo y descubre que las cadenas de deuda son, en realidad, de papel. Un manual de sabotaje metafísico para un continente libre.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">Desenmascaramiento:</span> Autopsia de los Titiriteros.</li><li>• <span class="text-white font-bold">Ocupación de Materia:</span> Energía y recursos del Sur.</li><li>• <span class="text-white font-bold">Resurrección:</span> Tierra del Fuego como brújula.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-sky-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha</span><p class="text-[11px] font-bold uppercase text-slate-400">ISBN: <span class="text-white italic">978-631-01-4464-1</span></p><p class="text-[11px] font-bold uppercase text-slate-400">Páginas: <span class="text-white italic">~380 (Volumen 3)</span></p></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Cada dato técnico aquí vertido es un proyectil; cada latido poético es una venda para las heridas de la división."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
-
-<div id="modal-kaukel" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-kaukel')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-orange-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis Crítica</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-orange-500 pb-2 text-white">Saga Káukel</h5><p class="text-slate-300 text-base italic leading-relaxed">Epopeya de restitución narrativa. De Nahuel al chamán Káukel: la transformación mística del guerrero ancestral que logra sintonizar el latido de la tierra con la frecuencia de la justicia política moderna.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-orange-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">Tomo I:</span> El despojo y la Placa N° 412.</li><li>• <span class="text-white font-bold">Tomo II:</span> Iniciación del Jaguar de Nieve.</li><li>• <span class="text-white font-bold">Tomo III:</span> Resonancia del Kultrun contra el Ente.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-orange-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha</span><p class="text-[11px] font-bold uppercase text-slate-400">ISBN: <span class="text-white italic">978-631-01-4296-8</span></p><p class="text-[11px] font-bold uppercase text-slate-400">Registro: <span class="text-white italic">DNDA EX-2026-26716294</span></p></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-orange-500 pl-8">"La estepa no está dormida; está esperando que el primer grito de justicia rompa el hielo."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
-
-<div id="modal-ente" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-ente')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">El Ente de Frecuencia Cero</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del poder y la maquinaria de la mentira institucionalizada en Argentina. A través de Valeria Vento, se mapean 40 años de traición, desde la dictadura hasta los algoritmos del presente.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">Pacto de la Celulosa:</span> El capital de la sangre.</li><li>• <span class="text-white font-bold">Remate Corporativo:</span> Privatización de la ética.</li><li>• <span class="text-white font-bold">Tiranía Digital:</span> El Ente y el control invisible.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-sky-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha</span><p class="text-[11px] font-bold uppercase text-slate-400">ISBN: <span class="text-white italic">978-631-01-4269-2</span></p><p class="text-[11px] font-bold uppercase text-slate-400">Páginas: <span class="text-white italic">~350 (Integral)</span></p></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"La historia oficial no es más que una mentira acordada, pero la memoria de la calle es una herida abierta. Yo quiero estar del lado de los que mastican."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
-
-<div id="modal-cronicas" class="modal">
-  <div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic">
-    <button onclick="closeModal('modal-cronicas')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button>
-    <div class="kindle-slider">
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 1: Sinopsis</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white leading-tight">Crónicas del Viento</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del presente narrada desde el polvillo de la ruta y la helada de las cinco de la mañana. Crónica política y humana sobre el "Gremio de los Invisibles" y la resistencia obrera en Trelew.</p></div>
-      <div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Página 2: Ejes</span><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">Uberización:</span> La trampa del algoritmo moderno.</li><li>• <span class="text-white font-bold">Epicentro Trelew:</span> Huelgas laneras y reforma laboral.</li><li>• <span class="text-white font-bold">Siete Estaciones:</span> Ciudadanía contra el viento.</li></ul></div>
-      <div class="kindle-page flex flex-col justify-center"><span class="text-[10px] text-sky-500 font-black uppercase mb-8 block italic tracking-[0.3em]">Página 3: Ficha Técnica</span><p class="text-[11px] font-bold uppercase text-slate-400">ISBN: <span class="text-white italic">EN TRÁMITE</span></p><p class="text-[11px] font-bold uppercase text-slate-400">Páginas: <span class="text-white italic">~580 (Ciclo I)</span></p></div>
-      <div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Lo que tenés en tus manos no es un libro de paisajes. Es la crónica de quien decidió no ser el mantel sucio de una mesa ajena."</p></div>
-    </div>
-    <p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá para navegar →</p>
-  </div>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ── MODALS ──
-function openModal(id){const m=document.getElementById(id);if(m){m.style.display='flex';document.body.style.overflow='hidden';}}
-function closeModal(id){const m=document.getElementById(id);if(m){m.style.display='none';document.body.style.overflow='auto';}}
-window.addEventListener('click',function(e){
-  if(e.target.classList&&e.target.classList.contains('modal')){e.target.style.display='none';document.body.style.overflow='auto';}
-  const pm=document.getElementById('purchaseModal');
-  if(e.target===pm){closePurchaseModal();}
-});
+// --- CONFIG SUPABASE ---
+const SUPABASE_URL = 'TU_URL_DE_SUPABASE'; 
+const SUPABASE_KEY = 'TU_ANON_KEY';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// ── PURCHASE — CORREGIDO ──
+async function initLiveCounter() {
+  const channel = supabaseClient.channel('online-readers', { config: { presence: { key: 'reader' } } });
+  channel.on('presence', { event: 'sync' }, () => {
+    const state = channel.presenceState();
+    const count = Object.keys(state).length;
+    document.getElementById('live-counter').textContent = `LECTORES: ${count}`;
+  }).subscribe(async (status) => { if (status === 'SUBSCRIBED') { await channel.track({ online_at: new Date().toISOString() }); } });
+}
+
+// --- MODALES ---
+function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='auto';}
+
+// --- COMPRAS ---
 const purchaseLinks = {
   kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
-  ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente de la Frecuencia Cero — $20.000 ARS' },
-  combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía (Káukel + El Ente) — $50.000 ARS' }
+  ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente — $20.000 ARS' },
+  combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo (Káukel + Ente) — $50.000 ARS' }
 };
-
 function openPurchase(type) {
-  const data = purchaseLinks[type];
-  if (!data) return;
-  // Asignar link y label ANTES de mostrar el modal
-  document.getElementById('purchaseLink').href = data.url;
-  document.getElementById('purchaseProductLabel').textContent = data.label;
-  const pm = document.getElementById('purchaseModal');
-  pm.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  const d = purchaseLinks[type];
+  document.getElementById('purchaseLink').href = d.url;
+  document.getElementById('purchaseProductLabel').textContent = d.label;
+  document.getElementById('purchaseModal').style.display = 'flex';
+}
+function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';}
+
+// --- COUNTDOWN ---
+const p1=new Date('2026-04-11T00:00:00-03:00'), p2=new Date('2026-04-26T23:59:59-03:00');
+function upCD(){
+  const now=new Date(); let t,l;
+  if(now<p1){t=p1;l='Lanzamiento en:';}
+  else if(now<p2){t=p2;l='Preventa Finaliza en:';}
+  else {document.getElementById('countdown').style.display='none'; document.getElementById('cdExpired').classList.remove('hidden'); return;}
+  document.getElementById('cdLabelText').textContent=l;
+  const diff=t-now;
+  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
 }
 
-function closePurchaseModal(){
-  document.getElementById('purchaseModal').style.display='none';
-  document.body.style.overflow='auto';
-}
-
-// ── COUNTDOWN ──
-const phase1End=new Date('2026-04-11T00:00:00-03:00');
-const phase2End=new Date('2026-04-26T23:59:59-03:00');
-function updateCountdown(){
-  const now=new Date();
-  let target,label;
-  if(now<phase1End){target=phase1End;label='Lanzamiento de Preventa en:';}
-  else if(now<phase2End){
-    target=phase2End;label='La Preventa Finaliza en:';
-    document.querySelectorAll('.cd-num').forEach(el=>el.style.color='#f97316');
-    document.querySelectorAll('.cd-unit').forEach(el=>{el.style.background='rgba(249,115,22,0.06)';el.style.borderColor='rgba(249,115,22,0.25)';});
-    document.getElementById('cdLabelText').style.color='#f97316';
-  } else {
-    document.getElementById('countdown').style.display='none';
-    const lbl=document.getElementById('cdLabelText');if(lbl)lbl.parentElement.style.display='none';
-    document.getElementById('cdExpired').classList.remove('hidden');
-    return;
-  }
-  document.getElementById('cdLabelText').textContent=label;
-  const diff=target-now;
-  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
-}
-updateCountdown();setInterval(updateCountdown,1000);
-
-// ── AUDIO ──
-let audioPlaying=false;
-const audioEl=new Audio();
-audioEl.loop=true;
-audioEl.src='viento.mp3.mp3';
-const pathMuted='M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z';
-const pathUnmuted='M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0 2.26-1.06 4.27-2.7 5.6l1.46 1.46C19.13 17.43 20.5 14.88 20.5 12c0-2.88-1.37-5.43-3.24-7.06l-1.46 1.46C17.44 7.73 18.5 9.74 18.5 12z';
+// --- AUDIO ---
+let audioPlaying=false; const audioEl=new Audio('viento.mp3.mp3'); audioEl.loop=true;
 function toggleAudio(){
-  const icon=document.getElementById('audioIcon');
-  const path=document.getElementById('audioPath');
-  if(audioPlaying){audioEl.pause();audioPlaying=false;path.setAttribute('d',pathMuted);icon.style.fill='#475569';}
-  else{audioEl.play().catch(()=>{});audioPlaying=true;path.setAttribute('d',pathUnmuted);icon.style.fill='#38bdf8';}
+  if(audioPlaying){audioEl.pause();audioPlaying=false;document.getElementById('audioPath').style.fill='#475569';}
+  else{audioEl.play().catch(()=>{});audioPlaying=true;document.getElementById('audioIcon').style.fill='#38bdf8';}
 }
+
+document.addEventListener('DOMContentLoaded', () => { initLiveCounter(); upCD(); setInterval(upCD,1000); });
 </script>
 </body>
 </html>
