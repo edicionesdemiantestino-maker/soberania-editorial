@@ -47,21 +47,7 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 .wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; text-decoration: none; }
 .wa-fab:hover { transform: scale(1.1); }
 
-/* PREVIEW BTN */
-.btn-preview { display: inline-flex; align-items: center; gap: 8px; background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.3); color: #38bdf8; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 9px 16px; border-radius: 8px; text-decoration: none; transition: all 0.2s; font-style: italic; }
-.btn-preview:hover { background: rgba(56,189,248,0.15); border-color: #38bdf8; color: #fff; }
-
-h1,h2,h3,h4,h5,h6 { color: #ffffff; }
-input,textarea,select { background: #0f172a !important; border: 1px solid #1e293b !important; color: white !important; }
-input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outline: none; }
-
-/* REELS */
-.reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-@media(max-width:768px){ .reels-grid { grid-template-columns: 1fr; } }
-.reel-card { border-radius: 20px; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 340px; text-decoration: none; transition: border-color 0.2s, background 0.2s; padding: 2rem; gap: 1rem; }
-.reel-card:hover { border-color: rgba(56,189,248,0.4); background: rgba(56,189,248,0.04); }
-
-/* PULSE */
+/* PULSE ANIMATION */
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
 .pulse { animation: pulse-dot 1.8s infinite; }
 </style>
@@ -106,7 +92,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
         <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Recursos <span class="text-[7px]">▼</span></button>
         <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
           <a href="#reels" class="block py-2 text-slate-400 hover:text-white transition">Frecuencia Visual</a>
-          <a href="https://v0-editorial-control-station.vercel.app" class="block py-2 text-sky-400 hover:text-white transition">Blog del Búnker</a>
+          <a href="#blog" class="block py-2 text-sky-400 hover:text-white transition">Blog del Búnker</a>
         </div>
       </div>
 
@@ -146,14 +132,12 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
 <main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto">
   <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-sky-500 pl-6 italic">Frecuencias Literarias Registradas</h3>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
         <img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Cubismo</h4>
       <button onclick="openModal('modal-cubismo')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
         <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
         <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM" target="_blank" class="block w-full text-center bg-blue-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Mercado Libre AR</a>
@@ -172,18 +156,6 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       </div>
     </div>
 
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
-      <span class="absolute top-6 right-6 bg-sky-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Preventa 26/05</span>
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/m5jjt92d/Gemini-Generated-Image-7pko2k7pko2k7pko.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Sintonía Soberana</h4>
-      <button onclick="openModal('modal-sintonia')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-8 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0fTJNTte" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
-      </div>
-    </div>
-
     <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-orange-500/60 group">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
@@ -191,37 +163,9 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       </div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-none">Saga Káukel</h4>
       <button onclick="openModal('modal-kaukel')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 border-0">Comprar — $35.000 ARS</button>
-        <a href="https://a.co/d/0j8FPUNq" target="_blank" class="block w-full text-center bg-orange-800/40 border border-orange-500 text-orange-400 text-[10px] font-black py-2 rounded-lg uppercase italic text-center">Amazon Global</a>
-        <a href="https://wa.me/542804841846?text=Preventa%20Káukel%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg text-center">WhatsApp Preventa</a>
-      </div>
-    </div>
-
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
-      <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">El Ente</h4>
-      <button onclick="openModal('modal-ente')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
-      <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('ente')" class="w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-sky-500 border-0">Comprar — $20.000 ARS</button>
-        <a href="https://wa.me/542804841846?text=Preventa%20El%20Ente%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg text-center">WhatsApp Preventa</a>
-      </div>
-    </div>
-
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/DH22FjNY/Tapa-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Crónicas del Viento</h4>
-      <button onclick="openModal('modal-cronicas')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start">Sintonizar Primer Capítulo</a>
-      <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
+        <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 border-0 cursor-pointer">Comprar — $35.000 ARS</button>
+        <a href="https://wa.me/542804841846?text=Preventa%20Káukel%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">WhatsApp Preventa</a>
       </div>
     </div>
   </div>
@@ -229,69 +173,56 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <div class="mt-16 p-10 rounded-[40px] border-2 border-sky-500/40 bg-gradient-to-br from-slate-900 to-black text-center shadow-2xl relative overflow-hidden">
     <span class="inline-block bg-sky-500 text-black text-[10px] font-black px-6 py-2 rounded-full uppercase italic tracking-widest mb-6 shadow-xl">⚡ Oferta Combo Exclusiva</span>
     <h4 class="text-4xl font-black uppercase italic text-white mb-2">Káukel + El Ente</h4>
-    <p class="text-slate-400 italic text-sm mb-8">Las dos obras físicas de lanzamiento. Envío coordinado desde Trelew, Chubut.</p>
-    <div class="flex items-center justify-center gap-6 flex-wrap mb-8">
+    <div class="flex items-center justify-center gap-6 mb-8">
       <span class="text-slate-500 line-through text-xl italic">$55.000</span>
-      <span class="text-5xl font-black text-sky-400 italic">$50.000</span>
-      <span class="text-sky-500 text-sm font-bold italic">ARS</span>
+      <span class="text-5xl font-black text-sky-400 italic">$50.000 ARS</span>
     </div>
     <button onclick="openPurchase('combo')" class="bg-sky-500 text-black font-black py-5 px-16 rounded-2xl uppercase tracking-[0.3em] text-sm italic shadow-2xl hover:bg-white transition border-0 cursor-pointer">Comprar Combo — Mercado Pago</button>
   </div>
 </main>
 
-<section id="preview" class="py-24 px-6 bg-slate-950 border-y border-iron">
+<section id="blog" class="py-24 px-6 bg-black border-y border-iron">
   <div class="max-w-7xl mx-auto">
-    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Sintonizar Primer Capítulo</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <h5 class="font-black uppercase italic text-white text-sm">Cubismo</h5>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
-      </a>
-      <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-orange-500/20 rounded-[30px] flex flex-col gap-4 hover:border-orange-500/50 transition shadow-xl">
-        <h5 class="font-black uppercase italic text-white text-sm">Saga Káukel</h5>
-        <span class="text-orange-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
-      </a>
-      <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <h5 class="font-black uppercase italic text-white text-sm">El Ente</h5>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
-      </a>
-      <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="group p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4 hover:border-sky-500/50 transition shadow-xl">
-        <h5 class="font-black uppercase italic text-white text-sm">Crónicas del Viento</h5>
-        <span class="text-sky-400 text-[10px] font-black uppercase italic tracking-widest mt-auto group-hover:text-white transition">→ Abrir Preview</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="reels" class="py-24 px-6 bg-black border-b border-iron">
-  <div class="max-w-7xl mx-auto">
-    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Frecuencia Visual</h3>
-    <div class="reels-grid">
-      <a href="https://www.instagram.com/reel/DWcYhl0kZO9/" target="_blank" class="reel-card">Ver Reel 01</a>
-      <a href="https://www.instagram.com/reel/DWprvL5Ef26/" target="_blank" class="reel-card">Ver Reel 02</a>
-      <a href="https://www.instagram.com/reel/DWptglHkU3N/" target="_blank" class="reel-card">Ver Reel 03</a>
-    </div>
-  </div>
-</section>
-
-<section id="servicios" class="py-32 px-6 bg-slate-950 border-y border-iron">
-  <h3 class="text-5xl font-black uppercase italic tracking-tighter mb-20 text-white leading-none text-center">Editor Productor</h3>
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-    <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
-      <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">01. Gestión Legal</h6>
-      <p class="text-[13px] text-slate-300 italic">ISBN, DNDA y Depósito Legal. Blindamos la soberanía de tu obra.</p>
-    </div>
-    <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
-      <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">02. Curaduría</h6>
-      <p class="text-[13px] text-slate-300 italic">Diseño de autor, corrección literaria y maquetación técnica.</p>
-    </div>
-    <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
-      <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">03. Masterización</h6>
-      <p class="text-[13px] text-slate-300 italic">Producción técnica optimizada para Amazon KDP y eBook.</p>
-    </div>
-    <div class="p-10 border border-iron bg-card rounded-[40px] shadow-2xl">
-      <h6 class="font-black mb-4 uppercase text-[12px] tracking-widest text-sky-400 italic">04. Distribución</h6>
-      <p class="text-[13px] text-slate-300 italic">Lanzamiento global sincronizado y logística nacional.</p>
+    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Bitácora de Transmisión</h3>
+    <p class="text-slate-400 text-sm italic mb-16 pl-10">Reflexiones sobre soberanía y tecnología.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
+        <span class="text-[10px] text-sky-500 font-black uppercase italic">Seguridad Intelectual</span>
+        <h5 class="font-black uppercase italic text-white text-xl">El Blindaje SHA-256</h5>
+        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
+          <button onclick="handleReaction('post-sha256', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
+            👍 <span id="likes-post-sha256">0</span>
+          </button>
+          <button onclick="handleReaction('post-sha256', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
+            👎 <span id="dislikes-post-sha256">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
+        <span class="text-[10px] text-sky-500 font-black uppercase italic">Sociología</span>
+        <h5 class="font-black uppercase italic text-white text-xl">Identidad vs Algoritmo</h5>
+        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
+          <button onclick="handleReaction('post-identidad', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
+            👍 <span id="likes-post-identidad">0</span>
+          </button>
+          <button onclick="handleReaction('post-identidad', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
+            👎 <span id="dislikes-post-identidad">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
+        <span class="text-[10px] text-sky-500 font-black uppercase italic">Estrategia</span>
+        <h5 class="font-black uppercase italic text-white text-xl">Independencia Real</h5>
+        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
+          <button onclick="handleReaction('post-independencia', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
+            👍 <span id="likes-post-independencia">0</span>
+          </button>
+          <button onclick="handleReaction('post-independencia', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
+            👎 <span id="dislikes-post-independencia">0</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -301,11 +232,11 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <h3 class="text-4xl font-black uppercase italic mb-4 text-white">Portal de Recepción</h3>
     <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl">
-        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl">
+        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl bg-slate-900 text-white">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl bg-slate-900 text-white">
       </div>
-      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl italic"></textarea>
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition">Enviar para Evaluación</button>
+      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl bg-slate-900 text-white italic"></textarea>
+      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition cursor-pointer">Enviar para Evaluación Técnica</button>
     </form>
   </div>
 </section>
@@ -319,27 +250,6 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   </div>
 </footer>
 
-<button class="audio-fab" id="audioBtn" onclick="toggleAudio()"><svg id="audioIcon" width="22" height="22" fill="#475569"><path id="audioPath" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg></button>
-<a href="https://wa.me/542804841846" target="_blank" class="wa-fab"><svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg></a>
-
-<div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;box-shadow:0 0 60px rgba(0,0,0,0.8);">
-    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;">✕</button>
-    <div style="font-size:2.5rem;margin-bottom:1rem;">⚠️</div>
-    <h5 style="color:white;font-size:1.2rem;font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:0.75rem;">Antes de Continuar</h5>
-    <p id="purchaseProductLabel" style="color:#38bdf8;font-style:italic;font-size:0.95rem;font-weight:900;margin-bottom:1rem;"></p>
-    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;text-decoration:none;margin-bottom:1rem;font-style:italic;">Ir al Pago con Mercado Pago →</a>
-    <p style="color:#38bdf8;font-size:0.875rem;font-weight:900;font-style:italic;">✨ ¡Gracias por apostar a la soberanía regional!</p>
-  </div>
-</div>
-
-<div id="modal-cubismo" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cubismo')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Cubismo</h5><p class="text-slate-300 text-base italic">Mapa de señales recuperadas del "ruido blanco" del olvido.</p></div></div></div></div>
-<div id="modal-patria" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-patria')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Patria Grande</h5><p class="text-slate-300 text-base italic">Maquinaria de despojo evolucionada del galeón al algoritmo.</p></div></div></div></div>
-<div id="modal-sintonia" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-sintonia')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Sintonía Soberana</h5><p class="text-slate-300 text-base italic">Manual de sabotaje metafísico para un continente libre.</p></div></div></div></div>
-<div id="modal-kaukel" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-kaukel')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-orange-500 pb-2 text-white">Saga Káukel</h5><p class="text-slate-300 text-base italic">La transformación mística del guerrero ancestral.</p></div></div></div></div>
-<div id="modal-ente" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-ente')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">El Ente</h5><p class="text-slate-300 text-base italic">Autopsia del poder y la maquinaria de la mentira.</p></div></div></div></div>
-<div id="modal-cronicas" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cronicas')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Crónicas del Viento</h5><p class="text-slate-300 text-base italic">Autopsia del presente narrada desde el polvillo de la ruta.</p></div></div></div></div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // --- CONFIG SUPABASE ---
@@ -347,6 +257,7 @@ const SUPABASE_URL = 'TU_URL_DE_SUPABASE';
 const SUPABASE_KEY = 'TU_ANON_KEY';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// --- LÓGICA LIVE COUNTER ---
 async function initLiveCounter() {
   const channel = supabaseClient.channel('online-readers', { config: { presence: { key: 'reader' } } });
   channel.on('presence', { event: 'sync' }, () => {
@@ -356,47 +267,44 @@ async function initLiveCounter() {
   }).subscribe(async (status) => { if (status === 'SUBSCRIBED') { await channel.track({ online_at: new Date().toISOString() }); } });
 }
 
-// --- MODALES ---
+// --- LÓGICA BLOG ---
+async function fetchReactions() {
+  const { data } = await supabaseClient.from('blog_posts').select('*');
+  if (data) {
+    data.forEach(post => {
+      if(document.getElementById(`likes-${post.id}`)) document.getElementById(`likes-${post.id}`).textContent = post.likes;
+      if(document.getElementById(`dislikes-${post.id}`)) document.getElementById(`dislikes-${post.id}`).textContent = post.dislikes;
+    });
+  }
+}
+
+async function handleReaction(postId, type) {
+  if (localStorage.getItem(`voted-${postId}`)) { alert("Voto registrado en esta frecuencia."); return; }
+  const col = type === 'like' ? 'likes' : 'dislikes';
+  const { data: p } = await supabaseClient.from('blog_posts').select(col).eq('id', postId).single();
+  const { error } = await supabaseClient.from('blog_posts').update({ [col]: p[col] + 1 }).eq('id', postId);
+  if (!error) {
+    document.getElementById(`${col}-${postId}`).textContent = p[col] + 1;
+    localStorage.setItem(`voted-${postId}`, 'true');
+  }
+}
+
+// --- MODALES Y COMPRAS ---
 function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
 function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='auto';}
-
-// --- COMPRAS ---
-const purchaseLinks = {
+const pl = {
   kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
-  ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente — $20.000 ARS' },
   combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo (Káukel + Ente) — $50.000 ARS' }
 };
-function openPurchase(type) {
-  const d = purchaseLinks[type];
+function openPurchase(t) {
+  const d = pl[t];
   document.getElementById('purchaseLink').href = d.url;
   document.getElementById('purchaseProductLabel').textContent = d.label;
   document.getElementById('purchaseModal').style.display = 'flex';
 }
 function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';}
 
-// --- COUNTDOWN ---
-const p1=new Date('2026-04-11T00:00:00-03:00'), p2=new Date('2026-04-26T23:59:59-03:00');
-function upCD(){
-  const now=new Date(); let t,l;
-  if(now<p1){t=p1;l='Lanzamiento en:';}
-  else if(now<p2){t=p2;l='Preventa Finaliza en:';}
-  else {document.getElementById('countdown').style.display='none'; document.getElementById('cdExpired').classList.remove('hidden'); return;}
-  document.getElementById('cdLabelText').textContent=l;
-  const diff=t-now;
-  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-
-// --- AUDIO ---
-let audioPlaying=false; const audioEl=new Audio('viento.mp3.mp3'); audioEl.loop=true;
-function toggleAudio(){
-  if(audioPlaying){audioEl.pause();audioPlaying=false;document.getElementById('audioPath').style.fill='#475569';}
-  else{audioEl.play().catch(()=>{});audioPlaying=true;document.getElementById('audioIcon').style.fill='#38bdf8';}
-}
-
-document.addEventListener('DOMContentLoaded', () => { initLiveCounter(); upCD(); setInterval(upCD,1000); });
+document.addEventListener('DOMContentLoaded', () => { initLiveCounter(); fetchReactions(); });
 </script>
 </body>
 </html>
