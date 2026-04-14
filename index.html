@@ -1,297 +1,81 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQVZBFB446"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JQVZBFB446');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soberanía Editorial | Demián Agustín Testino</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-<style>
-body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5e1; scroll-behavior: smooth; }
-.bg-card { background-color: #0f172a; }
-.border-iron { border-color: #1e293b; }
+<div class="space-y-3 text-left">
+<label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label>
+<textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje y cuál es tu objetivo con esta obra..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea>
+      </div>
+      </div><!-- TOGGLE AUTOR EXTRANJERO -->
+<div style="border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:1.5rem;background:rgba(56,189,248,0.04);">
+  <label style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;">
+    <div style="position:relative;flex-shrink:0;">
+      <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)" style="position:absolute;opacity:0;width:0;height:0;">
+      <div id="ext-bg" style="width:48px;height:26px;background:rgba(255,255,255,0.1);border-radius:99px;transition:background .2s;"></div>
+      <div id="ext-dot" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;"></div>
+    </div>
+    <div>
+      <p style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;margin:0 0 3px;">Soy autor/a extranjero/a</p>
+      <p style="color:#475569;font-size:11px;font-style:italic;margin:0;">Busco traducción o adaptación al español latinoamericano</p>
+    </div>
+  </label>
+</div>
 
-/* TICKER */
-.ticker-wrap { overflow: hidden; background: #070b12; border-top: 1px solid #1e3a5f; border-bottom: 1px solid #1e3a5f; padding: 10px 0; }
-.ticker-track { display: flex; white-space: nowrap; animation: ticker 35s linear infinite; }
-.ticker-track:hover { animation-play-state: paused; }
-@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-.ticker-item { display: inline-flex; align-items: center; gap: 1.5rem; padding: 0 2rem; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; color: #38bdf8; font-style: italic; }
-.ticker-sep { color: #1e3a5f; }
-
-/* MODALS */
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-.kindle-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-.kindle-slider::-webkit-scrollbar { display: none; }
-.kindle-page { flex-shrink: 0; width: 100%; scroll-snap-align: start; padding: 25px; }
-
-/* COUNTDOWN */
-.countdown-block { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.cd-unit { display: flex; flex-direction: column; align-items: center; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.2); border-radius: 12px; padding: 1rem 1.5rem; min-width: 75px; }
-.cd-num { font-size: 2.5rem; font-weight: 900; color: #38bdf8; line-height: 1; font-style: italic; }
-.cd-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: #475569; margin-top: 4px; font-weight: 700; }
-
-/* PURCHASE MODAL */
-#purchaseModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 300; align-items: center; justify-content: center; padding: 20px; }
-
-/* AUDIO / WA FABs */
-.audio-fab { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 150; width: 52px; height: 52px; border-radius: 50%; background: #0f172a; border: 1.5px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-.wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; text-decoration: none; }
-
-/* PULSE */
-@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.pulse { animation: pulse-dot 1.8s infinite; }
-</style>
-</head>
-<body class="antialiased selection:bg-sky-500 selection:text-white">
-
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> DNDA Ley 11.723 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> DNDA Ley 11.723 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<!-- CAMPOS EXTRANJERO -->
+<div id="campos-ext" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);">
+  <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-style:italic;margin:0 0 1.5rem;">· Servicio Internacional de Traducción y Adaptación ·</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">País de origen</label>
+      <input type="text" name="pais_origen" placeholder="Ej: España, Italia..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
+    </div>
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Idioma original</label>
+      <input type="text" name="idioma_original" placeholder="Ej: Inglés, Italiano..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Estado de la obra</label>
+      <select name="estado_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+        <option value="">Seleccioná</option>
+        <option value="manuscrito">Manuscrito sin publicar</option>
+        <option value="publicado">Obra publicada</option>
+        <option value="registrado">Obra registrada / con derechos</option>
+      </select>
+    </div>
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Servicio requerido</label>
+      <select name="servicio_requerido" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+        <option value="">Seleccioná</option>
+        <option value="traduccion">Traducción al español latinoamericano</option>
+        <option value="adaptacion">Adaptación conceptual y cultural</option>
+        <option value="maquetado">Maquetado editorial profesional</option>
+        <option value="completo">Servicio completo</option>
+      </select>
+    </div>
+  </div>
+  <div style="margin-bottom:1.5rem;">
+    <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Extensión aproximada</label>
+    <select name="extension_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+      <option value="">Seleccioná</option>
+      <option value="corta">Hasta 50 páginas</option>
+      <option value="media">50 a 150 páginas</option>
+      <option value="larga">150 a 300 páginas</option>
+      <option value="extensa">Más de 300 páginas</option>
+    </select>
+  </div>
+  <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:1.25rem;">
+    <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-style:italic;margin:0 0 8px;">💳 Método de pago internacional</p>
+    <p style="color:#94a3b8;font-size:13px;font-style:italic;line-height:1.7;margin:0;">Honorarios <strong style="color:#e2e8f0;">negociables</strong> según extensión y complejidad. Pagos vía <strong style="color:#e2e8f0;">Payoneer</strong>. Presupuesto personalizado por email tras la consulta.</p>
   </div>
 </div>
 
-<nav class="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-iron shadow-2xl p-4">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-10 h-10 rounded-full border border-sky-500 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
-      <div class="flex flex-col leading-none">
-        <h1 class="text-white font-black uppercase italic text-sm">Demián <span class="text-sky-400">Testino</span></h1>
-        <span class="text-[7px] text-slate-500 uppercase tracking-widest font-bold italic">Soberanía Editorial</span>
-      </div>
-    </div>
-
-    <div class="hidden lg:flex gap-8 items-center font-black uppercase italic text-[9px] tracking-[0.2em]">
-      <div class="relative group">
-        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Vault <span class="text-[7px]">▼</span></button>
-        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
-          <a href="#catalogo" class="block py-2 text-slate-400 hover:text-white transition">Blindaje SHA-256</a>
-          <a href="#servicios" class="block py-2 text-slate-400 hover:text-white transition">Certificados</a>
-        </div>
-      </div>
-      <div class="relative group">
-        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Oráculo <span class="text-[7px]">▼</span></button>
-        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
-          <a href="#servicios" class="block py-2 text-slate-400 hover:text-white transition">Masterización</a>
-          <a href="#contacto" class="block py-2 text-slate-400 hover:text-white transition">Salud de Obra</a>
-        </div>
-      </div>
-      <div class="relative group">
-        <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Recursos <span class="text-[7px]">▼</span></button>
-        <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
-          <a href="#blog" class="block py-2 text-sky-400 hover:text-white transition">Blog del Búnker</a>
-        </div>
-      </div>
-      <div class="flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/30 rounded-full">
-        <span class="w-1.5 h-1.5 bg-green-500 rounded-full pulse"></span>
-        <span class="text-sky-400 font-mono" id="live-counter">SINTONIZANDO...</span>
-      </div>
-    </div>
-
-    <a href="https://v0-editorial-control-station.vercel.app" target="_blank" class="bg-sky-500 px-5 py-2.5 rounded-lg text-black font-black uppercase italic text-[10px] hover:bg-white transition shadow-lg">
-      Estación de Control
-    </a>
-  </div>
-</nav>
-
-<header class="py-32 px-6 text-center bg-gradient-to-b from-slate-900 to-black border-b border-iron">
-  <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-32 h-32 mx-auto mb-8 rounded-full border-4 border-sky-500 shadow-2xl object-cover">
-  <h2 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter text-white leading-none">Soberanía <br><span class="text-sky-400">Editorial</span></h2>
-  <p class="text-[11px] tracking-[0.6em] uppercase text-slate-500 mt-8 italic font-bold">Estación de Transmisión | Trelew, Patagonia</p>
-
-  <div class="mt-16 max-w-xl mx-auto">
-    <div class="flex items-center justify-center gap-3 mb-6">
-      <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
-      <span id="cdLabelText" class="text-[10px] font-black uppercase tracking-[0.4em] text-sky-500 italic">Preventa Finaliza en:</span>
-      <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
-    </div>
-    <div class="countdown-block" id="countdown">
-      <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Días</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Horas</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Min</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seg</span></div>
-    </div>
-    <div id="cdExpired" class="hidden mt-6 text-sky-400 font-black uppercase italic tracking-widest text-sm">🚀 ¡La Preventa ha Finalizado!</div>
-  </div>
-</header>
-
-<main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-orange-500/60 group">
-      <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
-      <div class="overflow-hidden rounded-3xl mb-6">
-        <img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" class="w-full h-80 object-cover">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-4 italic text-white leading-none">Saga Káukel</h4>
-      <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 border-0 cursor-pointer">Comprar — $35.000 ARS</button>
-      </div>
-    </div>
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
-      <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
-      <div class="overflow-hidden rounded-3xl mb-6">
-        <img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" class="w-full h-80 object-cover">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-4 italic text-white leading-tight">El Ente</h4>
-      <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('ente')" class="w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-sky-500 border-0 cursor-pointer">Comprar — $20.000 ARS</button>
-      </div>
-    </div>
-    <div class="bg-card border-2 border-sky-500/40 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/60 group">
-      <h4 class="text-3xl font-black uppercase italic text-white mb-2 leading-none text-center mt-8">Combo <br>Soberanía</h4>
-      <div class="flex items-center justify-center gap-4 my-8">
-        <span class="text-slate-500 line-through text-lg italic">$55k</span>
-        <span class="text-4xl font-black text-sky-400 italic">$50k ARS</span>
-      </div>
-      <button onclick="openPurchase('combo')" class="w-full text-center bg-sky-500 text-black text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg hover:bg-white transition border-0 cursor-pointer">Comprar Combo</button>
-    </div>
-  </div>
-</main>
-
-<section id="blog" class="py-24 px-6 bg-black border-y border-iron">
-  <div class="max-w-7xl mx-auto">
-    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-sky-500 pl-6 italic">Bitácora de Transmisión</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
-        <span class="text-[10px] text-sky-500 font-black uppercase italic">Seguridad Intelectual</span>
-        <h5 class="font-black uppercase italic text-white text-xl">El Blindaje SHA-256</h5>
-        <div class="flex items-center gap-6 mt-6 pt-6 border-t border-iron/50">
-          <button onclick="handleReaction('post-sha256', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">👍 <span id="likes-post-sha256">0</span></button>
-          <button onclick="handleReaction('post-sha256', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">👎 <span id="dislikes-post-sha256">0</span></button>
-        </div>
-      </div>
-      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
-        <span class="text-[10px] text-sky-500 font-black uppercase italic">Sociología</span>
-        <h5 class="font-black uppercase italic text-white text-xl">Identidad vs Algoritmo</h5>
-        <div class="flex items-center gap-6 mt-6 pt-6 border-t border-iron/50">
-          <button onclick="handleReaction('post-identidad', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">👍 <span id="likes-post-identidad">0</span></button>
-          <button onclick="handleReaction('post-identidad', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">👎 <span id="dislikes-post-identidad">0</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto" class="py-32 px-6 bg-black text-center border-b border-iron">
-  <div class="max-w-4xl mx-auto text-left italic">
-    <h3 class="text-4xl font-black uppercase italic mb-10 text-white">Portal de Recepción</h3>
-    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
-        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
-      </div>
-      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl bg-slate-900 text-white italic border border-slate-800"></textarea>
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition cursor-pointer">Enviar para Evaluación</button>
-    </form>
-  </div>
-</section>
-
-<div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;box-shadow:0 0 60px rgba(0,0,0,0.8);">
-    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;">✕</button>
-    <p id="purchaseProductLabel" style="color:#38bdf8;font-style:italic;font-size:0.95rem;font-weight:900;margin-bottom:1.5rem;"></p>
-    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;text-decoration:none;font-style:italic;">Ir al Pago con Mercado Pago →</a>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// --- CONFIG SUPABASE (PONÉ TUS LLAVES ACÁ) ---
-const SUPABASE_URL = 'TU_URL_DE_SUPABASE'; 
-const SUPABASE_KEY = 'TU_ANON_KEY';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// --- LÓGICA LIVE COUNTER ---
-async function initLiveCounter() {
-  const channel = supabaseClient.channel('online-readers', { config: { presence: { key: 'reader' } } });
-  channel.on('presence', { event: 'sync' }, () => {
-    const state = channel.presenceState();
-    const count = Object.keys(state).length;
-    document.getElementById('live-counter').textContent = `LECTORES: ${count}`;
-  }).subscribe(async (status) => { if (status === 'SUBSCRIBED') { await channel.track({ online_at: new Date().toISOString() }); } });
+function toggleExt(cb) {
+  const c = document.getElementById('campos-ext')
+  const bg = document.getElementById('ext-bg')
+  const dot = document.getElementById('ext-dot')
+  if (cb.checked) { c.style.display='block'; bg.style.background='#0ea5e9'; dot.style.transform='translateX(22px)'; }
+  else { c.style.display='none'; bg.style.background='rgba(255,255,255,0.1)'; dot.style.transform='translateX(0)'; }
 }
-
-// --- LÓGICA BLOG ---
-async function fetchReactions() {
-  const { data } = await supabaseClient.from('blog_posts').select('*');
-  if (data) {
-    data.forEach(post => {
-      if(document.getElementById(`likes-${post.id}`)) document.getElementById(`likes-${post.id}`).textContent = post.likes;
-      if(document.getElementById(`dislikes-${post.id}`)) document.getElementById(`dislikes-${post.id}`).textContent = post.dislikes;
-    });
-  }
-}
-
-async function handleReaction(postId, type) {
-  if (localStorage.getItem(`voted-${postId}`)) { alert("Voto registrado."); return; }
-  const col = type === 'like' ? 'likes' : 'dislikes';
-  const { data: p } = await supabaseClient.from('blog_posts').select(col).eq('id', postId).single();
-  const { error } = await supabaseClient.from('blog_posts').update({ [col]: p[col] + 1 }).eq('id', postId);
-  if (!error) {
-    document.getElementById(`${col}-${postId}`).textContent = p[col] + 1;
-    localStorage.setItem(`voted-${postId}`, 'true');
-  }
-}
-
-// --- COUNTDOWN (AHORA SÍ FUNCIONA) ---
-const phase1End=new Date('2026-04-11T00:00:00-03:00');
-const phase2End=new Date('2026-04-26T23:59:59-03:00');
-
-function updateCountdown(){
-  const now=new Date();
-  let target, label;
-
-  if(now < phase1End){
-    target = phase1End;
-    label = 'Lanzamiento en:';
-  } else if(now < phase2End){
-    target = phase2End;
-    label = 'Preventa Finaliza en:';
-  } else {
-    document.getElementById('countdown').style.display='none';
-    document.getElementById('cdExpired').classList.remove('hidden');
-    return;
-  }
-
-  document.getElementById('cdLabelText').textContent = label;
-  const diff = target - now;
-  const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-  
-  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
-}
-
-// --- MODALES Y COMPRAS ---
-function openPurchase(t) {
-  const pl = {
-    kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
-    ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente — $20.000 ARS' },
-    combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía — $50.000 ARS' }
-  };
-  const d = pl[t];
-  document.getElementById('purchaseLink').href = d.url;
-  document.getElementById('purchaseProductLabel').textContent = d.label;
-  document.getElementById('purchaseModal').style.display = 'flex';
-}
-function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';}
-
-// --- INICIO ---
-document.addEventListener('DOMContentLoaded', () => { 
-  initLiveCounter(); 
-  fetchReactions(); 
-  updateCountdown(); // El motor arranca acá
-  setInterval(updateCountdown, 1000); // Y se mantiene corriendo
-});
 </script>
-</body>
-</html>
+<button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
+</form>
+</div>
