@@ -43,11 +43,9 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 
 /* AUDIO / WA FABs */
 .audio-fab { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 150; width: 52px; height: 52px; border-radius: 50%; background: #0f172a; border: 1.5px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-.audio-fab:hover { border-color: #38bdf8; background: rgba(56,189,248,0.08); }
 .wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; text-decoration: none; }
-.wa-fab:hover { transform: scale(1.1); }
 
-/* PULSE ANIMATION */
+/* PULSE */
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
 .pulse { animation: pulse-dot 1.8s infinite; }
 </style>
@@ -56,8 +54,8 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew, Chubut <span class="ticker-sep">·</span> Estación de Transmisión <span class="ticker-sep">·</span> 6 Obras — 23 Años de Investigación <span class="ticker-sep">·</span> DNDA Ley 11.723 <span class="ticker-sep">·</span> Edison 48, Patagonia Argentina &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew, Chubut <span class="ticker-sep">·</span> Estación de Transmisión <span class="ticker-sep">·</span> 6 Obras — 23 Años de Investigación <span class="ticker-sep">·</span> DNDA Ley 11.723 <span class="ticker-sep">·</span> Edison 48, Patagonia Argentina &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> DNDA Ley 11.723 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> DNDA Ley 11.723 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
 </div>
 
@@ -79,7 +77,6 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
           <a href="#servicios" class="block py-2 text-slate-400 hover:text-white transition">Certificados</a>
         </div>
       </div>
-
       <div class="relative group">
         <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Oráculo <span class="text-[7px]">▼</span></button>
         <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
@@ -87,15 +84,12 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
           <a href="#contacto" class="block py-2 text-slate-400 hover:text-white transition">Salud de Obra</a>
         </div>
       </div>
-
       <div class="relative group">
         <button class="text-white group-hover:text-sky-400 transition flex items-center gap-1">📁 Recursos <span class="text-[7px]">▼</span></button>
         <div class="absolute hidden group-hover:block bg-slate-900 border border-iron p-4 w-48 rounded-xl mt-2 shadow-2xl">
-          <a href="#reels" class="block py-2 text-slate-400 hover:text-white transition">Frecuencia Visual</a>
           <a href="#blog" class="block py-2 text-sky-400 hover:text-white transition">Blog del Búnker</a>
         </div>
       </div>
-
       <div class="flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/30 rounded-full">
         <span class="w-1.5 h-1.5 bg-green-500 rounded-full pulse"></span>
         <span class="text-sky-400 font-mono" id="live-counter">SINTONIZANDO...</span>
@@ -116,7 +110,7 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
   <div class="mt-16 max-w-xl mx-auto">
     <div class="flex items-center justify-center gap-3 mb-6">
       <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
-      <span id="cdLabelText" class="text-[10px] font-black uppercase tracking-[0.4em] text-sky-500 italic">Lanzamiento de Preventa en:</span>
+      <span id="cdLabelText" class="text-[10px] font-black uppercase tracking-[0.4em] text-sky-500 italic">Preventa Finaliza en:</span>
       <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
     </div>
     <div class="countdown-block" id="countdown">
@@ -125,102 +119,61 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
       <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Min</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seg</span></div>
     </div>
-    <div id="cdExpired" class="hidden mt-6 text-sky-400 font-black uppercase italic tracking-widest text-sm">🚀 ¡La Preventa está ACTIVA ahora!</div>
+    <div id="cdExpired" class="hidden mt-6 text-sky-400 font-black uppercase italic tracking-widest text-sm">🚀 ¡La Preventa ha Finalizado!</div>
   </div>
 </header>
 
 <main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto">
-  <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-sky-500 pl-6 italic">Frecuencias Literarias Registradas</h3>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Cubismo</h4>
-      <button onclick="openModal('modal-cubismo')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
-        <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM" target="_blank" class="block w-full text-center bg-blue-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Mercado Libre AR</a>
-      </div>
-    </div>
-
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
-      <span class="absolute top-6 right-6 bg-amber-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Preventa 26/04</span>
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/939Wbyb1/Copilot-20260325-205511.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
-      </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Patria Grande</h4>
-      <button onclick="openModal('modal-patria')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-8 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
-      <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/0330AZLN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Comprar en Amazon</a>
-      </div>
-    </div>
-
     <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-orange-500/60 group">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
-      <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl">
-        <img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy">
+      <div class="overflow-hidden rounded-3xl mb-6">
+        <img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" class="w-full h-80 object-cover">
       </div>
-      <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-none">Saga Káukel</h4>
-      <button onclick="openModal('modal-kaukel')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
+      <h4 class="text-2xl font-black uppercase mb-4 italic text-white leading-none">Saga Káukel</h4>
       <div class="space-y-3 mt-auto">
         <button onclick="openPurchase('kaukel')" class="w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600 border-0 cursor-pointer">Comprar — $35.000 ARS</button>
-        <a href="https://wa.me/542804841846?text=Preventa%20Káukel%20Físico" target="_blank" class="block w-full text-center bg-sky-500 text-black text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">WhatsApp Preventa</a>
       </div>
     </div>
-  </div>
-
-  <div class="mt-16 p-10 rounded-[40px] border-2 border-sky-500/40 bg-gradient-to-br from-slate-900 to-black text-center shadow-2xl relative overflow-hidden">
-    <span class="inline-block bg-sky-500 text-black text-[10px] font-black px-6 py-2 rounded-full uppercase italic tracking-widest mb-6 shadow-xl">⚡ Oferta Combo Exclusiva</span>
-    <h4 class="text-4xl font-black uppercase italic text-white mb-2">Káukel + El Ente</h4>
-    <div class="flex items-center justify-center gap-6 mb-8">
-      <span class="text-slate-500 line-through text-xl italic">$55.000</span>
-      <span class="text-5xl font-black text-sky-400 italic">$50.000 ARS</span>
+    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/40 group">
+      <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
+      <div class="overflow-hidden rounded-3xl mb-6">
+        <img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" class="w-full h-80 object-cover">
+      </div>
+      <h4 class="text-2xl font-black uppercase mb-4 italic text-white leading-tight">El Ente</h4>
+      <div class="space-y-3 mt-auto">
+        <button onclick="openPurchase('ente')" class="w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-sky-500 border-0 cursor-pointer">Comprar — $20.000 ARS</button>
+      </div>
     </div>
-    <button onclick="openPurchase('combo')" class="bg-sky-500 text-black font-black py-5 px-16 rounded-2xl uppercase tracking-[0.3em] text-sm italic shadow-2xl hover:bg-white transition border-0 cursor-pointer">Comprar Combo — Mercado Pago</button>
+    <div class="bg-card border-2 border-sky-500/40 p-8 rounded-[40px] flex flex-col shadow-2xl relative transition hover:border-sky-500/60 group">
+      <h4 class="text-3xl font-black uppercase italic text-white mb-2 leading-none text-center mt-8">Combo <br>Soberanía</h4>
+      <div class="flex items-center justify-center gap-4 my-8">
+        <span class="text-slate-500 line-through text-lg italic">$55k</span>
+        <span class="text-4xl font-black text-sky-400 italic">$50k ARS</span>
+      </div>
+      <button onclick="openPurchase('combo')" class="w-full text-center bg-sky-500 text-black text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg hover:bg-white transition border-0 cursor-pointer">Comprar Combo</button>
+    </div>
   </div>
 </main>
 
 <section id="blog" class="py-24 px-6 bg-black border-y border-iron">
   <div class="max-w-7xl mx-auto">
-    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-4 border-l-4 border-sky-500 pl-6 italic">Bitácora de Transmisión</h3>
-    <p class="text-slate-400 text-sm italic mb-16 pl-10">Reflexiones sobre soberanía y tecnología.</p>
-    
+    <h3 class="text-xs font-bold text-sky-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-sky-500 pl-6 italic">Bitácora de Transmisión</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
         <span class="text-[10px] text-sky-500 font-black uppercase italic">Seguridad Intelectual</span>
         <h5 class="font-black uppercase italic text-white text-xl">El Blindaje SHA-256</h5>
-        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
-          <button onclick="handleReaction('post-sha256', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
-            👍 <span id="likes-post-sha256">0</span>
-          </button>
-          <button onclick="handleReaction('post-sha256', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
-            👎 <span id="dislikes-post-sha256">0</span>
-          </button>
+        <div class="flex items-center gap-6 mt-6 pt-6 border-t border-iron/50">
+          <button onclick="handleReaction('post-sha256', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">👍 <span id="likes-post-sha256">0</span></button>
+          <button onclick="handleReaction('post-sha256', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">👎 <span id="dislikes-post-sha256">0</span></button>
         </div>
       </div>
       <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
         <span class="text-[10px] text-sky-500 font-black uppercase italic">Sociología</span>
         <h5 class="font-black uppercase italic text-white text-xl">Identidad vs Algoritmo</h5>
-        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
-          <button onclick="handleReaction('post-identidad', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
-            👍 <span id="likes-post-identidad">0</span>
-          </button>
-          <button onclick="handleReaction('post-identidad', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
-            👎 <span id="dislikes-post-identidad">0</span>
-          </button>
-        </div>
-      </div>
-      <div class="p-8 bg-card border border-iron rounded-[30px] flex flex-col gap-4">
-        <span class="text-[10px] text-sky-500 font-black uppercase italic">Estrategia</span>
-        <h5 class="font-black uppercase italic text-white text-xl">Independencia Real</h5>
-        <div class="flex items-center gap-6 mt-auto pt-6 border-t border-iron/50">
-          <button onclick="handleReaction('post-independencia', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">
-            👍 <span id="likes-post-independencia">0</span>
-          </button>
-          <button onclick="handleReaction('post-independencia', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">
-            👎 <span id="dislikes-post-independencia">0</span>
-          </button>
+        <div class="flex items-center gap-6 mt-6 pt-6 border-t border-iron/50">
+          <button onclick="handleReaction('post-identidad', 'like')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-green-500 transition">👍 <span id="likes-post-identidad">0</span></button>
+          <button onclick="handleReaction('post-identidad', 'dislike')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition">👎 <span id="dislikes-post-identidad">0</span></button>
         </div>
       </div>
     </div>
@@ -229,30 +182,29 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 
 <section id="contacto" class="py-32 px-6 bg-black text-center border-b border-iron">
   <div class="max-w-4xl mx-auto text-left italic">
-    <h3 class="text-4xl font-black uppercase italic mb-4 text-white">Portal de Recepción</h3>
+    <h3 class="text-4xl font-black uppercase italic mb-10 text-white">Portal de Recepción</h3>
     <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl bg-slate-900 text-white">
-        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl bg-slate-900 text-white">
+        <input type="text" name="nombre" required placeholder="Nombre y Apellido" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
       </div>
-      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl bg-slate-900 text-white italic"></textarea>
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition cursor-pointer">Enviar para Evaluación Técnica</button>
+      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl bg-slate-900 text-white italic border border-slate-800"></textarea>
+      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition cursor-pointer">Enviar para Evaluación</button>
     </form>
   </div>
 </section>
 
-<footer class="py-24 px-6 bg-black border-t-4 border-sky-500/30">
-  <div class="max-w-6xl mx-auto text-center italic">
-    <p class="text-white text-4xl font-black uppercase tracking-[0.5em] italic">SOBERANÍA EDITORIAL</p>
-    <p class="text-sky-400 text-sm font-black uppercase tracking-[0.3em] border-2 border-sky-400 px-10 py-4 rounded-full inline-block bg-sky-400/10 mt-8 italic">MARCA REGISTRADA INPI — Exp. 4689992</p>
-    <br><br>
-    <a href="terminos.html" style="color:#7dd3fc;font-size:10px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(125,211,252,0.2);padding:6px 20px;border-radius:8px;font-style:italic;">Términos y Condiciones</a>
+<div id="purchaseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.98);z-index:300;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#0f172a;border:1px solid rgba(56,189,248,0.25);padding:2.5rem;border-radius:40px;max-width:420px;width:100%;position:relative;text-align:center;box-shadow:0 0 60px rgba(0,0,0,0.8);">
+    <button onclick="closePurchaseModal()" style="position:absolute;top:1.25rem;right:1.5rem;color:#475569;background:none;border:none;font-size:2rem;cursor:pointer;">✕</button>
+    <p id="purchaseProductLabel" style="color:#38bdf8;font-style:italic;font-size:0.95rem;font-weight:900;margin-bottom:1.5rem;"></p>
+    <a id="purchaseLink" href="#" target="_blank" style="display:block;width:100%;background:#0ea5e9;color:#000;font-weight:900;padding:1rem;border-radius:16px;text-transform:uppercase;text-decoration:none;font-style:italic;">Ir al Pago con Mercado Pago →</a>
   </div>
-</footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// --- CONFIG SUPABASE ---
+// --- CONFIG SUPABASE (PONÉ TUS LLAVES ACÁ) ---
 const SUPABASE_URL = 'TU_URL_DE_SUPABASE'; 
 const SUPABASE_KEY = 'TU_ANON_KEY';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -279,7 +231,7 @@ async function fetchReactions() {
 }
 
 async function handleReaction(postId, type) {
-  if (localStorage.getItem(`voted-${postId}`)) { alert("Voto registrado en esta frecuencia."); return; }
+  if (localStorage.getItem(`voted-${postId}`)) { alert("Voto registrado."); return; }
   const col = type === 'like' ? 'likes' : 'dislikes';
   const { data: p } = await supabaseClient.from('blog_posts').select(col).eq('id', postId).single();
   const { error } = await supabaseClient.from('blog_posts').update({ [col]: p[col] + 1 }).eq('id', postId);
@@ -289,14 +241,43 @@ async function handleReaction(postId, type) {
   }
 }
 
+// --- COUNTDOWN (AHORA SÍ FUNCIONA) ---
+const phase1End=new Date('2026-04-11T00:00:00-03:00');
+const phase2End=new Date('2026-04-26T23:59:59-03:00');
+
+function updateCountdown(){
+  const now=new Date();
+  let target, label;
+
+  if(now < phase1End){
+    target = phase1End;
+    label = 'Lanzamiento en:';
+  } else if(now < phase2End){
+    target = phase2End;
+    label = 'Preventa Finaliza en:';
+  } else {
+    document.getElementById('countdown').style.display='none';
+    document.getElementById('cdExpired').classList.remove('hidden');
+    return;
+  }
+
+  document.getElementById('cdLabelText').textContent = label;
+  const diff = target - now;
+  const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+  
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+
 // --- MODALES Y COMPRAS ---
-function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
-function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='auto';}
-const pl = {
-  kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
-  combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo (Káukel + Ente) — $50.000 ARS' }
-};
 function openPurchase(t) {
+  const pl = {
+    kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
+    ente:   { url: 'https://mpago.la/2HcSsX4', label: 'El Ente — $20.000 ARS' },
+    combo:  { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía — $50.000 ARS' }
+  };
   const d = pl[t];
   document.getElementById('purchaseLink').href = d.url;
   document.getElementById('purchaseProductLabel').textContent = d.label;
@@ -304,7 +285,13 @@ function openPurchase(t) {
 }
 function closePurchaseModal(){document.getElementById('purchaseModal').style.display='none';}
 
-document.addEventListener('DOMContentLoaded', () => { initLiveCounter(); fetchReactions(); });
+// --- INICIO ---
+document.addEventListener('DOMContentLoaded', () => { 
+  initLiveCounter(); 
+  fetchReactions(); 
+  updateCountdown(); // El motor arranca acá
+  setInterval(updateCountdown, 1000); // Y se mantiene corriendo
+});
 </script>
 </body>
 </html>
