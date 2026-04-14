@@ -1,81 +1,145 @@
-<div class="space-y-3 text-left">
-<label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label>
-<textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje y cuál es tu objetivo con esta obra..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea>
-      </div>
-      </div><!-- TOGGLE AUTOR EXTRANJERO -->
-<div style="border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:1.5rem;background:rgba(56,189,248,0.04);">
-  <label style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;">
-    <div style="position:relative;flex-shrink:0;">
-      <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)" style="position:absolute;opacity:0;width:0;height:0;">
-      <div id="ext-bg" style="width:48px;height:26px;background:rgba(255,255,255,0.1);border-radius:99px;transition:background .2s;"></div>
-      <div id="ext-dot" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;"></div>
-    </div>
-    <div>
-      <p style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;margin:0 0 3px;">Soy autor/a extranjero/a</p>
-      <p style="color:#475569;font-size:11px;font-style:italic;margin:0;">Busco traducción o adaptación al español latinoamericano</p>
-    </div>
-  </label>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQVZBFB446"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JQVZBFB446');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soberanía Editorial | Demián Agustín Testino</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5e1; scroll-behavior: smooth; }
+.bg-card { background-color: #0f172a; }
+.border-iron { border-color: #1e293b; }
+
+/* TICKER */
+.ticker-wrap { overflow: hidden; background: #070b12; border-top: 1px solid #1e3a5f; border-bottom: 1px solid #1e3a5f; padding: 10px 0; }
+.ticker-track { display: flex; white-space: nowrap; animation: ticker 35s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.ticker-item { display: inline-flex; align-items: center; gap: 1.5rem; padding: 0 2rem; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; color: #38bdf8; font-style: italic; }
+.ticker-sep { color: #1e3a5f; }
+
+/* MODALS */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+.kindle-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+.kindle-slider::-webkit-scrollbar { display: none; }
+.kindle-page { flex-shrink: 0; width: 100%; scroll-snap-align: start; padding: 25px; }
+
+/* COUNTDOWN */
+.countdown-block { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cd-unit { display: flex; flex-direction: column; align-items: center; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.2); border-radius: 12px; padding: 1rem 1.5rem; min-width: 75px; }
+.cd-num { font-size: 2.5rem; font-weight: 900; color: #38bdf8; line-height: 1; font-style: italic; }
+.cd-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: #475569; margin-top: 4px; font-weight: 700; }
+
+/* PURCHASE MODAL */
+#purchaseModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 300; align-items: center; justify-content: center; padding: 20px; }
+
+/* AUDIO / WA FABs */
+.audio-fab { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 150; width: 52px; height: 52px; border-radius: 50%; background: #0f172a; border: 1.5px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; text-decoration: none; }
+
+h1,h2,h3,h4,h5,h6 { color: #ffffff; }
+input,textarea,select { background: #0f172a !important; border: 1px solid #1e293b !important; color: white !important; }
+
+/* PULSE */
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.pulse { animation: pulse-dot 1.8s infinite; }
+</style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white">
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew, Chubut <span class="ticker-sep">·</span> Estación de Transmisión <span class="ticker-sep">·</span> 6 Obras — 23 Años de Investigación <span class="ticker-sep">·</span> DNDA Ley 11.723 <span class="ticker-sep">·</span> Edison 48, Patagonia Argentina &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
 </div>
 
-<!-- CAMPOS EXTRANJERO -->
-<div id="campos-ext" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);">
-  <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-style:italic;margin:0 0 1.5rem;">· Servicio Internacional de Traducción y Adaptación ·</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">País de origen</label>
-      <input type="text" name="pais_origen" placeholder="Ej: España, Italia..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
+<nav class="sticky top-0 z-50 bg-black border-b border-iron shadow-2xl p-4">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-10 h-10 rounded-full border border-sky-500">
+      <div class="flex flex-col leading-none">
+        <h1 class="text-white font-black uppercase italic text-sm">Demián <span class="text-sky-400">Testino</span></h1>
+        <span class="text-[7px] text-slate-500 uppercase tracking-widest font-bold italic">Soberanía Editorial</span>
+      </div>
     </div>
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Idioma original</label>
-      <input type="text" name="idioma_original" placeholder="Ej: Inglés, Italiano..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Estado de la obra</label>
-      <select name="estado_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-        <option value="">Seleccioná</option>
-        <option value="manuscrito">Manuscrito sin publicar</option>
-        <option value="publicado">Obra publicada</option>
-        <option value="registrado">Obra registrada / con derechos</option>
-      </select>
-    </div>
-    <div>
-      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Servicio requerido</label>
-      <select name="servicio_requerido" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-        <option value="">Seleccioná</option>
-        <option value="traduccion">Traducción al español latinoamericano</option>
-        <option value="adaptacion">Adaptación conceptual y cultural</option>
-        <option value="maquetado">Maquetado editorial profesional</option>
-        <option value="completo">Servicio completo</option>
-      </select>
+    <div class="flex gap-4 md:gap-6 items-center font-black uppercase italic text-[9px] tracking-widest">
+      <a href="#catalogo" class="text-white hover:text-sky-400 transition hidden md:block">Catálogo</a>
+      <a href="#contacto" class="text-white hover:text-sky-400 transition hidden md:block">Contacto</a>
+      <a href="https://instagram.com/demiantestinoautor" target="_blank" class="bg-gradient-to-tr from-purple-600 to-pink-500 px-4 py-2 rounded text-white">Instagram</a>
     </div>
   </div>
-  <div style="margin-bottom:1.5rem;">
-    <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Extensión aproximada</label>
-    <select name="extension_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
-      <option value="">Seleccioná</option>
-      <option value="corta">Hasta 50 páginas</option>
-      <option value="media">50 a 150 páginas</option>
-      <option value="larga">150 a 300 páginas</option>
-      <option value="extensa">Más de 300 páginas</option>
-    </select>
+</nav>
+
+<header class="py-32 px-6 text-center bg-gradient-to-b from-slate-900 to-black border-b border-iron">
+  <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-32 h-32 mx-auto mb-8 rounded-full border-4 border-sky-500 shadow-2xl object-cover">
+  <h2 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter text-white leading-none">Soberanía <br><span class="text-sky-400">Editorial</span></h2>
+  <p class="text-[11px] tracking-[0.6em] uppercase text-slate-500 mt-8 italic font-bold">Estación de Transmisión | Trelew, Patagonia</p>
+
+  <div class="mt-16 max-w-xl mx-auto">
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
+      <span id="cdLabelText" class="text-[10px] font-black uppercase tracking-[0.4em] text-sky-500 italic">Cargando...</span>
+      <span class="w-2 h-2 rounded-full bg-sky-500 pulse inline-block"></span>
+    </div>
+    <div class="countdown-block" id="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Días</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Horas</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Min</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seg</span></div>
+    </div>
+    <div id="cdExpired" class="hidden mt-6 text-sky-400 font-black uppercase italic tracking-widest text-sm">🚀 ¡La Preventa ha Finalizado!</div>
   </div>
-  <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:1.25rem;">
-    <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-style:italic;margin:0 0 8px;">💳 Método de pago internacional</p>
-    <p style="color:#94a3b8;font-size:13px;font-style:italic;line-height:1.7;margin:0;">Honorarios <strong style="color:#e2e8f0;">negociables</strong> según extensión y complejidad. Pagos vía <strong style="color:#e2e8f0;">Payoneer</strong>. Presupuesto personalizado por email tras la consulta.</p>
+</header>
+
+<main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto text-center">
+  <p class="text-slate-400 italic">Restaurando Catálogo Original...</p>
+</main>
+
+<section id="contacto" class="py-32 px-6 bg-black text-center">
+  <div class="max-w-4xl mx-auto text-left italic">
+    <h3 class="text-4xl font-black uppercase italic mb-10 text-white">Portal de Recepción</h3>
+    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl bg-slate-900 text-white border border-slate-800">
+      </div>
+      <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl bg-slate-900 text-white italic border border-slate-800"></textarea>
+      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] italic shadow-2xl hover:bg-white transition cursor-pointer">Enviar para Evaluación</button>
+    </form>
   </div>
-</div>
+</section>
 
 <script>
-function toggleExt(cb) {
-  const c = document.getElementById('campos-ext')
-  const bg = document.getElementById('ext-bg')
-  const dot = document.getElementById('ext-dot')
-  if (cb.checked) { c.style.display='block'; bg.style.background='#0ea5e9'; dot.style.transform='translateX(22px)'; }
-  else { c.style.display='none'; bg.style.background='rgba(255,255,255,0.1)'; dot.style.transform='translateX(0)'; }
+const phase1End=new Date('2026-04-11T00:00:00-03:00');
+const phase2End=new Date('2026-04-26T23:59:59-03:00');
+function updateCountdown(){
+  const now=new Date();
+  let target, label;
+  if(now < phase1End){ target = phase1End; label = 'Lanzamiento en:'; }
+  else if(now < phase2End){ target = phase2End; label = 'Preventa Finaliza en:'; }
+  else { 
+    document.getElementById('countdown').style.display='none';
+    document.getElementById('cdExpired').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('cdLabelText').textContent = label;
+  const diff = target - now;
+  const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
 }
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
-<button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
-</form>
-</div>
+</body>
+</html>
