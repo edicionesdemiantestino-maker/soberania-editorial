@@ -26,31 +26,26 @@ body { font-family: 'Inter', sans-serif; background-color: #05070a; color: #cbd5
 .ticker-item { display: inline-flex; align-items: center; gap: 1.5rem; padding: 0 2rem; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; color: #38bdf8; font-style: italic; }
 .ticker-sep { color: #1e3a5f; }
 
-/* MODALS TÉCNICOS */
+/* MODALS */
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
 .kindle-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
 .kindle-slider::-webkit-scrollbar { display: none; }
 .kindle-page { flex-shrink: 0; width: 100%; scroll-snap-align: start; padding: 25px; }
 
-/* COUNTDOWN NARANJA (RESTAURADO) */
+/* COUNTDOWN NARANJA RESTAURADO */
 .countdown-block { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .cd-unit { display: flex; flex-direction: column; align-items: center; background: rgba(249,115,22,0.06); border: 1px solid rgba(249,115,22,0.3); border-radius: 12px; padding: 1rem 1.5rem; min-width: 75px; }
 .cd-num { font-size: 2.5rem; font-weight: 900; color: #f97316; line-height: 1; font-style: italic; }
 .cd-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: #64748b; margin-top: 4px; font-weight: 700; }
 
-/* BOTONES Y FORMULARIO */
-input, textarea, select { background: #0f172a !important; border: 1px solid #1e293b !important; color: white !important; }
-.btn-amazon { background-color: #c2410c; }
-.btn-ml { background-color: #1d4ed8; }
-.btn-wa-color { background-color: #0ea5e9; }
+/* FABs */
+.audio-fab { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 150; width: 52px; height: 52px; border-radius: 50%; background: #0f172a; border: 1.5px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; }
 
-/* REELS (6 CARDS) */
 .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 @media(max-width:768px){ .reels-grid { grid-template-columns: 1fr; } }
-.reel-card { border-radius: 20px; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-decoration: none; transition: all 0.2s; padding: 2rem; gap: 1rem; }
-.reel-card:hover { border-color: #f97316; background: rgba(249,115,22,0.05); }
+.reel-card { border-radius: 20px; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-decoration: none; padding: 2rem; }
 
-/* PULSE */
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
 .pulse { animation: pulse-dot 1.8s infinite; }
 </style>
@@ -59,34 +54,24 @@ input, textarea, select { background: #0f172a !important; border: 1px solid #1e2
 
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> 23 Años de Investigación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew <span class="ticker-sep">·</span> 23 Años de Investigación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="ticker-item">📡 Soberanía Editorial <span class="ticker-sep">·</span> Masterizando el Pensamiento Patagónico <span class="ticker-sep">·</span> INPI Exp. 4689992 <span class="ticker-sep">·</span> Trelew, Chubut <span class="ticker-sep">·</span> 6 Obras — 23 Años de Investigación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
 </div>
 
-<nav class="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-iron shadow-2xl p-4">
+<nav class="sticky top-0 z-50 bg-black border-b border-iron shadow-2xl p-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <div class="flex items-center gap-4">
-      <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-10 h-10 rounded-full border border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+      <img src="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg" class="w-10 h-10 rounded-full border border-orange-500">
       <div class="flex flex-col leading-none">
         <h1 class="text-white font-black uppercase italic text-sm">Demián <span class="text-orange-500">Testino</span></h1>
         <span class="text-[7px] text-slate-500 uppercase tracking-widest font-bold italic">Soberanía Editorial</span>
       </div>
     </div>
-    
-    <div class="hidden lg:flex gap-8 items-center font-black uppercase italic text-[9px] tracking-[0.2em]">
+    <div class="flex gap-6 items-center font-black uppercase italic text-[9px] tracking-widest">
       <a href="#catalogo" class="text-white hover:text-orange-500 transition">Catálogo</a>
       <a href="#reels" class="text-white hover:text-orange-500 transition">Frecuencia</a>
-      <a href="#servicios" class="text-white hover:text-orange-500 transition">Servicios</a>
-      <div class="flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full">
-        <span class="w-1.5 h-1.5 bg-green-500 rounded-full pulse"></span>
-        <span class="text-orange-500 font-mono" id="live-counter">SINTONIZANDO...</span>
-      </div>
+      <a href="#contacto" class="text-white hover:text-orange-500 transition">Contacto</a>
     </div>
-
-    <a href="#contacto" class="bg-orange-600 px-5 py-2.5 rounded-lg text-white font-black uppercase italic text-[10px] hover:bg-white hover:text-black transition">
-      Evaluación Técnica
-    </a>
   </div>
 </nav>
 
@@ -96,9 +81,9 @@ input, textarea, select { background: #0f172a !important; border: 1px solid #1e2
   
   <div class="mt-16 max-w-xl mx-auto">
     <div class="flex items-center justify-center gap-3 mb-6">
-      <span class="w-2 h-2 rounded-full bg-orange-500 pulse inline-block"></span>
+      <span class="w-2 h-2 rounded-full bg-orange-500 pulse"></span>
       <span id="cdLabelText" class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 italic">Preventa Finaliza en:</span>
-      <span class="w-2 h-2 rounded-full bg-orange-500 pulse inline-block"></span>
+      <span class="w-2 h-2 rounded-full bg-orange-500 pulse"></span>
     </div>
     <div class="countdown-block" id="countdown">
       <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Días</span></div>
@@ -106,158 +91,123 @@ input, textarea, select { background: #0f172a !important; border: 1px solid #1e2
       <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Min</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seg</span></div>
     </div>
-    <div id="cdExpired" class="hidden mt-6 text-orange-500 font-black uppercase italic tracking-widest text-sm">🚀 ¡Preventa Finalizada!</div>
   </div>
 </header>
 
 <main id="catalogo" class="py-24 px-6 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-orange-500/40 group">
+    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition group hover:border-orange-500/40">
       <img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" class="rounded-3xl mb-6 h-80 object-cover grayscale group-hover:grayscale-0 transition duration-500">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Cubismo</h4>
       <div class="space-y-3 mt-auto">
-        <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Amazon</a>
-        <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM" target="_blank" class="block w-full text-center btn-ml text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Mercado Libre</a>
+        <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Amazon</a>
       </div>
     </div>
-    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl relative group hover:border-orange-500/40">
+    <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl group hover:border-orange-500/40">
       <img src="https://i.ibb.co/939Wbyb1/Copilot-20260325-205511.png" class="rounded-3xl mb-6 h-80 object-cover grayscale group-hover:grayscale-0 transition">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Patria Grande</h4>
-      <a href="https://a.co/d/0330AZLN" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
+      <a href="https://a.co/d/0330AZLN" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
     </div>
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl group hover:border-orange-500/40">
       <img src="https://i.ibb.co/m5jjt92d/Gemini-Generated-Image-7pko2k7pko2k7pko.png" class="rounded-3xl mb-6 h-80 object-cover grayscale group-hover:grayscale-0 transition">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Sintonía Soberana</h4>
-      <a href="https://a.co/d/0fTJNTte" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
+      <a href="https://a.co/d/0fTJNTte" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
     </div>
     <div class="bg-card border-2 border-orange-600 p-8 rounded-[40px] flex flex-col shadow-2xl relative">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic">Físico 11/04</span>
       <img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" class="rounded-3xl mb-6 h-80 object-cover">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Saga Káukel</h4>
       <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('kaukel')" class="w-full bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg hover:bg-orange-600">Comprar — $35.000 ARS</button>
-        <a href="https://wa.me/542804841846" target="_blank" class="block w-full text-center btn-wa-color text-black text-[11px] font-black py-3 rounded-xl uppercase italic">WhatsApp Preventa</a>
+        <button onclick="openPurchase('kaukel')" class="w-full bg-orange-700 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Comprar — $35.000 ARS</button>
+        <a href="https://wa.me/542804841846" target="_blank" class="block w-full text-center bg-sky-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">WhatsApp</a>
       </div>
     </div>
-    <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative group">
+    <div class="bg-card border border-orange-500/30 p-8 rounded-[40px] flex flex-col shadow-2xl relative">
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic">Físico 11/04</span>
       <img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" class="rounded-3xl mb-6 h-80 object-cover">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">El Ente</h4>
       <div class="space-y-3 mt-auto">
-        <button onclick="openPurchase('ente')" class="w-full bg-orange-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Comprar — $20.000 ARS</button>
+        <button onclick="openPurchase('ente')" class="w-full bg-orange-600 text-white text-[11px] font-black py-3 rounded-xl uppercase italic">Comprar — $20.000 ARS</button>
       </div>
     </div>
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl group hover:border-orange-500/40">
       <img src="https://i.ibb.co/DH22FjNY/Tapa-conv-0.png" class="rounded-3xl mb-6 h-80 object-cover grayscale group-hover:grayscale-0 transition">
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Crónicas del Viento</h4>
-      <a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
+      <a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center bg-orange-700 text-white text-[11px] font-black py-4 rounded-xl uppercase italic mt-auto">Amazon</a>
     </div>
+  </div>
+
+  <div class="mt-16 p-10 rounded-[40px] border-2 border-sky-500/40 bg-slate-900 text-center shadow-2xl italic">
+    <h4 class="text-4xl font-black uppercase italic text-white mb-2">Combo Pack Káukel + El Ente</h4>
+    <p class="text-5xl font-black text-sky-400 italic mb-8">$50.000 ARS</p>
+    <button onclick="openPurchase('combo')" class="bg-sky-500 text-black font-black py-5 px-16 rounded-2xl uppercase italic">Comprar Combo</button>
   </div>
 </main>
 
-<section id="reels" class="py-24 px-6 bg-black border-y border-iron italic">
+<section id="reels" class="py-24 px-6 bg-black border-y border-iron">
   <div class="max-w-7xl mx-auto">
     <h3 class="text-xs font-bold text-orange-500 uppercase tracking-[0.5em] mb-16 border-l-4 border-orange-500 pl-6">Frecuencia Visual</h3>
     <div class="reels-grid">
-      <a href="https://www.instagram.com/reel/DWcYhl0kZO9/" target="_blank" class="reel-card"><span class="text-xs font-black italic">Reel 01</span></a>
-      <a href="https://www.instagram.com/reel/DWprvL5Ef26/" target="_blank" class="reel-card"><span class="text-xs font-black italic">Reel 02</span></a>
-      <a href="https://www.instagram.com/reel/DWptglHkU3N/" target="_blank" class="reel-card"><span class="text-xs font-black italic">Reel 03</span></a>
-      <a href="https://www.instagram.com/reel/DWttklaEUM9/" target="_blank" class="reel-card"><span class="text-xs font-black italic">Reel 04</span></a>
-      <a href="https://www.instagram.com/reel/DV4bWmuRrgi/" target="_blank" class="reel-card"><span class="text-xs font-black italic">Reel 05</span></a>
-      <a href="https://www.instagram.com/demiantestinoautor" target="_blank" class="reel-card"><span class="text-xs font-black italic text-orange-500">Explorar Búnker</span></a>
+      <a href="#" class="reel-card"><span class="text-xs font-black italic">Reel 01</span></a>
+      <a href="#" class="reel-card"><span class="text-xs font-black italic">Reel 02</span></a>
+      <a href="#" class="reel-card"><span class="text-xs font-black italic">Reel 03</span></a>
+      <a href="#" class="reel-card"><span class="text-xs font-black italic">Reel 04</span></a>
+      <a href="#" class="reel-card"><span class="text-xs font-black italic">Reel 05</span></a>
+      <a href="#" class="reel-card text-orange-500"><span class="text-xs font-black italic">Sintonizar Búnker</span></a>
     </div>
   </div>
 </section>
 
 <section id="contacto" class="py-32 px-6 bg-black">
-  <div class="max-w-4xl mx-auto italic">
+  <div class="max-w-4xl mx-auto italic text-left">
     <h3 class="text-4xl font-black uppercase italic mb-10 text-white">Portal de Recepción</h3>
-    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
+    <form action="#" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] space-y-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-orange-500 tracking-widest italic">Nombre y Apellido *</label>
-          <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl">
-        </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black uppercase text-orange-500 tracking-widest italic">Email de Contacto *</label>
-          <input type="email" name="email" required placeholder="frecuencia@soberania.com" class="w-full p-5 rounded-2xl">
-        </div>
+        <input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl">
+        <input type="email" name="email" required placeholder="Email de Contacto" class="w-full p-5 rounded-2xl">
       </div>
-      
-      <div class="space-y-3">
-        <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis / Propuesta Editorial *</label>
-        <textarea name="mensaje" rows="6" required placeholder="Contanos de tu obra..." class="w-full p-5 rounded-2xl"></textarea>
-      </div>
+      <textarea name="mensaje" rows="6" required placeholder="Sinopsis de tu obra..." class="w-full p-5 rounded-2xl"></textarea>
 
       <div style="border:1px solid rgba(249,115,22,0.2);border-radius:20px;padding:1.5rem;background:rgba(249,115,22,0.04);">
         <label style="display:flex;align-items:center;gap:14px;cursor:pointer;">
-          <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)">
+          <input type="checkbox" id="toggle-ext" onchange="document.getElementById('campos-ext').style.display=this.checked?'block':'none'">
           <span style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;">Autor/a extranjero/a (Traducción y Adaptación)</span>
         </label>
       </div>
 
       <div id="campos-ext" style="display:none;" class="space-y-6">
         <div class="grid grid-cols-2 gap-6">
-          <input type="text" name="pais_origen" placeholder="País de origen" class="p-4 rounded-xl">
-          <input type="text" name="idioma_original" placeholder="Idioma original" class="p-4 rounded-xl">
+          <input type="text" placeholder="País de origen" class="p-4 rounded-xl">
+          <input type="text" placeholder="Idioma original" class="p-4 rounded-xl">
         </div>
-        <div class="grid grid-cols-2 gap-6">
-          <select name="estado_obra" class="p-4 rounded-xl">
-            <option value="">Estado de la obra</option>
-            <option value="manuscrito">Manuscrito sin publicar</option>
-            <option value="publicado">Obra publicada</option>
-          </select>
-          <select name="servicio_requerido" class="p-4 rounded-xl">
-            <option value="">Servicio requerido</option>
-            <option value="traduccion">Traducción</option>
-            <option value="adaptacion">Adaptación Cultural</option>
-          </select>
-        </div>
-        <div class="bg-orange-500/10 p-5 rounded-xl border border-orange-500/20 text-orange-400 text-[11px] italic">
-          Honorarios negociables. Pagos vía Payoneer.
-        </div>
+        <select class="w-full p-4 rounded-xl">
+          <option>Estado de la obra</option>
+          <option>Manuscrito</option>
+          <option>Publicado</option>
+        </select>
+        <p class="text-orange-500 text-[10px] italic">Pagos vía Payoneer.</p>
       </div>
 
-      <div class="flex items-start gap-3 mt-8">
-        <input type="checkbox" required class="mt-1">
-        <p class="text-[10px] text-slate-500 leading-relaxed italic">Acepto los términos de evaluación técnica. Entiendo que mi obra será analizada bajo criterios de soberanía editorial y masterización literaria. Mis datos serán tratados con confidencialidad absoluta.</p>
-      </div>
-
-      <button type="submit" class="w-full bg-orange-600 text-white font-black py-6 rounded-3xl uppercase tracking-widest italic shadow-2xl hover:bg-white hover:text-orange-600 transition">Enviar para Evaluación Técnica</button>
+      <button type="submit" class="w-full bg-orange-600 text-white font-black py-6 rounded-3xl uppercase italic shadow-2xl">Enviar Evaluación</button>
     </form>
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<button class="audio-fab" onclick="toggleAudio()"><svg width="22" height="22" fill="#f97316"><path d="M12 4L9.91 6.09 12 8.18V4z"/></svg></button>
+<a href="https://wa.me/542804841846" target="_blank" class="wa-fab"><svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg></a>
+
 <script>
-const SUPABASE_URL = 'https://ovjicivnyzntovovdndv.supabase.co'; 
-const SUPABASE_KEY = 'TU_ANON_KEY';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// Contador en Vivo
-async function initLiveCounter() {
-  const channel = supabaseClient.channel('online-readers', { config: { presence: { key: 'reader' } } });
-  channel.on('presence', { event: 'sync' }, () => {
-    const state = channel.presenceState();
-    const count = Object.keys(state).length;
-    document.getElementById('live-counter').textContent = `LECTORES: ${count}`;
-  }).subscribe(async (status) => { if (status === 'SUBSCRIBED') { await channel.track({ online_at: new Date().toISOString() }); } });
-}
-
-function toggleExt(cb) { document.getElementById('campos-ext').style.display = cb.checked ? 'block' : 'none'; }
-
-// Reloj al 26 de Abril
 const target = new Date('2026-04-26T23:59:59-03:00');
-function updateCD() {
+function upCD(){
   const now = new Date(); const diff = target - now;
-  if(diff <= 0) { document.getElementById('countdown').style.display='none'; document.getElementById('cdExpired').classList.remove('hidden'); return; }
+  if(diff <= 0) return;
   document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
   document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
   document.getElementById('cd-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
   document.getElementById('cd-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
 }
-
-document.addEventListener('DOMContentLoaded', () => { initLiveCounter(); updateCD(); setInterval(updateCD, 1000); });
+setInterval(upCD, 1000); upCD();
+function openPurchase(t){ alert('Redirigiendo a Mercado Pago para: ' + t); }
 </script>
 </body>
 </html>
