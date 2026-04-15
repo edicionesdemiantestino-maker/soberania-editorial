@@ -421,7 +421,80 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <div class="space-y-3 text-left">
         <label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label>
         <textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje y cuál es tu objetivo con esta obra..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea>
-      </div>
+      </div><!-- TOGGLE AUTOR EXTRANJERO -->
+<div style="border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:1.5rem;background:rgba(56,189,248,0.04);">
+  <label style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;">
+    <div style="position:relative;flex-shrink:0;">
+      <input type="checkbox" id="toggle-ext" name="es_extranjero" value="si" onchange="toggleExt(this)" style="position:absolute;opacity:0;width:0;height:0;">
+      <div id="ext-bg" style="width:48px;height:26px;background:rgba(255,255,255,0.1);border-radius:99px;transition:background .2s;"></div>
+      <div id="ext-dot" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;"></div>
+    </div>
+    <div>
+      <p style="color:#e2e8f0;font-weight:900;font-size:13px;font-style:italic;margin:0 0 3px;">Soy autor/a extranjero/a</p>
+      <p style="color:#475569;font-size:11px;font-style:italic;margin:0;">Busco traducción o adaptación al español latinoamericano</p>
+    </div>
+  </label>
+</div>
+
+<!-- CAMPOS EXTRANJERO -->
+<div id="campos-ext" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);">
+  <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-style:italic;margin:0 0 1.5rem;">· Servicio Internacional de Traducción y Adaptación ·</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">País de origen</label>
+      <input type="text" name="pais_origen" placeholder="Ej: España, Italia..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
+    </div>
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Idioma original</label>
+      <input type="text" name="idioma_original" placeholder="Ej: Inglés, Italiano..." style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;box-sizing:border-box;">
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Estado de la obra</label>
+      <select name="estado_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+        <option value="">Seleccioná</option>
+        <option value="manuscrito">Manuscrito sin publicar</option>
+        <option value="publicado">Obra publicada</option>
+        <option value="registrado">Obra registrada / con derechos</option>
+      </select>
+    </div>
+    <div>
+      <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Servicio requerido</label>
+      <select name="servicio_requerido" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+        <option value="">Seleccioná</option>
+        <option value="traduccion">Traducción al español latinoamericano</option>
+        <option value="adaptacion">Adaptación conceptual y cultural</option>
+        <option value="maquetado">Maquetado editorial profesional</option>
+        <option value="completo">Servicio completo</option>
+      </select>
+    </div>
+  </div>
+  <div style="margin-bottom:1.5rem;">
+    <label style="display:block;font-size:10px;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.1em;font-style:italic;margin-bottom:8px;">Extensión aproximada</label>
+    <select name="extension_obra" style="width:100%;padding:1rem;border-radius:12px;font-size:13px;font-style:italic;cursor:pointer;box-sizing:border-box;">
+      <option value="">Seleccioná</option>
+      <option value="corta">Hasta 50 páginas</option>
+      <option value="media">50 a 150 páginas</option>
+      <option value="larga">150 a 300 páginas</option>
+      <option value="extensa">Más de 300 páginas</option>
+    </select>
+  </div>
+  <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:1.25rem;">
+    <p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-style:italic;margin:0 0 8px;">💳 Método de pago internacional</p>
+    <p style="color:#94a3b8;font-size:13px;font-style:italic;line-height:1.7;margin:0;">Honorarios <strong style="color:#e2e8f0;">negociables</strong> según extensión y complejidad. Pagos vía <strong style="color:#e2e8f0;">Payoneer</strong>. Presupuesto personalizado por email tras la consulta.</p>
+  </div>
+</div>
+
+<script>
+function toggleExt(cb) {
+  const c = document.getElementById('campos-ext')
+  const bg = document.getElementById('ext-bg')
+  const dot = document.getElementById('ext-dot')
+  if (cb.checked) { c.style.display='block'; bg.style.background='#0ea5e9'; dot.style.transform='translateX(22px)'; }
+  else { c.style.display='none'; bg.style.background='rgba(255,255,255,0.1)'; dot.style.transform='translateX(0)'; }
+}
+</script>
       <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
     </form>
   </div>
