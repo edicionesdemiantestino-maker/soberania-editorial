@@ -687,7 +687,40 @@ function toggleExt(cb) {
 </script>
 
 <script>
-// ── MODALS ──
+<!-- ══ SUPABASE PRESENCE — CONTADOR EN VIVO ══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function() {
+  const SUPABASE_URL = 'https://wjsxlwsqjvuyjrdngvyo.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indqc3hsd3NxanZ1eWpyZG5ndnlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MzE3NTEsImV4cCI6MjA5MTMwNzc1MX0.KnN-Yac8ZpO46r8ryDWMv9s0MePv2rBJwnpaGMzrDo4';
+
+  try {
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    const channel = client.channel('soberania_home_presence', {
+      config: { presence: { key: crypto.randomUUID() } }
+    });
+
+    channel.on('presence', { event: 'sync' }, () => {
+      const state = channel.presenceState();
+      const count = Object.keys(state).length;
+      const el = document.getElementById('liveCount');
+      if (el) el.textContent = count;
+    });
+
+    channel.subscribe(async (status) => {
+      if (status === 'SUBSCRIBED') {
+        await channel.track({ online_at: new Date().toISOString() });
+      }
+    });
+  } catch (e) {
+    console.warn('Presence no disponible:', e);
+    const el = document.getElementById('liveCount');
+    if (el) el.textContent = '1';
+  }
+})();
+</script>
+  
+  // ── MODALS ──
 function openModal(id){const m=document.getElementById(id);if(m){m.style.display='flex';document.body.style.overflow='hidden';}}
 function closeModal(id){const m=document.getElementById(id);if(m){m.style.display='none';document.body.style.overflow='auto';}}
 window.addEventListener('click',function(e){
