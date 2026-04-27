@@ -15,6 +15,9 @@ window.SOBERANIA = {
   PODCAST_TITLE: 'Nueve libros para apagar Wall Street',
   PODCAST_SUB: 'Audio · podcast',
 
+  /** Subí este número cuando cambies un HTML en informes/ para que el iframe no use caché vieja. */
+  INFORMES_CACHE: '2',
+
   INFORMES: {
     universo: 'informes/testino_universo_literario.html',
     kaukel: 'informes/informe_trilogia_kaukel.html',

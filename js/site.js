@@ -80,6 +80,14 @@
     if (s && C.PODCAST_SUB) s.textContent = C.PODCAST_SUB
   }
 
+  function informeSrc(path) {
+    if (!path) return ''
+    var q = C.INFORMES_CACHE
+    if (!q) return path
+    var sep = path.indexOf('?') >= 0 ? '&' : '?'
+    return path + sep + 'v=' + encodeURIComponent(String(q))
+  }
+
   function wireInformes() {
     var I = C.INFORMES || {}
     var map = [
@@ -89,7 +97,7 @@
     ]
     map.forEach(function (pair) {
       var el = document.getElementById(pair[0])
-      if (el && pair[1]) el.src = pair[1]
+      if (el && pair[1]) el.src = informeSrc(pair[1])
     })
   }
 
