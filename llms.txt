@@ -7,6 +7,7 @@
 - Catálogo de sagas y ebooks con enlaces a Amazon y Mercado Libre (y WhatsApp para preventa física donde aplica).
 - Preventa y envío físico coordinado por WhatsApp.
 - Formulario de contacto para evaluación de manuscritos.
+- **blog/** — artículos públicos en formato preguntas y respuestas (independientes del panel de la app).
 - El producto digital **Soberanía Vault** (certificación de manuscritos) vive en la aplicación aparte enlazada desde el sitio.
 
 ## No es
@@ -18,3 +19,4 @@
 - #catalogo — obras
 - #vault — bloque sobre Vault y panel
 - #contacto — formulario
+- /blog/ — blog abierto (FAQ editorial, seguridad, pagos, universo literario)
