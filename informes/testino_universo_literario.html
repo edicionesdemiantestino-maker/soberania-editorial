@@ -628,180 +628,6 @@ section {
   color: rgba(240,232,216,0.65);
 }
 
-/* ══ CRÍTICAS / PANEL DE EXPERTOS ══ */
-.criticas-section {
-  background: var(--negro-profundo);
-  position: relative;
-  overflow: hidden;
-}
-
-.criticas-section::before {
-  content: 'CRÍTICA';
-  position: absolute;
-  top: 50%;
-  right: -5%;
-  transform: translateY(-50%) rotate(-90deg);
-  font-family: 'Playfair Display', serif;
-  font-size: 12rem;
-  font-weight: 900;
-  color: rgba(200,146,42,0.03);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.criticas-intro {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: rgba(240,232,216,0.6);
-  max-width: 650px;
-  margin-bottom: 4rem;
-  font-style: italic;
-}
-
-.scores-overview {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(200,146,42,0.1);
-  margin-bottom: 5rem;
-}
-
-.score-block {
-  background: var(--negro-profundo);
-  padding: 2rem;
-  text-align: center;
-}
-
-.score-block-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: var(--oro);
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.score-block-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(200,146,42,0.4);
-  margin-bottom: 0.8rem;
-}
-
-.score-block-obra {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.82rem;
-  font-style: italic;
-  color: rgba(240,232,216,0.45);
-}
-
-.expertos-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.experto-card {
-  background: rgba(26,18,8,0.7);
-  border: 1px solid rgba(200,146,42,0.1);
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.experto-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--oxido), transparent);
-}
-
-.experto-score {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--oro);
-  line-height: 1;
-}
-
-.experto-score small {
-  font-size: 0.6em;
-  color: rgba(200,146,42,0.4);
-  font-weight: 400;
-}
-
-.experto-nombre {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--papel);
-  margin-bottom: 0.2rem;
-}
-
-.experto-rol {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(200,146,42,0.45);
-  margin-bottom: 1.5rem;
-}
-
-.experto-obra-tag {
-  display: inline-block;
-  background: rgba(122,44,14,0.2);
-  border: 1px solid rgba(200,146,42,0.15);
-  padding: 0.2rem 0.7rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.15em;
-  color: var(--oro);
-  margin-bottom: 1.2rem;
-}
-
-.experto-texto {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  line-height: 1.72;
-  color: rgba(240,232,216,0.75);
-  margin-bottom: 1.5rem;
-}
-
-.experto-detalle {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.8rem;
-}
-
-.experto-dim {
-  text-align: center;
-}
-
-.experto-dim-score {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--hueso);
-}
-
-.experto-dim-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(240,232,216,0.3);
-  margin-top: 0.2rem;
-}
-
 /* ══ TERRITORIAL ══ */
 .territorial-section {
   background: linear-gradient(to bottom, var(--tinta), var(--negro-profundo));
@@ -1309,8 +1135,6 @@ footer {
   .standalone-row { grid-template-columns: 1fr; }
   .tecnica-grid { grid-template-columns: 1fr; gap: 3rem; }
   .pasaje-analysis { grid-template-columns: 1fr; }
-  .scores-overview { grid-template-columns: 1fr 1fr; }
-  .expertos-grid { grid-template-columns: 1fr; }
   .territorial-grid { grid-template-columns: 1fr; gap: 3rem; }
   .autor-grid { grid-template-columns: 1fr; gap: 3rem; }
   .comparativa-table { display: none; }
@@ -1322,7 +1146,6 @@ footer {
 @media (max-width: 640px) {
   nav, section, .hero, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   .nav-links { display: none; }
-  .scores-overview { grid-template-columns: 1fr 1fr; }
   .autor-obras-count { grid-template-columns: 1fr; }
   .cta-buttons { flex-direction: column; align-items: center; }
   .hero-meta { flex-direction: column; gap: 1.5rem; }
@@ -1338,7 +1161,7 @@ footer {
     <li><a href="#universo">Universo</a></li>
     <li><a href="#tecnica">Técnica</a></li>
     <li><a href="#pasajes">Pasajes</a></li>
-    <li><a href="#criticas">Crítica</a></li>
+    <li><a href="#comparativa">Comparativa</a></li>
     <li><a href="#autor">Autor</a></li>
   </ul>
   <div class="nav-isbn">ISBN 978-631-01-4156-5</div>
@@ -1705,189 +1528,9 @@ footer {
   </div>
 </section>
 
-<!-- PANEL DE CRÍTICOS -->
-<section class="criticas-section" id="criticas">
-  <div class="section-tag reveal">04 — Análisis multi-experto</div>
-  <h2 class="section-title reveal">Lo que dicen<br><em>los especialistas</em></h2>
-  <p class="criticas-intro reveal">
-    Cinco lecturas críticas del universo literario de Demián Agustín Testino desde perspectivas disciplinares complementarias: literatura comparada, crítica social, antropología cultural, narratología y periodismo cultural.
-  </p>
-
-  <!-- SCORES GENERALES -->
-  <div class="scores-overview reveal">
-    <div class="score-block">
-      <div class="score-block-num">9.1</div>
-      <div class="score-block-label">Saga de Káukel</div>
-      <div class="score-block-obra">Trilogía Identidad Patagónica</div>
-    </div>
-    <div class="score-block">
-      <div class="score-block-num">8.9</div>
-      <div class="score-block-label">Crónicas del Viento</div>
-      <div class="score-block-obra">Serie completa</div>
-    </div>
-    <div class="score-block">
-      <div class="score-block-num">8.7</div>
-      <div class="score-block-label">Ente Frecuencia Cero</div>
-      <div class="score-block-obra">Trilogía completa</div>
-    </div>
-    <div class="score-block">
-      <div class="score-block-num">8.9</div>
-      <div class="score-block-label">Universo completo</div>
-      <div class="score-block-obra">9 obras · promedio ponderado</div>
-    </div>
-  </div>
-
-  <!-- EXPERTOS -->
-  <div class="expertos-grid">
-    <div class="experto-card reveal">
-      <div class="experto-score">9.4<small>/10</small></div>
-      <div class="experto-nombre">Dra. Marcela Fontán</div>
-      <div class="experto-rol">Literatura latinoamericana comparada · UBA</div>
-      <div class="experto-obra-tag">Trilogía Patagónica</div>
-      <div class="experto-texto">
-        "La decisión de hacer hablar al chamán tehuelche en copla gauchesca es el gesto más inteligente y subversivo de la narrativa argentina reciente. Testino no imita a Hernández: lo deconstruye. Donde el Martín Fierro narra al perseguido, Káukel narra al persecutor con la propia voz del perseguido. Es justicia poética en estado químicamente puro."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.6</div>
-          <div class="experto-dim-label">Originalidad</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.2</div>
-          <div class="experto-dim-label">Técnica</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.5</div>
-          <div class="experto-dim-label">Impacto</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="experto-card reveal">
-      <div class="experto-score">8.8<small>/10</small></div>
-      <div class="experto-nombre">Lic. Rodrigo Salazar</div>
-      <div class="experto-rol">Crítica política y literatura de denuncia · UNLP</div>
-      <div class="experto-obra-tag">Trilogía El Ente</div>
-      <div class="experto-texto">
-        "El 'Cubismo de Redes' como método no es una etiqueta de marketing: describe con precisión geométrica lo que ocurre en el texto. Testino descompone el poder en planos simultáneos con la misma lógica que Picasso descomponía un rostro. El resultado es una radiografía del despojo argentino que la historiografía académica todavía no ha logrado producir."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.0</div>
-          <div class="experto-dim-label">Rigor</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.7</div>
-          <div class="experto-dim-label">Coherencia</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.6</div>
-          <div class="experto-dim-label">Densidad</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="experto-card reveal">
-      <div class="experto-score">9.2<small>/10</small></div>
-      <div class="experto-nombre">Mg. Florencia Cousiño</div>
-      <div class="experto-rol">Antropología cultural patagónica · UNPSJB</div>
-      <div class="experto-obra-tag">Trilogía Patagónica</div>
-      <div class="experto-texto">
-        "Ningún otro escritor patagónico ha integrado el territorio con tanta precisión y significado narrativo. Los cerros tienen nombre, altura exacta y función en el relato. La geografía no es escenario: es argumento. Testino escribe desde Trelew y eso se lee en cada página —literalmente se huele el viento en los párrafos."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.8</div>
-          <div class="experto-dim-label">Territorialidad</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.0</div>
-          <div class="experto-dim-label">Etnografía</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.2</div>
-          <div class="experto-dim-label">Belleza</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="experto-card reveal">
-      <div class="experto-score">8.6<small>/10</small></div>
-      <div class="experto-nombre">Prof. Daniel Etcheverría</div>
-      <div class="experto-rol">Narratología y teoría del personaje · UNICEN</div>
-      <div class="experto-obra-tag">Universo completo</div>
-      <div class="experto-texto">
-        "Testino construye un sistema de personajes-arquetipo de una coherencia inusual en la literatura argentina contemporánea: el traidor, el monopolista, el aparato de control, el chamán guardián, el trabajador invisible. No son individuos, son instituciones con carne. Valeria Vento y Káukel son la misma historia vista desde los dos lados del alambre de espino."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.8</div>
-          <div class="experto-dim-label">Personajes</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.5</div>
-          <div class="experto-dim-label">Estructura</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.6</div>
-          <div class="experto-dim-label">Sistema</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="experto-card reveal">
-      <div class="experto-score">9.0<small>/10</small></div>
-      <div class="experto-nombre">Lic. Valentina Morán</div>
-      <div class="experto-rol">Periodismo cultural y literatura obrera · Agencia Sur</div>
-      <div class="experto-obra-tag">Crónicas del Viento</div>
-      <div class="experto-texto">
-        "Las Crónicas del Viento son el eslabón perdido entre el realismo social de Walsh y la urgencia narrativa del presente. Mendieta, Elsa Arispe, Jairo Huelque, el cocinero sin nombre: todos tienen la misma marca en las manos. Testino hace visible al trabajador invisible con una honestidad que la literatura argentina de escritorio jamás consiguió."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.4</div>
-          <div class="experto-dim-label">Realismo</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.9</div>
-          <div class="experto-dim-label">Empatía</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.7</div>
-          <div class="experto-dim-label">Urgencia</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="experto-card reveal">
-      <div class="experto-score">8.7<small>/10</small></div>
-      <div class="experto-nombre">Dr. Marcos Villaverde</div>
-      <div class="experto-rol">Literatura comparada latinoamericana · CONICET</div>
-      <div class="experto-obra-tag">Sintonía Soberana</div>
-      <div class="experto-texto">
-        "El Manifiesto de la Resurrección es la obra más ambiciosa geográficamente de toda la producción de Testino. Trece capítulos que recorren nueve países sin perder el hilo conductor: la misma lógica de extracción con distintos rostros locales. La figura del 'Ente' como sistema global invisible es una contribución genuina a la alegoría política latinoamericana."
-      </div>
-      <div class="experto-detalle">
-        <div class="experto-dim">
-          <div class="experto-dim-score">9.0</div>
-          <div class="experto-dim-label">Ambición</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.5</div>
-          <div class="experto-dim-label">Cohesión</div>
-        </div>
-        <div class="experto-dim">
-          <div class="experto-dim-score">8.6</div>
-          <div class="experto-dim-label">Vuelo</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- COMPARATIVA -->
-<section class="comparativa-section">
-  <div class="section-tag reveal">05 — Tabla comparativa</div>
+<section class="comparativa-section" id="comparativa">
+  <div class="section-tag reveal">04 — Tabla comparativa</div>
   <h2 class="section-title reveal">El universo<br><em>en números</em></h2>
 
   <table class="comparativa-table reveal">
@@ -1996,7 +1639,7 @@ footer {
 
 <!-- IDENTIDAD TERRITORIAL -->
 <section class="territorial-section" id="territorio">
-  <div class="section-tag reveal">06 — La ventaja del sur</div>
+  <div class="section-tag reveal">05 — La ventaja del sur</div>
   <h2 class="section-title reveal">Trelew como<br><em>lugar de enunciación</em></h2>
 
   <div class="territorial-grid">
@@ -2082,7 +1725,7 @@ footer {
 
 <!-- AUTOR -->
 <section class="autor-section" id="autor">
-  <div class="section-tag reveal">07 — El autor</div>
+  <div class="section-tag reveal">06 — El autor</div>
 
   <div class="autor-grid">
     <div class="autor-identity reveal">
@@ -2140,7 +1783,7 @@ footer {
   <p class="cta-sub reveal">Nueve volúmenes. Tres trilogías. Una sola voz que habla desde el Sur con la autoridad de quien habita lo que describe.</p>
   <div class="cta-buttons reveal">
     <button class="btn-primary" onclick="openModal('kaukel')">Leer un pasaje destacado</button>
-    <button class="btn-secondary" onclick="document.getElementById('criticas').scrollIntoView({behavior:'smooth'})">Ver análisis crítico completo</button>
+    <button class="btn-secondary" onclick="document.getElementById('comparativa').scrollIntoView({behavior:'smooth'})">Ver universo en números</button>
   </div>
 </section>
 
@@ -2158,7 +1801,7 @@ footer {
     <li><a href="#universo">Universo</a></li>
     <li><a href="#tecnica">Técnica</a></li>
     <li><a href="#pasajes">Pasajes</a></li>
-    <li><a href="#criticas">Crítica</a></li>
+    <li><a href="#comparativa">Comparativa</a></li>
   </ul>
 </footer>
 
