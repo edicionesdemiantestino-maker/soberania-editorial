@@ -1,0 +1,20 @@
+# Soberanía Editorial — Sitio de catálogo y preventa
+
+> Página pública de obras de Demián Agustín Testino y el sello Soberanía Editorial (Trelew, Patagonia).
+
+## Contenido principal
+
+- Catálogo de sagas y ebooks con enlaces a Amazon, Mercado Libre y Mercado Pago.
+- Preventa y envío físico coordinado por WhatsApp.
+- Formulario de contacto para evaluación de manuscritos.
+- El producto digital **Soberanía Vault** (certificación de manuscritos) vive en la aplicación aparte enlazada desde el sitio.
+
+## No es
+
+- Un chatbot ni un asistente de conversación general.
+
+## Enlaces típicos en el sitio
+
+- #catalogo — obras
+- #vault — bloque sobre Vault y panel
+- #contacto — formulario

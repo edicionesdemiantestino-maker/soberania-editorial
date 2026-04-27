@@ -1,0 +1,59 @@
+================================================================================
+  SOBERANÍA EDITORIAL — Guía mínima (todo puede ser GRATIS)
+================================================================================
+
+¿Qué es cada cosa en tu proyecto?
+----------------------------------
+• carpeta "sitio-web"     → Esta página de venta / catálogo (HTML)
+• carpeta "v0-editorial-control-station" → Panel de autores, Vault, blog (Next.js)
+
+El archivo IMPORTANTE para el sitio web es:  sitio-web/config.js
+Ahí cambiás 2 URLs cuando ya sepas dónde quedó publicada cada cosa.
+
+
+PASO A — Publicar el sitio web (HTML) gratis con GitHub Pages
+--------------------------------------------------------------
+1) Subí la carpeta "sitio-web" a un repositorio de GitHub (o usá el que ya tengas).
+2) En GitHub: Settings → Pages → Build: Deploy from branch → branch "main", folder "/ (root)".
+3) GitHub te dará un link tipo: https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
+4) Abrí sitio-web/config.js y pegá ESE link en SITE_CANONICAL (con barra final o sin, pero consistente).
+5) Volvé a subir el cambio. Esperá 1–2 minutos y recargá la página.
+
+
+PASO B — La app del panel (Vercel) — ya la tenés o la creás gratis
+------------------------------------------------------------------
+1) El proyecto Next está en v0-editorial-control-station.
+2) En vercel.com (cuenta gratis): Add New → Project → importás el repo.
+3) Vercel te da un link tipo: https://algo.vercel.app
+4) Ese link lo pegás en sitio-web/config.js en APP_BASE.
+5) Subís config.js otra vez al repo del sitio web.
+
+(Las variables de entorno de Supabase y Mercado Pago van en Vercel, NO en config.js
+excepto la clave "anon" de Supabase que ya está en config.js para el contador "en vivo".)
+
+
+PASO C — Google (gratis) — cuando tengas la URL final del sitio web
+-------------------------------------------------------------------
+1) Entrá a: https://search.google.com/search-console
+2) Agregar propiedad → Prefijo de URL → pegá la misma URL que SITE_CANONICAL.
+3) Verificá (Google te explica con una etiqueta o un archivo).
+4) Menú "Sitemaps": si tu sitio es solo HTML, Google igual rastrea por enlaces;
+   la app Next aparte tiene /sitemap.xml en Vercel.
+
+
+¿Qué ya está hecho en el código?
+---------------------------------
+• index.html — navegación por “ventanas” (inicio, contenidos, informes, vault) + vidriera y catálogo abajo
+• informes/ — los tres HTML del informe (copiados al repo)
+• media/ — podcast .m4a (archivo grande; GitHub acepta hasta ~100 MB por archivo)
+• js/site.js — lógica del menú y reproductor
+• config.js — URLs, podcast, lista de reels con miniaturas
+• Términos: terminos.html
+
+
+Si no encontrás "Environment Variables" en Vercel
+-------------------------------------------------
+Proyecto en Vercel → tu proyecto → pestaña "Settings" → menú izquierda "Environment Variables".
+Ahí se copian las claves que están en v0-editorial-control-station/.env.example
+
+================================================================================

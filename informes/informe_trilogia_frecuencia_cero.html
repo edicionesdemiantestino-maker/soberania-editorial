@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Literario — Trilogía El Ente de la Frecuencia Cero</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0a0a0a;
+    --tinta: #1a1209;
+    --oxido: #8b2c0a;
+    --oro: #c9a84c;
+    --papel: #f4ede0;
+    --papel-oscuro: #e8dcc8;
+    --gris-tinta: #3a3530;
+    --blanco-roto: #faf7f2;
+    --acento: #b8341b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--tinta);
+    color: var(--papel);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Textura de fondo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* ── PORTADA ── */
+  .portada {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .sello {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.4rem 1rem;
+    display: inline-block;
+  }
+
+  .portada h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--blanco-roto);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .portada h1 em {
+    color: var(--oro);
+    font-style: italic;
+  }
+
+  .subtitulo-portada {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(244,237,224,0.5);
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .autor-portada {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    padding-top: 1.5rem;
+  }
+
+  .autor-portada p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--oro);
+    letter-spacing: 0.05em;
+  }
+
+  .autor-portada span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(244,237,224,0.4);
+    display: block;
+    margin-top: 0.3rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ── PUNTUACIÓN ── */
+  .bloque-puntuacion {
+    background: var(--negro);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem 2.5rem;
+    margin: 4rem 0;
+    position: relative;
+  }
+
+  .bloque-puntuacion::before {
+    content: 'EVALUACIÓN';
+    position: absolute;
+    top: -0.8rem;
+    left: 2rem;
+    background: var(--negro);
+    padding: 0 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--oro);
+  }
+
+  .score-principal {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .score-numero {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    font-weight: 900;
+    color: var(--oro);
+    line-height: 1;
+  }
+
+  .score-de {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    color: rgba(244,237,224,0.3);
+  }
+
+  .score-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--papel-oscuro);
+    margin-bottom: 2rem;
+  }
+
+  .grilla-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .item-score {
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding-bottom: 1rem;
+  }
+
+  .item-score-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(244,237,224,0.4);
+    margin-bottom: 0.5rem;
+  }
+
+  .item-score-barra {
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+    margin-bottom: 0.4rem;
+    position: relative;
+  }
+
+  .item-score-barra-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--oro);
+  }
+
+  .item-score-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blanco-roto);
+  }
+
+  .item-score-valor small {
+    font-size: 0.8rem;
+    color: rgba(244,237,224,0.4);
+    font-weight: 400;
+  }
+
+  /* ── SECCIONES ── */
+  .seccion {
+    margin: 4rem 0;
+  }
+
+  .seccion-etiqueta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .seccion-etiqueta::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  .seccion h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blanco-roto);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .seccion p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(244,237,224,0.85);
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── TÉCNICAS ── */
+  .grilla-tecnicas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .tarjeta-tecnica {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--oro);
+    padding: 1.5rem;
+  }
+
+  .tarjeta-tecnica h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--oro);
+    margin-bottom: 0.6rem;
+  }
+
+  .tarjeta-tecnica p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(244,237,224,0.7);
+    margin: 0;
+  }
+
+  /* ── CITAS ── */
+  .cita-destacada {
+    border-left: 3px solid var(--acento);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(184,52,27,0.06);
+  }
+
+  .cita-destacada p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--papel);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .cita-destacada cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(244,237,224,0.4);
+    display: block;
+    margin-top: 0.6rem;
+  }
+
+  /* ── FORTALEZAS / DEBILIDADES ── */
+  .lista-analisis {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+
+  .lista-analisis li {
+    padding: 0.9rem 0 0.9rem 2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(244,237,224,0.8);
+    position: relative;
+  }
+
+  .lista-analisis li::before {
+    position: absolute;
+    left: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+  }
+
+  .lista-fortalezas li::before {
+    content: '+';
+    color: #6db87c;
+  }
+
+  .lista-debilidades li::before {
+    content: '–';
+    color: var(--acento);
+  }
+
+  /* ── VEREDICTO FINAL ── */
+  .veredicto {
+    background: var(--oxido);
+    padding: 3rem 2.5rem;
+    margin: 4rem 0 2rem;
+    position: relative;
+  }
+
+  .veredicto::before {
+    content: 'VEREDICTO EDITORIAL';
+    position: absolute;
+    top: -0.8rem;
+    left: 2rem;
+    background: var(--oxido);
+    padding: 0 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--papel);
+  }
+
+  .veredicto p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--blanco-roto);
+    margin-bottom: 1rem;
+  }
+
+  .veredicto p:last-child { margin-bottom: 0; }
+
+  /* ── PIE ── */
+  .pie {
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 2rem;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .pie p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(244,237,224,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ── SEPARADOR ── */
+  .sep {
+    text-align: center;
+    color: rgba(201,168,76,0.4);
+    letter-spacing: 0.5em;
+    font-size: 0.8rem;
+    margin: 3rem 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .grilla-tecnicas,
+    .grilla-scores { grid-template-columns: 1fr; }
+    .score-numero { font-size: 5rem; }
+    .portada { padding: 3rem 1.5rem; }
+    .contenido { padding: 0 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <span class="sello">Soberanía Editorial · Análisis Literario · 2026</span>
+  <h1>Trilogía<br><em>El Ente de la<br>Frecuencia Cero</em></h1>
+  <p class="subtitulo-portada">Informe crítico — narrativa, técnica y valoración</p>
+  <div class="autor-portada">
+    <p>Demián Agustín Testino</p>
+    <span>Trelew, Patagonia · ISBN 978-631-01-4156-5 · Marzo 2026</span>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <!-- PUNTUACIÓN -->
+  <div class="bloque-puntuacion">
+    <div class="score-principal">
+      <span class="score-numero">8.4</span>
+      <span class="score-de">/10</span>
+    </div>
+    <p class="score-label">"Una obra de ambición territorial y denuncia estética excepcional"</p>
+
+    <div class="grilla-scores">
+      <div class="item-score">
+        <p class="item-score-label">Narrativa y voz</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:90%"></div></div>
+        <p class="item-score-valor">9.0 <small>/ 10</small></p>
+      </div>
+      <div class="item-score">
+        <p class="item-score-label">Construcción de personajes</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:75%"></div></div>
+        <p class="item-score-valor">7.5 <small>/ 10</small></p>
+      </div>
+      <div class="item-score">
+        <p class="item-score-label">Cohesión estructural (trilogía)</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:82%"></div></div>
+        <p class="item-score-valor">8.2 <small>/ 10</small></p>
+      </div>
+      <div class="item-score">
+        <p class="item-score-label">Originalidad y propuesta estética</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:92%"></div></div>
+        <p class="item-score-valor">9.2 <small>/ 10</small></p>
+      </div>
+      <div class="item-score">
+        <p class="item-score-label">Densidad ideológica</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:95%"></div></div>
+        <p class="item-score-valor">9.5 <small>/ 10</small></p>
+      </div>
+      <div class="item-score">
+        <p class="item-score-label">Ritmo y dosificación dramática</p>
+        <div class="item-score-barra"><div class="item-score-barra-fill" style="width:72%"></div></div>
+        <p class="item-score-valor">7.2 <small>/ 10</small></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINOPSIS CRÍTICA -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">01 — Sinopsis crítica</p>
+    <h2>¿Qué es esta obra?</h2>
+
+    <p>La <em>Trilogía El Ente de la Frecuencia Cero</em> es una obra de ficción política-especulativa argentina que se articula en tres volúmenes claramente diferenciados por foco narrativo: <strong>La Mariscal del Péndulo</strong> (la traidora que sube al poder), <strong>El Gran Editor</strong> (el monopolio mediático que fabrica realidad) y <strong>El Ente de la Frecuencia Cero</strong> (el aparato de espionaje y control que los sostiene a ambos). Los tres tomos forman un sistema cerrado, una trinidad del poder corrupto que se retroalimenta.</p>
+
+    <p>El autor construye un relato que abarca cincuenta años de historia argentina —desde los sótanos de la dictadura de 1976 hasta el presente algorítmico— a través de personajes alegóricos: Valeria Vento "la Mariscal", el "Ingeniero de la Tinta" y el "Archivista". No son caracteres realistas: son <em>arquetipos del poder</em>, figuras cubistas que representan instituciones, dinámicas y complicidades sistémicas.</p>
+
+    <p>La obra se declara explícitamente como <em>ficción soberana</em>, pero su motor narrativo es la denuncia codificada: una cartografía del saqueo, la traición y la manipulación mediática en la Argentina contemporánea.</p>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- TÉCNICA NARRATIVA -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">02 — Técnica narrativa</p>
+    <h2>El método del autor: Cubismo de Redes</h2>
+
+    <p>Testino define su propio método con un término que acuña en la obra: <strong>"Cubismo de Redes"</strong>. Esta denominación no es arbitraria: describe con exactitud lo que hace la trilogía. Así como el cubismo descompone la realidad en planos simultáneos y ángulos múltiples desde los cuales ver un mismo objeto, el autor fragmenta los hechos históricos (reales o verosímiles) en planos narrativos que no buscan la representación fotográfica sino la <em>verdad estructural</em>.</p>
+
+    <div class="cita-destacada">
+      <p>"Hemos deconstruido su poder en fragmentos afilados. Cada imagen que sigue es un segundo exacto de la infamia, un tajo en la seda de su poder."</p>
+      <cite>— Demián Testino, Introducción al Tomo I</cite>
+    </div>
+
+    <p>La técnica se combina con otras tradiciones literarias claramente identificables en el texto:</p>
+
+    <div class="grilla-tecnicas">
+      <div class="tarjeta-tecnica">
+        <h3>Realismo sucio político</h3>
+        <p>Hereda de la tradición de Walsh, Piglia y Sasturain: la denuncia encarnada en escenas concretas, con olores, texturas y temperaturas. El sótano de Papel Austral se siente físicamente.</p>
+      </div>
+      <div class="tarjeta-tecnica">
+        <h3>Alegoría sistémica</h3>
+        <p>Los personajes no son individuos: son instituciones en movimiento. "El Ingeniero de la Tinta" es el monopolio mediático argentino; "El Archivista" es el aparato de inteligencia como burocracia del horror.</p>
+      </div>
+      <div class="tarjeta-tecnica">
+        <h3>Teatro épico brechtiano</h3>
+        <p>El autor interrumpe la ilusión de realidad con advertencias, notas legales y rótulos de capítulos que funcionan como carteles de escena. El lector nunca olvida que está ante una construcción deliberada.</p>
+      </div>
+      <div class="tarjeta-tecnica">
+        <h3>Crónica política codificada</h3>
+        <p>La estructura temporal —1976, 1983, 1990, 2001, 2010, presente— sigue la cronología real argentina, anclando la alegoría en hechos reconocibles: privatizaciones, corralito, cacerolazo, ajuste.</p>
+      </div>
+      <div class="tarjeta-tecnica">
+        <h3>Novela negra del poder</h3>
+        <p>Usa los recursos del noir: el encuentro en el bar, la libretita negra con nombres, el sobre anónimo, la reunión en el subsuelo. La corrupción tiene estética de policial.</p>
+      </div>
+      <div class="tarjeta-tecnica">
+        <h3>Narrativa del expediente</h3>
+        <p>La obra se presenta a sí misma como un "expediente visual y narrativo". El texto funciona como prueba, testimonio y acusación simultáneamente, apelando a la forma del documento judicial.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- ANÁLISIS DE LA PROSA -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">03 — Análisis de la prosa</p>
+    <h2>La voz narrativa y el uso del lenguaje</h2>
+
+    <p>La prosa de Testino tiene una marca personal muy definida: es <strong>densa, sensorial y deliberadamente recargada</strong>. El autor no escribe para economizar; escribe para saturar. Cada párrafo acumula imágenes hasta el borde: el olor a lacrimógeno que "se pega al pelo", el café amargo que "baja caliente por el pecho", el papel que "no deja cicatrizar". Esta acumulación es funcional: simula el peso físico del relato sobre el lector, que debe cargar la misma opresión que los personajes.</p>
+
+    <div class="cita-destacada">
+      <p>"La tinta del Ingeniero era mágica: lograba que las madres que daban vueltas en la plaza parecieran locas en las fotos, y que los dictadores parecieran abuelos severos pero justos."</p>
+      <cite>— El Gran Editor, Cap. 1</cite>
+    </div>
+
+    <p>Un recurso central es el <strong>contraste permanente entre arriba y abajo</strong>: el despacho con vista al río / el sótano que apesta; la copa de champán / el café amargo de la calle; el papel satinado / la sangre en el cordón. Esta arquitectura binaria da a la obra una tensión constante y subraya su tesis política.</p>
+
+    <p>La voz narrativa oscila entre el narrador omnisciente clásico y una segunda persona que interpela directamente al lector, incorporándolo como cómplice o testigo. Este juego de posiciones crea incomodidad productiva: no se puede leer esta obra desde la distancia cómoda del espectador.</p>
+
+    <p>El lenguaje coloquial porteño —"pibes", "cacho", "giles", "fierros"— convive con giros formales y metáforas elaboradas. Esta mezcla no es descuido; es la marca de una escritura que quiere ser leída tanto en la calle como en la universidad.</p>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- ESTRUCTURA -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">04 — Estructura de la trilogía</p>
+    <h2>Arquitectura de tres arcos</h2>
+
+    <p>La trilogía exhibe una arquitectura en <strong>espiral descendente-ascendente</strong>. Los tres tomos cubren el mismo período histórico pero desde perspectivas y enfoques distintos, como una cámara que gira alrededor de un mismo edificio oscuro:</p>
+
+    <p><strong>Tomo I — La Mariscal del Péndulo:</strong> La perspectiva del poder político. Valeria Vento como motor de acción. El tono es el más cinematográfico de los tres; tiene escenas de una intensidad casi guionada. Es el tomo más accesible.</p>
+
+    <p><strong>Tomo II — El Gran Editor:</strong> La perspectiva del poder mediático. El "Ingeniero de la Tinta" como arquitecto de la realidad. Es el tomo más ensayístico: alterna ficción con análisis de mecanismos de manipulación. Aquí la tesis política se hace más explícita.</p>
+
+    <p><strong>Tomo III — El Ente de la Frecuencia Cero:</strong> La perspectiva del aparato oculto. Es el tomo más experimental y oscuro. Incorpora la "Advertencia del Sistema" como paratexto metanarrativo; el propio libro se convierte en documento del Ente.</p>
+
+    <p>Los tres tomos convergen en el mismo epílogo: la calle que recupera su voz. La estructura circular (comienza y termina en la calle como espacio de resistencia) es el gesto político más claro de la obra.</p>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- FORTALEZAS -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">05 — Análisis crítico</p>
+    <h2>Fortalezas de la obra</h2>
+    <ul class="lista-analisis lista-fortalezas">
+      <li><strong>Originalidad conceptual:</strong> El "Cubismo de Redes" como método propio es una propuesta genuina. No hay otra obra argentina reciente que articule así la denuncia política con la fragmentación estética.</li>
+      <li><strong>Coherencia ideológica sostenida:</strong> Los tres tomos mantienen una tesis central sin fisuras durante más de ciento veinte páginas. El relato no se desvía ni se contradice.</li>
+      <li><strong>Construcción de atmósferas:</strong> Los espacios (el sótano, la torre de cristal, el quincho suburbano, el despacho en penumbras) tienen una presencia física que ancla emocionalmente el relato.</li>
+      <li><strong>La figura de "La Mariscal" como antagonista:</strong> Valeria Vento es un personaje de traición arquetípica construido con capas. Su arco —de militante a funcionaria del saqueo— tiene una lógica interna implacable.</li>
+      <li><strong>La calle como personaje:</strong> "La calle" funciona en toda la trilogía como un coro griego, como una conciencia colectiva que resiste. Es uno de los recursos más logrados y originales del texto.</li>
+      <li><strong>El diálogo como bisturí:</strong> Los diálogos entre el Ingeniero y Valeria, o entre el Archivista y sus víctimas, están escritos con una precisión cortante. Cada intercambio revela una lógica del poder con economía de palabras.</li>
+    </ul>
+  </div>
+
+  <!-- DEBILIDADES -->
+  <div class="seccion">
+    <h2>Áreas de tensión o mejora</h2>
+    <ul class="lista-analisis lista-debilidades">
+      <li><strong>Saturación retórica en tramos medios:</strong> En algunos capítulos del Tomo II, la acumulación de metáforas sobre el poder mediático lleva al texto al borde del panfleto. El lector saturado puede perder tracción narrativa.</li>
+      <li><strong>Personajes secundarios esquemáticos:</strong> Figuras como "el Ruso", "el Tano" y "la Flaca" quedan como bocetos. Su función es ser víctimas del sistema; sus interiores no se desarrollan lo suficiente para generar el duelo que la obra necesita.</li>
+      <li><strong>Ritmo desigual entre tomos:</strong> El Tomo I tiene la densidad dramática más alta; el Tomo III es el más experimental pero también el más fragmentado. El lector que espera la misma intensidad cinematográfica del principio puede sentir discontinuidad.</li>
+      <li><strong>La "Advertencia del Sistema" (Tomo III) juega un riesgo:</strong> El dispositivo metanarrativo —el libro se presenta como documento del propio Ente— es audaz, pero puede desorientar a lectores no familiarizados con la ficción posmoderna.</li>
+    </ul>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- REFERENTES -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">06 — Tradición literaria</p>
+    <h2>Coordenadas en la literatura argentina y universal</h2>
+
+    <p>La trilogía dialoga, consciente o inconscientemente, con tradiciones muy precisas. En el campo argentino se inscribe en la línea de la <strong>literatura de denuncia política</strong> que va de Rodolfo Walsh (<em>Operación Masacre</em>, <em>¿Quién mató a Rosendo?</em>) a Ricardo Piglia (<em>Respiración Artificial</em>) y Juan Sasturain. Comparte con Walsh la convicción de que el relato puede ser arma y que la forma literaria potencia —en lugar de enmascarar— la verdad política.</p>
+
+    <p>En clave internacional, la alegoría sistémica recuerda a <strong>George Orwell</strong> (<em>1984</em>, <em>Rebelión en la granja</em>) en su uso de la alegoría para mapear el poder. La construcción del "Ente" como aparato que "edita existencias" tiene ecos del Gran Hermano orwelliano, aunque situado en una geografía muy específica: la Argentina del Proceso, del menemismo y del kirchnerismo.</p>
+
+    <p>La "Advertencia del Sistema" del Tomo III remite además a la tradición de la <strong>metaficción política latinoamericana</strong>: el texto que se sabe texto, que se exhibe como construcción, siguiendo el gesto de autores como Augusto Roa Bastos (<em>Yo, el Supremo</em>) o el último Roberto Bolaño.</p>
+  </div>
+
+  <div class="sep">· · ·</div>
+
+  <!-- IDENTIDAD TERRITORIAL -->
+  <div class="seccion">
+    <p class="seccion-etiqueta">07 — Identidad territorial</p>
+    <h2>La Patagonia como lugar de enunciación</h2>
+
+    <p>Uno de los gestos más significativos de la trilogía es que <strong>la Patagonia no es solo escenario: es punto de vista</strong>. La figura del "muchacho de la estepa" en el Tomo I —el artesano que molesta al sistema por dar voz a comunidades originarias, que desaparece en un río— convierte la región en el lugar donde el saqueo se vuelve más visible y donde la resistencia tiene raíces territoriales.</p>
+
+    <p>Que la obra haya sido escrita y editada desde Trelew no es un dato menor. Trelew tiene su propia memoria de masacre política (1972), su propio vínculo con la represión y su propia tradición de prensa independiente. La obra habla desde ese borde geográfico hacia el centro porteño del poder, y esa distancia genera una perspectiva que Buenos Aires difícilmente produce sobre sí misma.</p>
+
+    <div class="cita-destacada">
+      <p>"Esta tierra no es de nadie —dijo mirando el horizonte seco— hasta que yo decido quién la puede comprar."</p>
+      <cite>— La Mariscal del Péndulo, La Doctrina de la Sombra</cite>
+    </div>
+  </div>
+
+  <!-- VEREDICTO -->
+  <div class="veredicto">
+    <p><strong>Veredicto editorial:</strong> La <em>Trilogía El Ente de la Frecuencia Cero</em> es una obra que excede el registro de la mera ficción política. Es un sistema narrativo completo: una cosmogonía del poder argentino construida con materiales literarios, periodísticos y alegóricos. Su propuesta más original —el "Cubismo de Redes" como forma de la denuncia— constituye un aporte genuino a la tradición de la literatura comprometida argentina.</p>
+    <p>Las imperfecciones —el ritmo desigual, algunos personajes secundarios esquemáticos— son el precio de una ambición considerable: tres tomos que intentan cartografiar cincuenta años de traición institucional sin perder la tensión literaria. Que en gran parte lo logre es ya un mérito infrecuente en la producción regional independiente.</p>
+    <p>Se trata de una obra que merece lectores exigentes, debate y circulación. Viene del sur, y huele a la tinta correcta.</p>
+  </div>
+
+  <!-- PIE -->
+  <div class="pie">
+    <p>Soberanía Editorial · Trelew, Patagonia · 2026</p>
+    <p>Análisis elaborado sobre texto completo · INPI Exp. 4689992</p>
+  </div>
+
+</div>
+</body>
+</html>
