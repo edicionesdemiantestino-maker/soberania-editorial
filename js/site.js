@@ -224,26 +224,7 @@ window.addEventListener('click', function (e) {
     e.target.style.display = 'none'
     document.body.style.overflow = 'auto'
   }
-  if (e.target === document.getElementById('purchaseModal')) closePurchaseModal()
 })
-
-var purchaseLinks = {
-  kaukel: { url: 'https://mpago.la/1DA4uYq', label: 'Saga Káukel — $35.000 ARS' },
-  ente: { url: 'https://mpago.la/2HcSsX4', label: 'El Ente de la Frecuencia Cero — $20.000 ARS' },
-  combo: { url: 'https://mpago.la/2L3PFuK', label: 'Combo Soberanía (Káukel + El Ente) — $50.000 ARS' },
-}
-function openPurchase(type) {
-  var data = purchaseLinks[type]
-  if (!data) return
-  document.getElementById('purchaseLink').href = data.url
-  document.getElementById('purchaseProductLabel').textContent = data.label
-  document.getElementById('purchaseModal').style.display = 'flex'
-  document.body.style.overflow = 'hidden'
-}
-function closePurchaseModal() {
-  document.getElementById('purchaseModal').style.display = 'none'
-  document.body.style.overflow = 'auto'
-}
 
 function toggleExt(cb) {
   var c = document.getElementById('campos-ext')

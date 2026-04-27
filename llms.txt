@@ -4,7 +4,7 @@
 
 ## Contenido principal
 
-- Catálogo de sagas y ebooks con enlaces a Amazon, Mercado Libre y Mercado Pago.
+- Catálogo de sagas y ebooks con enlaces a Amazon y Mercado Libre (y WhatsApp para preventa física donde aplica).
 - Preventa y envío físico coordinado por WhatsApp.
 - Formulario de contacto para evaluación de manuscritos.
 - El producto digital **Soberanía Vault** (certificación de manuscritos) vive en la aplicación aparte enlazada desde el sitio.
