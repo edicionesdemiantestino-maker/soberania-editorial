@@ -1,8 +1,8 @@
 /**
- * SOLO EDITÁ ESTE ARCHIVO cuando publiques el sitio.
+ * Ajustes del sitio (URLs, podcast, reels). No se muestra al visitante.
  *
- * PODCAST_SRC — ruta al audio (relativa al sitio) o URL absoluta si lo subís a Supabase Storage.
- * REELS — cada reel: url de Instagram + thumb (imagen previa). Podés cambiar thumbs por capturas.
+ * PODCAST_SRC — ruta relativa al audio o URL absoluta si está en otro servidor.
+ * REELS — cada ítem: enlace a Instagram + imagen de vista previa opcional.
  */
 window.SOBERANIA = {
   SITE_CANONICAL: 'https://edicionesdemiantestino-maker.github.io/soberania-editorial',
