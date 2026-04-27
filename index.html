@@ -51,6 +51,16 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
 @media(min-width:768px){ #reels-grid-inner { grid-template-columns: repeat(3, 1fr); } }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
 .pulse { animation: pulse-dot 1.8s infinite; }
+#soberania-troll-overlay { display: none; position: fixed; inset: 0; z-index: 500; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(0,0,0,0.92); text-align: center; }
+#soberania-troll-overlay.is-on { display: flex; flex-direction: column; }
+#soberania-troll-overlay .troll-card { max-width: 28rem; border: 2px solid rgba(56,189,248,0.4); border-radius: 1.5rem; padding: 2rem; background: #0f172a; box-shadow: 0 0 60px rgba(56,189,248,0.15); }
+#soberania-troll-overlay h4 { font-size: 1.35rem; font-weight: 900; font-style: italic; color: #fff; margin: 0 0 0.75rem; }
+#soberania-troll-overlay p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem; }
+#soberania-troll-overlay button { background: #38bdf8; color: #020617; font-weight: 900; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 0; cursor: pointer; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; font-style: italic; }
+.hp-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+#contact-form-status { display: none; margin-bottom: 1rem; padding: 1rem; border-radius: 1rem; font-size: 0.85rem; font-weight: 700; font-style: italic; }
+#contact-form-status.ok { display: block; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #86efac; }
+#contact-form-status.err { display: block; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; }
 </style>
 </head>
 <body class="antialiased selection:bg-sky-500 selection:text-white">
@@ -277,7 +287,12 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <div class="max-w-4xl mx-auto text-left italic">
     <h3 class="text-4xl font-black uppercase italic mb-4 text-white">Portal de Recepción</h3>
     <p class="text-slate-500 text-xs uppercase tracking-[0.4em] mb-12 italic">Evaluación Técnica de Proyectos Literarios</p>
-    <form action="https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3" method="POST" class="bg-slate-900 border border-iron p-12 rounded-[50px] shadow-[0_0_50px_rgba(0,0,0,0.5)] space-y-10">
+    <form id="soberania-contact-form" class="relative bg-slate-900 border border-iron p-12 rounded-[50px] shadow-[0_0_50px_rgba(0,0,0,0.5)] space-y-10" novalidate>
+      <div class="hp-trap" aria-hidden="true">
+        <label for="hp_company">No completar</label>
+        <input type="text" id="hp_company" name="hp_company" tabindex="-1" autocomplete="off" value="">
+      </div>
+      <div id="contact-form-status" role="status"></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div class="space-y-3"><label class="text-[10px] font-black uppercase text-sky-500 tracking-widest italic">Nombre y Apellido *</label><input type="text" name="nombre" required placeholder="Firma del Autor" class="w-full p-5 rounded-2xl outline-none transition"></div>
         <div class="space-y-3"><label class="text-[10px] font-black uppercase text-sky-500 tracking-widests italic">Email de Contacto *</label><input type="email" name="email" required placeholder="frecuencia@soberania.com" class="w-full p-5 rounded-2xl outline-none transition"></div>
@@ -315,8 +330,11 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:1.25rem;"><p style="color:#38bdf8;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-style:italic;margin:0 0 8px;">💳 Método de pago internacional</p><p style="color:#94a3b8;font-size:13px;font-style:italic;line-height:1.7;margin:0;">Honorarios <strong style="color:#e2e8f0;">negociables</strong> según extensión y complejidad. Pagos vía <strong style="color:#e2e8f0;">Payoneer</strong>. Presupuesto personalizado por email.</p></div>
 </div>
       <div class="space-y-3 text-left"><label class="text-[10px] font-black uppercase text-slate-500 tracking-widest italic">Sinopsis Breve / Propuesta Editorial *</label><textarea name="mensaje" rows="6" required placeholder="Contanos de qué trata tu mensaje y cuál es tu objetivo con esta obra..." class="w-full p-5 rounded-2xl outline-none transition italic"></textarea></div>
-      <button type="submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
+      <button type="submit" id="soberania-contact-submit" class="w-full bg-sky-500 text-black font-black py-6 rounded-3xl uppercase tracking-[0.4em] text-sm italic shadow-2xl transition hover:bg-white hover:scale-[1.01]">Enviar para Evaluación Técnica</button>
     </form>
+    <noscript>
+      <p class="text-slate-500 text-sm italic mt-6 text-center">Para enviar este formulario hace falta JavaScript. Escribinos a <a href="mailto:edicionesdemiantestino@gmail.com" class="text-sky-400 underline">edicionesdemiantestino@gmail.com</a>.</p>
+    </noscript>
   </div>
 </section>
 
@@ -348,6 +366,15 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     </div>
   </div>
 </footer>
+
+<div id="soberania-troll-overlay" aria-hidden="true" role="dialog" aria-labelledby="troll-title">
+  <div class="troll-card">
+    <h4 id="troll-title">🎺 Señal interceptada</h4>
+    <p>Este canal es para autores y proyectos reales. Si llegaste acá por curiosidad técnica, tomate un mate; si sos bot, el mate no te va a ayudar.</p>
+    <p style="font-size:0.75rem;color:#64748b;">Soberanía Editorial · Trelew</p>
+    <button type="button" onclick="window.hideSoberaniaTroll && window.hideSoberaniaTroll()">Cerrar</button>
+  </div>
+</div>
 
 <a href="https://wa.me/542804841846" target="_blank" class="wa-fab">
   <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>

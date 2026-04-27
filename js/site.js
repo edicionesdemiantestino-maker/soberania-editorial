@@ -101,6 +101,150 @@
     })
   }
 
+  function playTrollFanfare() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext
+      if (!AC) return
+      var ctx = new AC()
+      var freqs = [196, 233, 262, 294, 349]
+      var t0 = ctx.currentTime
+      freqs.forEach(function (f, i) {
+        var osc = ctx.createOscillator()
+        var gn = ctx.createGain()
+        osc.type = 'triangle'
+        osc.frequency.value = f
+        gn.gain.setValueAtTime(0.13, t0 + i * 0.1)
+        gn.gain.exponentialRampToValueAtTime(0.001, t0 + i * 0.1 + 0.32)
+        osc.connect(gn)
+        gn.connect(ctx.destination)
+        osc.start(t0 + i * 0.1)
+        osc.stop(t0 + i * 0.1 + 0.34)
+      })
+    } catch (e) {}
+  }
+
+  function showTrollOverlay() {
+    playTrollFanfare()
+    var el = document.getElementById('soberania-troll-overlay')
+    if (el) {
+      el.classList.add('is-on')
+      el.setAttribute('aria-hidden', 'false')
+    }
+    document.body.style.overflow = 'hidden'
+  }
+
+  function hideTrollOverlay() {
+    var el = document.getElementById('soberania-troll-overlay')
+    if (el) {
+      el.classList.remove('is-on')
+      el.setAttribute('aria-hidden', 'true')
+    }
+    document.body.style.overflow = ''
+  }
+
+  window.hideSoberaniaTroll = hideTrollOverlay
+
+  function setContactStatus(kind, msg) {
+    var st = document.getElementById('contact-form-status')
+    if (!st) return
+    st.className = ''
+    if (!msg) {
+      st.style.display = 'none'
+      st.textContent = ''
+      return
+    }
+    st.style.display = 'block'
+    st.textContent = msg
+    st.classList.add(kind === 'ok' ? 'ok' : 'err')
+  }
+
+  function wireContactForm() {
+    var form = document.getElementById('soberania-contact-form')
+    if (!form) return
+    form.addEventListener('submit', function (e) {
+      e.preventDefault()
+      var hpEl = form.querySelector('[name="hp_company"]')
+      if (hpEl && String(hpEl.value || '').trim() !== '') {
+        showTrollOverlay()
+        return
+      }
+      var fd = new FormData(form)
+      var body = {
+        nombre: fd.get('nombre') || '',
+        email: fd.get('email') || '',
+        genero: fd.get('genero') || '',
+        estado: fd.get('estado') || '',
+        link: fd.get('link') || '',
+        es_extranjero: fd.get('es_extranjero') || '',
+        pais_origen: fd.get('pais_origen') || '',
+        idioma_original: fd.get('idioma_original') || '',
+        estado_obra: fd.get('estado_obra') || '',
+        servicio_requerido: fd.get('servicio_requerido') || '',
+        extension_obra: fd.get('extension_obra') || '',
+        mensaje: fd.get('mensaje') || '',
+        hp_company: '',
+      }
+      var btn = document.getElementById('soberania-contact-submit')
+      if (btn) {
+        btn.disabled = true
+        btn.textContent = 'Enviando…'
+      }
+      setContactStatus('', '')
+      fetch(APP + '/api/public/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+        .then(function (r) {
+          return r.text().then(function (text) {
+            var j = {}
+            try {
+              j = text ? JSON.parse(text) : {}
+            } catch (e) {
+              j = { error: 'Respuesta inválida del servidor.' }
+            }
+            return { r: r, j: j }
+          })
+        })
+        .then(function (x) {
+          if (x.r.status === 418 || (x.j && x.j.code === 'HONEYPOT')) {
+            showTrollOverlay()
+            return
+          }
+          if (x.r.ok && x.j && x.j.ok) {
+            setContactStatus('ok', 'Recibimos tu mensaje. Te respondemos por email.')
+            form.reset()
+            return
+          }
+          var msg =
+            (x.j && x.j.error) ||
+            (x.r.status === 429
+              ? 'Demasiados intentos. Probá más tarde.'
+              : 'No se pudo enviar. Escribinos por email.')
+          if (x.j && x.j.code === 'CONFIG') {
+            msg =
+              'El servidor aún no tiene configurado el webhook. Escribinos a edicionesdemiantestino@gmail.com'
+          }
+          if (x.j && x.j.code === 'ORIGIN') {
+            msg = 'Abrí el formulario desde el sitio oficial en GitHub Pages.'
+          }
+          setContactStatus('err', msg)
+        })
+        .catch(function () {
+          setContactStatus(
+            'err',
+            'Sin conexión o el servidor no responde. Escribinos por email.',
+          )
+        })
+        .finally(function () {
+          if (btn) {
+            btn.disabled = false
+            btn.textContent = 'Enviar para Evaluación Técnica'
+          }
+        })
+    })
+  }
+
   function buildReels() {
     var grid = document.getElementById('reels-grid-inner')
     if (!grid) return
@@ -210,6 +354,7 @@
         if (mode) window.SoberaniaSPA.go(mode)
       })
     })
+    wireContactForm()
   })
 })()
 

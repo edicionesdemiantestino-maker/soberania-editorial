@@ -28,8 +28,11 @@ PASO B — La app del panel (Vercel) — ya la tenés o la creás gratis
 4) Ese link lo pegás en sitio-web/config.js en APP_BASE.
 5) Subís config.js otra vez al repo del sitio web.
 
-(Las variables de entorno de Supabase y Mercado Pago van en Vercel, NO en config.js
-excepto la clave "anon" de Supabase que ya está en config.js para el contador "en vivo".)
+Variables importantes en Vercel (Settings → Environment Variables):
+• MAKE_CONTACT_WEBHOOK_URL = la misma URL del webhook de Make que antes estaba en el HTML del formulario.
+• CONTACT_FORM_ALLOWED_ORIGINS = la URL de tu sitio en GitHub Pages (ej. https://edicionesdemiantestino-maker.github.io), sin barra final.
+  Si tenés más dominios, separados por coma.
+El formulario de contacto ya NO envía directo a Make desde el navegador: pasa por /api/public/contact en la app.
 
 
 PASO C — Google (gratis) — cuando tengas la URL final del sitio web

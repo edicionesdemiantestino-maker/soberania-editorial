@@ -6,10 +6,8 @@
  */
 window.SOBERANIA = {
   SITE_CANONICAL: 'https://edicionesdemiantestino-maker.github.io/soberania-editorial',
+  /** Origen de la app Next (Vercel): el formulario de contacto envía por API aquí; el webhook de Make queda solo en el servidor. */
   APP_BASE: 'https://v0-editorial-control-station-kasswdea0.vercel.app',
-  SUPABASE_URL: 'https://wjsxlwsqjvuyjrdngvyo.supabase.co',
-  SUPABASE_ANON_KEY:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indqc3hsd3NxanZ1eWpyZG5ndnlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE3MzY0NzksImV4cCI6MjA1NzMxMjQ3OX0.x0jG4Jk-0JxRBPu4i3_4vrzFMzL6vbzo5fjfRHOy_w8',
 
   PODCAST_SRC: 'media/Nueve_libros_para_apagar_Wall_Street.m4a',
   PODCAST_TITLE: 'Nueve libros para apagar Wall Street',
