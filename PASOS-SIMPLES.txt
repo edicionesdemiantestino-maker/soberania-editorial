@@ -8,16 +8,17 @@
 • carpeta "v0-editorial-control-station" → Panel de autores, Vault, blog (Next.js)
 
 El archivo IMPORTANTE para el sitio web es:  sitio-web/config.js
-Ahí cambiás 2 URLs cuando ya sepas dónde quedó publicada cada cosa.
+Ahí van SITE_CANONICAL, APP_BASE (panel), MAKE_CONTACT_WEBHOOK_URL (formulario → Make).
 
 
-PASO A — Publicar el sitio web (HTML) gratis con GitHub Pages
---------------------------------------------------------------
-1) Subí la carpeta "sitio-web" a un repositorio de GitHub (o usá el que ya tengas).
-2) En GitHub: Settings → Pages → Build: Deploy from branch → branch "main", folder "/ (root)".
-3) GitHub te dará un link tipo: https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
-4) Abrí sitio-web/config.js y pegá ESE link en SITE_CANONICAL (con barra final o sin, pero consistente).
-5) Volvé a subir el cambio. Esperá 1–2 minutos y recargá la página.
+PASO A — Publicar el sitio web (HTML estático)
+----------------------------------------------
+Recomendado: Vercel, proyecto framework "Other", root del repo, dominio tipo
+https://soberania-editorial.vercel.app → esa URL va en config.js como SITE_CANONICAL
+(sin barra final). Cada push a main redeploya solo.
+
+Alternativa: GitHub Pages (Settings → Pages desde branch main). Si el sitio “oficial”
+sigue en Pages, SITE_CANONICAL debe ser la URL de Pages (con o sin subpath, consistente).
 
 
 PASO B — La app del panel (Vercel) — ya la tenés o la creás gratis
@@ -28,11 +29,10 @@ PASO B — La app del panel (Vercel) — ya la tenés o la creás gratis
 4) Ese link lo pegás en sitio-web/config.js en APP_BASE.
 5) Subís config.js otra vez al repo del sitio web.
 
-Variables importantes en Vercel (Settings → Environment Variables):
-• MAKE_CONTACT_WEBHOOK_URL = la misma URL del webhook de Make que antes estaba en el HTML del formulario.
-• CONTACT_FORM_ALLOWED_ORIGINS = la URL de tu sitio en GitHub Pages (ej. https://edicionesdemiantestino-maker.github.io), sin barra final.
-  Si tenés más dominios, separados por coma.
-El formulario de contacto ya NO envía directo a Make desde el navegador: pasa por /api/public/contact en la app.
+Formulario de contacto (simple):
+• La URL del webhook de Make va en sitio-web/config.js → MAKE_CONTACT_WEBHOOK_URL.
+• No hace falta configurar el contacto en Vercel del catálogo: el navegador envía directo a Make.
+• Si en Vercel habías cargado variables solo para el contacto, podés borrarlas; no se usan con este esquema.
 
 
 PASO C — Google (gratis) — cuando tengas la URL final del sitio web
@@ -54,9 +54,10 @@ PASO C — Google (gratis) — cuando tengas la URL final del sitio web
 • Términos: terminos.html
 
 
-Si no encontrás "Environment Variables" en Vercel
--------------------------------------------------
-Proyecto en Vercel → tu proyecto → pestaña "Settings" → menú izquierda "Environment Variables".
-Ahí se copian las claves que están en v0-editorial-control-station/.env.example
+Variables de entorno en Vercel (panel Next, desarrollo avanzado)
+-----------------------------------------------------------------
+Settings → Environment Variables. Para desarrollo local del panel Next, ver
+v0-editorial-control-station/.env.example (Supabase, Mercado Pago, etc.).
+El contacto del sitio estático no usa Vercel.
 
 ================================================================================

@@ -5,9 +5,19 @@
  * REELS — cada ítem: enlace a Instagram + imagen de vista previa opcional.
  */
 window.SOBERANIA = {
-  SITE_CANONICAL: 'https://edicionesdemiantestino-maker.github.io/soberania-editorial',
-  /** Origen de la app Next (Vercel): el formulario de contacto envía por API aquí; el webhook de Make queda solo en el servidor. */
+  /** URL pública principal del catálogo (SEO, Open Graph, JSON-LD). Sin barra final. */
+  SITE_CANONICAL: 'https://soberania-editorial.vercel.app',
+  /**
+   * Webhook de Make (escenario de recepción). En un sitio estático la URL va en el cliente;
+   * podés rotar el webhook en Make si hubo abuso.
+   */
+  MAKE_CONTACT_WEBHOOK_URL:
+    'https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3',
+  /** App Next en Vercel: solo para enlaces al panel (login, Vault, precios, blog). El contacto no pasa por acá. */
   APP_BASE: 'https://v0-editorial-control-station-kasswdea0.vercel.app',
+
+  /** Soberanía Digital (presupuestos y desarrollo web). Sitio independiente; sin barra final. */
+  DIGITAL_SITE_URL: 'https://soberania-digital-web.vercel.app',
 
   PODCAST_SRC: 'media/Nueve_libros_para_apagar_Wall_Street.m4a',
   PODCAST_TITLE: 'Nueve libros para apagar Wall Street',

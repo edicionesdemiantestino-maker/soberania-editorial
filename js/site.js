@@ -21,6 +21,19 @@
     var vBlg = document.getElementById('vault-link-blog')
     if (vPre) vPre.href = APP + '/precios'
     if (vBlg) vBlg.href = APP + '/blog'
+    var digUrl = String(C.DIGITAL_SITE_URL || '').trim()
+    var digHref = ''
+    if (digUrl) {
+      try {
+        digHref = new URL(digUrl).origin + '/'
+      } catch (e) {
+        digHref = digUrl.replace(/\/$/, '') + '/'
+      }
+    }
+    ;['soberania-digital-footer-link', 'soberania-digital-nav', 'soberania-digital-hero-btn'].forEach(function (id) {
+      var el = document.getElementById(id)
+      if (el && digHref) el.href = digHref
+    })
   }
 
   function injectJsonLd() {
@@ -55,6 +68,24 @@
       el.type = 'application/ld+json'
       el.text = JSON.stringify(data)
       document.head.appendChild(el)
+
+      if (orgUrl) {
+        var canonicalHref = orgUrl.replace(/\/$/, '') + '/'
+        var linkCanon = document.querySelector('link[rel="canonical"]')
+        if (!linkCanon) {
+          linkCanon = document.createElement('link')
+          linkCanon.rel = 'canonical'
+          document.head.appendChild(linkCanon)
+        }
+        linkCanon.href = canonicalHref
+        var ogUrl = document.querySelector('meta[property="og:url"]')
+        if (!ogUrl) {
+          ogUrl = document.createElement('meta')
+          ogUrl.setAttribute('property', 'og:url')
+          document.head.appendChild(ogUrl)
+        }
+        ogUrl.setAttribute('content', canonicalHref)
+      }
     } catch (e) {}
   }
 
@@ -169,66 +200,48 @@
         return
       }
       var fd = new FormData(form)
-      var body = {
-        nombre: fd.get('nombre') || '',
-        email: fd.get('email') || '',
-        genero: fd.get('genero') || '',
-        estado: fd.get('estado') || '',
-        link: fd.get('link') || '',
-        es_extranjero: fd.get('es_extranjero') || '',
-        pais_origen: fd.get('pais_origen') || '',
-        idioma_original: fd.get('idioma_original') || '',
-        estado_obra: fd.get('estado_obra') || '',
-        servicio_requerido: fd.get('servicio_requerido') || '',
-        extension_obra: fd.get('extension_obra') || '',
-        mensaje: fd.get('mensaje') || '',
-        hp_company: '',
+      var webhook = String(C.MAKE_CONTACT_WEBHOOK_URL || '').trim()
+      if (!webhook) {
+        setContactStatus(
+          'err',
+          'Falta configurar el webhook en config.js. Escribinos por email.',
+        )
+        return
       }
+      var params = new URLSearchParams()
+      params.set('nombre', fd.get('nombre') || '')
+      params.set('email', fd.get('email') || '')
+      params.set('genero', fd.get('genero') || '')
+      params.set('estado', fd.get('estado') || '')
+      params.set('link', fd.get('link') || '')
+      params.set('es_extranjero', fd.get('es_extranjero') || '')
+      params.set('pais_origen', fd.get('pais_origen') || '')
+      params.set('idioma_original', fd.get('idioma_original') || '')
+      params.set('estado_obra', fd.get('estado_obra') || '')
+      params.set('servicio_requerido', fd.get('servicio_requerido') || '')
+      params.set('extension_obra', fd.get('extension_obra') || '')
+      params.set('mensaje', fd.get('mensaje') || '')
       var btn = document.getElementById('soberania-contact-submit')
       if (btn) {
         btn.disabled = true
         btn.textContent = 'Enviando…'
       }
       setContactStatus('', '')
-      fetch(APP + '/api/public/contact', {
+      fetch(webhook, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
       })
         .then(function (r) {
-          return r.text().then(function (text) {
-            var j = {}
-            try {
-              j = text ? JSON.parse(text) : {}
-            } catch (e) {
-              j = { error: 'Respuesta inválida del servidor.' }
-            }
-            return { r: r, j: j }
-          })
-        })
-        .then(function (x) {
-          if (x.r.status === 418 || (x.j && x.j.code === 'HONEYPOT')) {
-            showTrollOverlay()
-            return
-          }
-          if (x.r.ok && x.j && x.j.ok) {
+          if (r.ok) {
             setContactStatus('ok', 'Recibimos tu mensaje. Te respondemos por email.')
             form.reset()
             return
           }
-          var msg =
-            (x.j && x.j.error) ||
-            (x.r.status === 429
-              ? 'Demasiados intentos. Probá más tarde.'
-              : 'No se pudo enviar. Escribinos por email.')
-          if (x.j && x.j.code === 'CONFIG') {
-            msg =
-              'El servidor aún no tiene configurado el webhook. Escribinos a edicionesdemiantestino@gmail.com'
-          }
-          if (x.j && x.j.code === 'ORIGIN') {
-            msg = 'Abrí el formulario desde el sitio oficial en GitHub Pages.'
-          }
-          setContactStatus('err', msg)
+          setContactStatus(
+            'err',
+            'No se pudo enviar. Escribinos por email o probá más tarde.',
+          )
         })
         .catch(function () {
           setContactStatus(
