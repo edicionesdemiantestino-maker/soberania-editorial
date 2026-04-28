@@ -24,7 +24,7 @@ window.SOBERANIA = {
   PODCAST_SUB: 'Audio · podcast',
 
   /** Subí este número cuando cambies un HTML en informes/ para que el iframe no use caché vieja. */
-  INFORMES_CACHE: '2',
+  INFORMES_CACHE: '3',
 
   INFORMES: {
     universo: 'informes/testino_universo_literario.html',

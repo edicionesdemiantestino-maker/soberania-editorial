@@ -1,0 +1,7 @@
+El repo de Git/GitHub ocupa esta carpeta (sitio-web) como raíz.
+
+Si tu editor muestra también una carpeta padre "SoberaniaEditorial" sin Git:
+los comandos git add / commit / push se ejecutan desde acá.
+
+Vercel toma este mismo repo → proyecto soberania-editorial.
+Ver PASOS-SIMPLES.txt

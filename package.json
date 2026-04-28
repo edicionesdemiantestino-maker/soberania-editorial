@@ -1,0 +1,10 @@
+{
+  "name": "soberania-editorial",
+  "private": true,
+  "description": "Sitio estático Soberanía Editorial — proyecto Vercel: soberania-editorial (mismo contenido que el repo GitHub).",
+  "scripts": {
+    "vercel:link": "vercel link --yes --project soberania-editorial",
+    "deploy": "vercel deploy --prod --yes",
+    "deploy:fresh": "npm run vercel:link && npm run deploy"
+  }
+}

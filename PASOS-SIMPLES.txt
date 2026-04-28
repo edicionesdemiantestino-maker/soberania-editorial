@@ -1,63 +1,75 @@
 ================================================================================
-  SOBERANÍA EDITORIAL — Guía mínima (todo puede ser GRATIS)
+  SOBERANÍA EDITORIAL — Un solo lugar: repo GitHub + Vercel
 ================================================================================
 
-¿Qué es cada cosa en tu proyecto?
-----------------------------------
-• carpeta "sitio-web"     → Esta página de venta / catálogo (HTML)
-• carpeta "v0-editorial-control-station" → Panel de autores, Vault, blog (Next.js)
+DÓNDE TRABAJAR (importante)
+---------------------------
+• El sitio público soberania-editorial.vercel.app sale de ESTE repo:
+  github.com/edicionesdemiantestino-maker/soberania-editorial
+• La carpeta que tenés que abrir / commitear es:  sitio-web/
+  (no la carpeta padre "SoberaniaEditorial" si ahí no hay .git —
+   el .git vive adentro de sitio-web).
 
-El archivo IMPORTANTE para el sitio web es:  sitio-web/config.js
-Ahí van SITE_CANONICAL, APP_BASE (panel), MAKE_CONTACT_WEBHOOK_URL (formulario → Make).
-
-
-PASO A — Publicar el sitio web (HTML estático)
-----------------------------------------------
-Recomendado: Vercel, proyecto framework "Other", root del repo, dominio tipo
-https://soberania-editorial.vercel.app → esa URL va en config.js como SITE_CANONICAL
-(sin barra final). Cada push a main redeploya solo.
-
-Alternativa: GitHub Pages (Settings → Pages desde branch main). Si el sitio “oficial”
-sigue en Pages, SITE_CANONICAL debe ser la URL de Pages (con o sin subpath, consistente).
+PROYECTO VERCEL (no mezclar con otros)
+---------------------------------------
+• Nombre del proyecto:  soberania-editorial
+• URL de producción:    https://soberania-editorial.vercel.app
+• Nunca enlaces esta carpeta a un proyecto distinto (ej. "sitio-web")
+  o deployás a otra URL y parece que "no subió" nada.
 
 
-PASO B — La app del panel (Vercel) — ya la tenés o la creás gratis
-------------------------------------------------------------------
-1) El proyecto Next está en v0-editorial-control-station.
-2) En vercel.com (cuenta gratis): Add New → Project → importás el repo.
-3) Vercel te da un link tipo: https://algo.vercel.app
-4) Ese link lo pegás en sitio-web/config.js en APP_BASE.
-5) Subís config.js otra vez al repo del sitio web.
+FLUJO NORMAL (recomendado — un solo paso al terminar de editar)
+----------------------------------------------------------------
+1) Trabajás en archivos dentro de sitio-web/ (HTML, config.js, informes/, etc.)
+2) Subís al repo y listo: Vercel redeploya solo al pushear main.
 
-Formulario de contacto (simple):
-• La URL del webhook de Make va en sitio-web/config.js → MAKE_CONTACT_WEBHOOK_URL.
-• No hace falta configurar el contacto en Vercel del catálogo: el navegador envía directo a Make.
-• Si en Vercel habías cargado variables solo para el contacto, podés borrarlas; no se usan con este esquema.
+   git add -A
+   git commit -m "Describe el cambio"
+   git push origin main
+
+3) Si tocás informes en iframe, subí INFORMES_CACHE en config.js (ya documentado abajo).
 
 
-PASO C — Google (gratis) — cuando tengas la URL final del sitio web
--------------------------------------------------------------------
-1) Entrá a: https://search.google.com/search-console
-2) Agregar propiedad → Prefijo de URL → pegá la misma URL que SITE_CANONICAL.
-3) Verificá (Google te explica con una etiqueta o un archivo).
-4) Menú "Sitemaps": si tu sitio es solo HTML, Google igual rastrea por enlaces;
-   la app Next aparte tiene /sitemap.xml en Vercel.
+FLUJO DE EMERGENCIA (sin push o probá local antes)
+---------------------------------------------------
+Solo si necesitás forzar deploy desde la PC (tenés vercel login hecho una vez):
+
+   cd sitio-web
+   npm run vercel:link     (solo la primera vez en esta máquina)
+   npm run deploy
+
+O en un solo comando:    npm run deploy:fresh
 
 
-¿Qué ya está hecho en el código?
----------------------------------
-• index.html — navegación por “ventanas” (inicio, contenidos, informes, vault) + vidriera y catálogo abajo
-• informes/ — los tres HTML del informe (copiados al repo)
-• media/ — podcast .m4a (archivo grande; GitHub acepta hasta ~100 MB por archivo)
-• js/site.js — lógica del menú y reproductor
-• config.js — URLs, podcast, lista de reels con miniaturas
-• Términos: terminos.html
+QUÉ ES CADA CARPETA EN TU MÁQUINA (si tenés el monorepo grande)
+----------------------------------------------------------------
+• sitio-web/              → catálogo HTML (ESTE es el repo soberania-editorial)
+• v0-editorial-control-station/ → panel Next (otro repo / otro proyecto Vercel)
+
+El archivo central del sitio web:  sitio-web/config.js
+(SITE_CANONICAL, APP_BASE, webhook Make, INFORMES_CACHE.)
 
 
-Variables de entorno en Vercel (panel Next, desarrollo avanzado)
------------------------------------------------------------------
-Settings → Environment Variables. Para desarrollo local del panel Next, ver
-v0-editorial-control-station/.env.example (Supabase, Mercado Pago, etc.).
-El contacto del sitio estático no usa Vercel.
+PASO B — La app del panel (Next) — repo aparte
+-----------------------------------------------
+No mezclar con el deploy del sitio estático. Ver README del panel en su carpeta.
+
+
+PASO C — Google Search Console
+-------------------------------
+Cuando la URL final sea la de SITE_CANONICAL en config.js, agregá la propiedad allí.
+
+
+Variables de entorno en Vercel (panel Next, no el catálogo estático)
+--------------------------------------------------------------------
+Settings → Environment Variables del proyecto Next. El formulario de contacto del
+sitio estático no usa variables de Vercel.
+
+
+INFORMES_CACHE (iframe con texto viejo)
+---------------------------------------
+Si cambiás un HTML en informes/ y en el index seguís viendo texto viejo, subí en
+config.js el número INFORMES_CACHE (fuerza ?v=… en el iframe).
+
 
 ================================================================================
