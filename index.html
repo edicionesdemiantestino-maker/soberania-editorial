@@ -11,15 +11,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soberanía Editorial | Demián Agustín Testino — Catálogo e informes</title>
-<meta name="description" content="Soberanía Editorial, Trelew Patagonia: catálogo, informes literarios, podcast, Instagram y Soberanía Vault. Sagas Káukel, El Ente, Cubismo. Marca INPI.">
+<meta id="meta-description" name="description" content="Soberanía Editorial, Trelew Patagonia: catálogo, informes literarios, podcast, Instagram y Soberanía Vault. Sagas Káukel, El Ente, Cubismo. Marca INPI.">
 <meta name="keywords" content="Soberanía Editorial, preventa libros, Káukel, El Ente, Cubismo, Patagonia, Trelew, ebook Argentina, saga patagónica, Demián Testino">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Soberanía Editorial | Catálogo e informes">
-<meta property="og:description" content="Catálogo de obras, informes curatoriales, podcast y Soberanía Vault. Trelew, Patagonia.">
+<meta id="meta-og-title" property="og:title" content="Soberanía Editorial | Catálogo e informes">
+<meta id="meta-og-description" property="og:description" content="Catálogo de obras, informes curatoriales, podcast y Soberanía Vault. Trelew, Patagonia.">
 <meta property="og:image" content="https://i.ibb.co/WvmMFJJg/sello-editorial.jpg">
+<meta id="meta-og-url" property="og:url" content="https://soberania-editorial.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Soberanía Editorial | Catálogo e informes">
-<meta name="twitter:description" content="Obras, informes y señal editorial. Trelew, Patagonia.">
+<meta id="meta-twitter-title" name="twitter:title" content="Soberanía Editorial | Catálogo e informes">
+<meta id="meta-twitter-description" name="twitter:description" content="Obras, informes y señal editorial. Trelew, Patagonia.">
 <script src="config.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -79,9 +80,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <button type="button" data-spa-nav="contenidos" class="nav-pill px-2 py-1.5 text-slate-300">Contenidos</button>
       <a href="blog/index.html" class="nav-pill px-2 py-1.5 text-slate-300">Blog</a>
       <a id="soberania-digital-nav" href="https://soberania-digital-web.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-pill px-2.5 py-1.5 text-amber-300 border-2 border-amber-400/70 bg-amber-500/20 font-black shadow-[0_0_12px_rgba(251,191,36,0.15)]" title="Soberanía Digital — presupuestos y desarrollo web" aria-label="Soberanía Digital, desarrollo web">Digital</a>
-      <button type="button" data-spa-nav="informe-universo" class="nav-pill px-2 py-1.5 text-slate-300 hidden sm:inline">Universo</button>
-      <button type="button" data-spa-nav="informe-kaukel" class="nav-pill px-2 py-1.5 text-slate-300">Káukel</button>
-      <button type="button" data-spa-nav="informe-ente" class="nav-pill px-2 py-1.5 text-slate-300 hidden sm:inline">Ente</button>
+      <button type="button" data-spa-nav="dossiers" class="nav-pill px-2.5 py-1.5 text-sky-300 border border-sky-500/35 bg-sky-500/10 hover:bg-sky-500/15 font-black tracking-wide" title="Informes curatoriales: Universo, Káukel, Ente, Cubismo, Crónicas">Dossiers</button>
       <button type="button" data-spa-nav="vault" class="nav-pill px-2 py-1.5 text-slate-300">Vault</button>
       <button type="button" data-spa-nav="scroll-vidriera" class="nav-pill px-2 py-1.5 text-slate-300">Vidriera</button>
       <button type="button" data-spa-nav="scroll-catalogo" class="nav-pill px-2 py-1.5 text-slate-300">Libros</button>
@@ -103,7 +102,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <div class="mt-10 flex flex-wrap justify-center gap-3">
         <button type="button" data-spa-nav="contenidos" class="inline-flex items-center justify-center rounded-full bg-sky-500 text-black font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:bg-white transition">Podcast &amp; redes</button>
         <button type="button" data-spa-nav="scroll-catalogo" class="inline-flex items-center justify-center rounded-full border border-slate-600 text-slate-200 font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:border-sky-500/50 transition">Ver catálogo</button>
-        <button type="button" data-spa-nav="informe-universo" class="inline-flex items-center justify-center rounded-full border border-slate-600 text-slate-200 font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:border-sky-500/50 transition">Universo literario</button>
+        <button type="button" data-spa-nav="dossiers" class="inline-flex items-center justify-center rounded-full border border-sky-500/40 text-sky-200 font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:bg-sky-500/10 transition">Dossiers de presentación</button>
         <a href="blog/index.html" class="inline-flex items-center justify-center rounded-full border border-sky-500/35 text-sky-400 font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:bg-sky-500/10 transition">Blog · preguntas frecuentes</a>
         <a id="soberania-digital-hero-btn" href="https://soberania-digital-web.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border-2 border-amber-400/60 text-amber-400 font-black py-3 px-8 text-[10px] uppercase italic tracking-widest hover:bg-amber-500/15 transition" title="Presupuestos y desarrollo web">Soberanía Digital</a>
       </div>
@@ -112,8 +111,8 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
 
   <div id="view-contenidos" class="spa-view hidden px-4 md:px-8 py-10 md:py-14 max-w-6xl mx-auto">
     <p class="text-[10px] font-bold text-sky-500 uppercase tracking-[0.4em] italic mb-2 border-l-4 border-sky-500 pl-4">Contenidos</p>
-    <h2 class="text-3xl md:text-4xl font-black uppercase italic text-white mb-2">Audio &amp; señal visual</h2>
-    <p class="text-slate-500 text-sm italic mb-10 max-w-2xl">Podcast y accesos a publicaciones en Instagram.</p>
+    <h2 class="text-3xl md:text-4xl font-black uppercase italic text-white mb-2">Audio, vídeo &amp; señal visual</h2>
+    <p class="text-slate-500 text-sm italic mb-10 max-w-2xl">Podcast, canal de YouTube y reels en Instagram.</p>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
       <div class="rounded-3xl border border-slate-700/80 bg-slate-900/40 p-6 md:p-8 shadow-xl">
         <p id="podcast-sub" class="text-[10px] text-sky-400 font-black uppercase tracking-widest italic mb-2">Audio · podcast</p>
@@ -126,6 +125,91 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
         <a href="https://instagram.com/demiantestinoautor" target="_blank" rel="noopener" class="inline-flex mt-6 text-[10px] font-black uppercase italic tracking-widest text-pink-400 hover:text-white transition">@demiantestinoautor →</a>
       </div>
     </div>
+
+    <div class="mt-12 lg:mt-14 rounded-[28px] border border-sky-500/20 bg-gradient-to-br from-slate-900/95 via-[#0a1628]/98 to-black shadow-[0_0_0_1px_rgba(56,189,248,0.06)] overflow-hidden">
+      <div class="px-px pt-px bg-gradient-to-r from-red-600/40 via-sky-500/25 to-transparent">
+        <div class="rounded-[27px] bg-[#05070a]/98 px-5 py-6 md:px-8 md:py-8">
+      <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
+        <div>
+          <p class="text-[10px] text-red-400 font-black uppercase tracking-widest italic mb-2">YouTube · canal oficial</p>
+          <h3 class="text-xl md:text-2xl font-black italic text-white tracking-tight">Ediciones Demián Testino</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 max-w-xl leading-relaxed">Última subida embebida; lista con métricas al costado. Suscripción y comentarios en vivo en YouTube.</p>
+        </div>
+        <a id="youtube-channel-link" href="https://www.youtube.com/@edicionesdemiantestino" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-red-600 hover:bg-red-500 text-white font-black py-2.5 px-5 text-[10px] uppercase italic tracking-widest shadow-lg transition shrink-0">Abrir canal →</a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        <div>
+          <p class="text-[10px] text-sky-500 font-black uppercase tracking-widest italic mb-2">Reproductor</p>
+          <div class="relative rounded-2xl overflow-hidden border border-white/12 shadow-2xl bg-black aspect-video ring-1 ring-sky-500/10">
+            <div id="youtube-player-loading" class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-slate-900 to-black text-center px-4">
+              <span class="text-[11px] text-slate-500 italic">Cargando último video…</span>
+            </div>
+            <iframe id="youtube-main-embed" title="Último video del canal" class="relative z-[11] w-full h-full border-0 bg-black" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <p id="youtube-featured-label" class="mt-3 text-[11px] text-sky-400/90 italic min-h-[1.25rem]"></p>
+          <a id="youtube-all-videos-link" href="https://www.youtube.com/@edicionesdemiantestino/videos" target="_blank" rel="noopener noreferrer" class="inline-flex mt-3 text-[10px] font-black uppercase italic tracking-widest text-slate-500 hover:text-sky-400 transition">Todas las subidas en YouTube →</a>
+        </div>
+        <div class="min-h-0 flex flex-col">
+          <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic mb-3">Últimos cargados · feed editorial</p>
+          <ul id="youtube-latest-inner" class="space-y-3 min-h-[120px] max-h-[min(70vh,560px)] overflow-y-auto overscroll-contain pr-1 [scrollbar-width:thin] [scrollbar-color:rgba(56,189,248,0.35)_transparent]" aria-live="polite">
+            <li class="text-[13px] text-slate-500 italic">Cargando lista…</li>
+          </ul>
+          <p id="youtube-metrics-source-note" class="text-[10px] text-slate-600 italic mt-3 leading-relaxed"></p>
+          <p class="text-[11px] text-slate-600 italic mt-6 leading-relaxed border-t border-white/5 pt-4">Los <strong class="text-slate-400">comentarios completos</strong> y la conversación en tiempo real siguen en cada video en YouTube; con API activa mostramos un extracto público y métricas aproximadas.</p>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-dossiers" class="spa-view hidden px-4 md:px-8 py-10 md:py-14 max-w-6xl mx-auto border-b border-white/5">
+    <p class="text-[10px] font-bold text-sky-500 uppercase tracking-[0.4em] italic mb-2 border-l-4 border-sky-500 pl-4">Presentación editorial</p>
+    <h2 class="text-3xl md:text-4xl font-black uppercase italic text-white mb-2">Dossiers</h2>
+    <p class="text-slate-500 text-sm italic mb-10 max-w-2xl leading-relaxed">Informes curatoriales en lectura larga: un solo lugar para Universo literario, sagas Káukel y El Ente, Cubismo y Crónicas del Viento.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+      <button type="button" data-spa-nav="informe-universo" class="group text-left rounded-2xl border border-slate-700/80 bg-slate-900/60 p-5 hover:border-sky-500/45 hover:bg-slate-900 transition flex gap-4 items-start">
+        <img src="https://i.ibb.co/m5jjt92d/Gemini-Generated-Image-7pko2k7pko2k7pko.png" alt="" width="80" height="112" class="w-20 h-28 object-cover rounded-xl border border-white/10 shrink-0 shadow-lg group-hover:scale-[1.02] transition">
+        <div class="min-w-0 pt-0.5">
+          <p class="text-[9px] text-sky-500 font-black uppercase tracking-[0.2em] italic mb-1">Panorama</p>
+          <h3 class="text-lg font-black italic text-white leading-snug">Universo literario</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 leading-relaxed">Líneas de obra, territorio y lectura profesional.</p>
+        </div>
+      </button>
+      <button type="button" data-spa-nav="informe-kaukel" class="group text-left rounded-2xl border border-slate-700/80 bg-slate-900/60 p-5 hover:border-orange-500/40 hover:bg-slate-900 transition flex gap-4 items-start">
+        <img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" alt="" width="80" height="112" class="w-20 h-28 object-cover rounded-xl border border-white/10 shrink-0 shadow-lg group-hover:scale-[1.02] transition">
+        <div class="min-w-0 pt-0.5">
+          <p class="text-[9px] text-orange-400 font-black uppercase tracking-[0.2em] italic mb-1">Trilogía</p>
+          <h3 class="text-lg font-black italic text-white leading-snug">Saga Káukel</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 leading-relaxed">Identidad patagónica · informe curatorial.</p>
+        </div>
+      </button>
+      <button type="button" data-spa-nav="informe-ente" class="group text-left rounded-2xl border border-slate-700/80 bg-slate-900/60 p-5 hover:border-sky-500/45 hover:bg-slate-900 transition flex gap-4 items-start">
+        <img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" alt="" width="80" height="112" class="w-20 h-28 object-cover rounded-xl border border-white/10 shrink-0 shadow-lg group-hover:scale-[1.02] transition">
+        <div class="min-w-0 pt-0.5">
+          <p class="text-[9px] text-sky-500 font-black uppercase tracking-[0.2em] italic mb-1">Trilogía</p>
+          <h3 class="text-lg font-black italic text-white leading-snug">El Ente · Frecuencia Cero</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 leading-relaxed">Autopsia del poder y la narrativa institucional.</p>
+        </div>
+      </button>
+      <button type="button" data-spa-nav="informe-cubismo" class="group text-left rounded-2xl border border-slate-700/80 bg-slate-900/60 p-5 hover:border-amber-500/35 hover:bg-slate-900 transition flex gap-4 items-start">
+        <img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" alt="" width="80" height="112" class="w-20 h-28 object-cover rounded-xl border border-white/10 shrink-0 shadow-lg group-hover:scale-[1.02] transition">
+        <div class="min-w-0 pt-0.5">
+          <p class="text-[9px] text-amber-400 font-black uppercase tracking-[0.2em] italic mb-1">Exilio latinoamericano</p>
+          <h3 class="text-lg font-black italic text-white leading-snug">Cubismo</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 leading-relaxed">Dossier de presentación · saga registrada.</p>
+        </div>
+      </button>
+      <button type="button" data-spa-nav="informe-cronicas" class="group text-left rounded-2xl border border-slate-700/80 bg-slate-900/60 p-5 hover:border-sky-500/45 hover:bg-slate-900 transition flex gap-4 items-start sm:col-span-2">
+        <img src="https://i.ibb.co/DH22FjNY/Tapa-conv-0.png" alt="" width="80" height="112" class="w-20 h-28 object-cover rounded-xl border border-white/10 shrink-0 shadow-lg group-hover:scale-[1.02] transition">
+        <div class="min-w-0 pt-0.5">
+          <p class="text-[9px] text-sky-500 font-black uppercase tracking-[0.2em] italic mb-1">Ciclo I</p>
+          <h3 class="text-lg font-black italic text-white leading-snug">Crónicas del Viento</h3>
+          <p class="text-[13px] text-slate-500 italic mt-2 leading-relaxed">Patagonia · presentación editorial extendida.</p>
+        </div>
+      </button>
+    </div>
+    <p class="text-[11px] text-slate-600 italic mt-10 text-center">Los mismos dossiers se abren desde cada tarjeta del catálogo inferior cuando hay informe completo.</p>
   </div>
 
   <div id="view-informe-universo" class="spa-view hidden p-3 md:p-6 bg-[#05070a]">
@@ -141,6 +225,16 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <div id="view-informe-ente" class="spa-view hidden p-3 md:p-6 bg-[#05070a]">
     <div class="max-w-[1200px] mx-auto rounded-2xl overflow-hidden border border-slate-800 shadow-2xl h-[min(88vh,920px)]">
       <iframe id="iframe-ente" title="Informe trilogía El Ente" class="w-full h-full border-0 bg-black" loading="lazy"></iframe>
+    </div>
+  </div>
+  <div id="view-informe-cubismo" class="spa-view hidden p-3 md:p-6 bg-[#05070a]">
+    <div class="max-w-[1200px] mx-auto rounded-2xl overflow-hidden border border-slate-800 shadow-2xl h-[min(88vh,920px)]">
+      <iframe id="iframe-cubismo" title="Dossier Cubismo · Soberanía Editorial" class="w-full h-full border-0 bg-black" loading="lazy"></iframe>
+    </div>
+  </div>
+  <div id="view-informe-cronicas" class="spa-view hidden p-3 md:p-6 bg-[#05070a]">
+    <div class="max-w-[1200px] mx-auto rounded-2xl overflow-hidden border border-slate-800 shadow-2xl h-[min(88vh,920px)]">
+      <iframe id="iframe-cronicas" title="Dossier Crónicas del Viento · Soberanía Editorial" class="w-full h-full border-0 bg-black" loading="lazy"></iframe>
     </div>
   </div>
 
@@ -176,7 +270,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <div class="flex-1">
       <p class="text-[10px] font-bold text-sky-500 uppercase tracking-[0.4em] italic mb-3">Vidriera editorial</p>
       <h3 class="text-3xl md:text-4xl font-black uppercase italic text-white mb-4 leading-tight">Ficción, ensayo y <span class="text-sky-400">territorio</span></h3>
-      <p class="text-slate-400 text-sm italic leading-relaxed mb-6">Sagas registradas, distribución global y lectura profesional desde Trelew. Explorá el catálogo completo y los informes curatoriales desde el menú superior.</p>
+      <p class="text-slate-400 text-sm italic leading-relaxed mb-6">Sagas registradas, distribución global y lectura profesional desde Trelew. Explorá los <strong class="text-sky-400 font-bold">Dossiers</strong> en el menú superior y el catálogo completo más abajo.</p>
       <button type="button" data-spa-nav="scroll-catalogo" class="inline-flex rounded-full border border-sky-500/40 text-sky-400 font-black py-2.5 px-6 text-[10px] uppercase italic tracking-widest hover:bg-sky-500/10 transition">Ir a libros a disposición →</button>
     </div>
     <div class="mt-10 md:mt-0 flex justify-center md:justify-end shrink-0">
@@ -192,7 +286,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl"><img src="https://i.ibb.co/zWxrHGjS/Copilot-20260323-172254.jpg" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy"></div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white">Cubismo</h4>
-      <button onclick="openModal('modal-cubismo')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
+      <button type="button" data-spa-nav="informe-cubismo" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir dossier de presentación</button>
       <a href="https://drive.google.com/file/d/14vROZTjQ-PEyimXXQgq5IHNhBYK1W3N_/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
         <a href="https://a.co/d/093TUwgN" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
@@ -220,7 +314,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl"><img src="https://i.ibb.co/mCnzrcpT/tapa-amazon-kaukel-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy"></div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-none">Saga Káukel</h4>
-      <button onclick="openModal('modal-kaukel')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
+      <button type="button" data-spa-nav="informe-kaukel" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir dossier de presentación</button>
       <a href="https://drive.google.com/file/d/1V54FvU_ahOVF8yzNpnMn-KaSeXDJz4GQ/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
         <a href="https://a.co/d/0j8FPUNq" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
@@ -233,7 +327,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
       <span class="absolute top-6 right-6 bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase italic z-10 shadow-xl">Físico 11/04</span>
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl"><img src="https://i.ibb.co/1GHNGwb1/Saga-El-Ente-de-la-Frecuencia-Cero-Demi-n-A-Testino-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy"></div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">El Ente</h4>
-      <button onclick="openModal('modal-ente')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
+      <button type="button" data-spa-nav="informe-ente" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir dossier de presentación</button>
       <a href="https://drive.google.com/file/d/1aegUtPXOiUPlpdxRsKH6oq-MJ2V2nDYv/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto">
         <a href="https://a.co/d/0eAXztWV" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-3 rounded-xl uppercase italic shadow-lg">Amazon Global</a>
@@ -245,7 +339,7 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
     <div class="bg-card border border-iron p-8 rounded-[40px] flex flex-col shadow-2xl transition hover:border-sky-500/40 group">
       <div class="overflow-hidden rounded-3xl mb-6 shadow-2xl"><img src="https://i.ibb.co/DH22FjNY/Tapa-conv-0.png" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" loading="lazy"></div>
       <h4 class="text-2xl font-black uppercase mb-1 italic text-white leading-tight">Crónicas del Viento</h4>
-      <button onclick="openModal('modal-cronicas')" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir Dossier Técnico</button>
+      <button type="button" data-spa-nav="informe-cronicas" class="text-[10px] uppercase tracking-widest font-black text-sky-400 mb-4 hover:text-white transition text-left italic">→ Abrir dossier de presentación</button>
       <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing" target="_blank" class="btn-preview mb-6 self-start"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Sintonizar Primer Capítulo</a>
       <div class="space-y-3 mt-auto"><a href="https://a.co/d/0d8TRlga" target="_blank" class="block w-full text-center btn-amazon text-white text-[11px] font-black py-4 rounded-xl uppercase italic shadow-lg">Amazon Global</a></div>
     </div>
@@ -383,17 +477,9 @@ input:focus,textarea:focus,select:focus { border-color: #38bdf8 !important; outl
   <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<div id="modal-cubismo" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cubismo')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><span class="text-[10px] text-sky-500 font-black uppercase mb-6 block italic tracking-[0.3em]">Sinopsis</span><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Cubismo</h5><p class="text-slate-300 text-base italic leading-relaxed">Mapa de señales recuperadas del "ruido blanco" del olvido.</p></div><div class="kindle-page"><ul class="space-y-6 text-sm italic text-slate-300"><li>• <span class="text-white font-bold">La Estática del Despegue:</span> La burocracia del silencio forzado.</li><li>• <span class="text-white font-bold">La Química del Olvido:</span> La destrucción de la identidad física.</li><li>• <span class="text-white font-bold">Frecuencias de Resistencia:</span> El arte como conductor soberano.</li></ul></div><div class="kindle-page flex flex-col justify-center"><p>ISBN: <span class="text-white italic">978-631-01-4407-8</span></p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"A los que descubrieron que al meter su vida en una maleta de veinte kilos, el alma pesaba mucho más."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
-
 <div id="modal-patria" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-patria')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Patria Grande</h5><p class="text-slate-300 text-base italic leading-relaxed">Nace de la urgencia de nombrar al "Ente": maquinaria de despojo que ha evolucionado desde el galeón al algoritmo.</p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Usted deja de ser un usuario para convertirse en un Telegrafista de la Patria Grande."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
 
 <div id="modal-sintonia" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-sintonia')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Sintonía Soberana</h5><p class="text-slate-300 text-base italic leading-relaxed">La crónica de una Revelación.</p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Cada dato técnico aquí vertido es un proyectil."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
-
-<div id="modal-kaukel" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-kaukel')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-orange-500 pb-2 text-white">Saga Káukel</h5><p class="text-slate-300 text-base italic leading-relaxed">Epopeya de restitución narrativa patagónica.</p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-orange-500 pl-8">"La estepa no está dormida; está esperando que el primer grito de justicia rompa el hielo."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
-
-<div id="modal-ente" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-ente')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">El Ente de Frecuencia Cero</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del poder y la maquinaria de la mentira institucionalizada en Argentina.</p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"La historia oficial no es más que una mentira acordada."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
-
-<div id="modal-cronicas" class="modal"><div class="bg-slate-900 border border-slate-800 p-10 rounded-[50px] max-w-2xl w-full relative shadow-2xl text-left italic"><button onclick="closeModal('modal-cronicas')" class="absolute top-6 right-8 text-slate-500 hover:text-white text-4xl z-50 transition">✕</button><div class="kindle-slider"><div class="kindle-page"><h5 class="text-3xl font-black uppercase italic mb-6 border-b border-sky-500 pb-2 text-white">Crónicas del Viento</h5><p class="text-slate-300 text-base italic leading-relaxed">Autopsia del presente narrada desde el polvillo de la ruta.</p></div><div class="kindle-page flex flex-col justify-center"><p class="text-xl font-black text-white italic border-l-8 border-sky-500 pl-8">"Lo que tenés en tus manos no es un libro de paisajes."</p></div></div><p class="text-[9px] text-slate-600 text-center mt-4 italic">← Deslizá →</p></div></div>
 
 <script src="js/site.js" defer></script>
 </body>

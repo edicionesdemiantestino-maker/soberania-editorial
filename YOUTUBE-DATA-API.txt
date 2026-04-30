@@ -1,0 +1,57 @@
+================================================================================
+  YouTube Data API v3 en este proyecto (sitio-web / Vercel)
+================================================================================
+
+Qué resuelve
+------------
+Con una API key de servidor (variable `YOUTUBE_API_KEY` en Vercel, NUNCA en el
+cliente ni en Git) el endpoint `/api/youtube-feed` puede usar:
+
+  • playlistItems (lista de subidas del canal)
+  • videos (snippet + statistics → vistas, me gusta, total comentarios)
+  • commentThreads (extractos públicos de comentarios en los últimos N videos)
+
+Sin API key se usa solo el RSS público de YouTube (vistas del RSS y sin métricas
+ni hilos de comentarios enriquecidos).
+
+¿OAuth?
+--------
+Para datos públicos de un canal **no hace falta OAuth**. OAuth entra cuando
+necesitás actuar como el usuario (subir videos, datos privados, moderación con
+cuenta concreta). Para métricas y comentarios públicos basta API key + límites
+de cuota.
+
+Pasos en Google Cloud Console (resumen)
+----------------------------------------
+1. Crear proyecto o usar uno existente.
+2. Habilitar **YouTube Data API v3**.
+3. Credenciales → Crear **Clave de API**.
+4. Restringir la clave (recomendado):
+   - Restricción de API: solo YouTube Data API v3.
+   - Opcional: restricción HTTP referrer si exponés dominios públicos (ojo que
+     las llamadas las hace el servidor en Vercel, no el navegador; para server-
+     side suele usarse restricción por IP de salida de Vercel o solo restricción
+     de API).
+5. En Vercel → proyecto `soberania-editorial` → Settings → Environment
+   Variables → Production:
+      YOUTUBE_API_KEY = (tu clave)
+
+Opcional:
+   YOUTUBE_COMMENT_PREVIEW_VIDEOS = 2   (por defecto 2). Cuántos videos reciben
+   llamada extra de commentThreads (consume más cuota).
+
+Cuotas (orden de magnitud)
+---------------------------
+Google asigna unidades por día por proyecto; cada método tiene costo distinto.
+Este backend está pensado para **cache HTTP agresivo** en `/api/youtube-feed`
+para no golpear la cuota en cada visita.
+
+Si ves errores 403 quotaExceeded en logs de Vercel: revisá billing/cuota del
+proyecto en Cloud Console o reducí `YOUTUBE_COMMENT_PREVIEW_VIDEOS` a 0.
+
+Frontend
+--------
+Los meta tags de Contenidos (título / OG / Twitter) se aplican al entrar en la
+vista SPA «contenidos» (`site.js → applyRouteMeta`).
+
+================================================================================

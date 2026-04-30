@@ -1,0 +1,55 @@
+================================================================================
+  Cursor: SDK, Cloud Agents API y diseño independiente de Composer/premium
+================================================================================
+
+Estado al día de hoy (consultar siempre docs oficiales en cursor.com/docs):
+
+1) Cloud Agents API (HTTP)
+   - Permite crear agentes en la nube, lanzar runs y leer estado/stream vía API.
+   - Autenticación con API key desde el dashboard de Cursor (Integraciones /
+     service account según política vigente).
+   - Es la superficie estable para CI/CD y automatizaciones si Cursor lo expone
+     en tu cuenta.
+
+2) SDK npm (@cursor/* según paquete publicado)
+   - Public announcements mencionan SDK para agentes; puede estar en beta o
+     privado alpha en algunos paquetes — verificar en npm y licencia antes de
+     comprometer producción.
+   - Suele requerir CURSOR_API_KEY (o equivalente) para ejecución cloud.
+
+3) Independencia de “Composer 2” o planes premium del IDE
+   - Las llamadas programáticas dependen de los TÉRMINOS y FACTURACIÓN de Cursor
+     para API/agentes, no del modelo exacto del IDE.
+   - NO asumir que es gratuito para siempre: tratar la API como proveedor
+     externo con coste/cuotas posibles.
+
+4) Diseño modular recomendado (portable)
+   - Una sola capa delgada en tu repo, por ejemplo:
+       tools/cursor-agent/run-on-ci.mjs
+     que solo:
+       - lee process.env.CURSOR_API_KEY
+       - llama al endpoint documentado (fetch) o al SDK oficial
+       - sale con código ≠ 0 si falla (para GitHub Actions).
+   - Los pipelines (GitHub Actions / otro CI) invocan ese script; la lógica de
+     negocio (tests, build, deploy a Vercel) sigue siendo estándar y sigue
+     funcionando SIN Cursor si mañana desactivás la API.
+
+5) Secretos
+   - CURSOR_API_KEY solo en secrets del CI (GitHub Encrypted secrets / Vercel
+     env si aplica). Nunca en código ni en .env commiteado.
+
+6) Plan B sin Cursor API
+   - Mantener siempre jobs obligatorios: npm ci, lint, test, build, deploy.
+   - Cursor API como capa OPCIONAL: p. ej. “si existe CURSOR_API_KEY, lanzar
+     agente de revisión post-build”; si no existe, el pipeline igual publica.
+
+7) Referencias
+   - Background / Cloud Agents API: cursor.com/docs (Background Agent API).
+   - Verificar paquetes npm oficiales antes de fijar versión en package.json.
+
+Conclusión: integrar el SDK/API tiene sentido si aceptás dependencia de Cursor
+como proveedor de agentes y sus condiciones comerciales; la parte “segura a
+futuro” es aislar esa dependencia en un solo módulo y no acoplarla a Supabase
+ni a Vercel más allá de variables de entorno.
+
+================================================================================

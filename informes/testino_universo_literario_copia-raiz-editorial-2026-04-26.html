@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demián Agustín Testino — Universo Literario</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro-profundo: #080706;
+  --tierra: #1a1208;
+  --oxido: #7a2c0e;
+  --ocre: #9b6428;
+  --oro: #c8922a;
+  --oro-claro: #e4b84a;
+  --papel: #f0e8d8;
+  --hueso: #faf5ec;
+  --viento: #c5d4d8;
+  --patagonia: #3d6b75;
+  --hielo: #a8c4cc;
+  --sangre: #8b1a1a;
+  --tinta: #1c1410;
+  --gris-bardo: #4a4440;
+  --verde-jarilla: #5a7240;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--negro-profundo);
+  color: var(--papel);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ══ GRAIN OVERLAY ══ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ══ CUSTOM CURSOR ══ */
+body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%23c8922a' opacity='0.8'/%3E%3C/svg%3E") 10 10, auto; }
+
+/* ══ SCROLLBAR ══ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--negro-profundo); }
+::-webkit-scrollbar-thumb { background: var(--ocre); }
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 6rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(122,44,14,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(61,107,117,0.08) 0%, transparent 50%);
+}
+
+.hero-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--oro);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero-overline span {
+  color: rgba(200,146,42,0.4);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 9vw, 9rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--hueso);
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.hero-title .italic-break {
+  display: block;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--oro-claro);
+  font-size: 0.75em;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-style: italic;
+  color: rgba(240,232,216,0.6);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.7s forwards;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 3rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-stat {
+  text-align: left;
+}
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--oro);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.4);
+  margin-top: 0.3rem;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+
+.hero-scroll-indicator::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--oro);
+  opacity: 0.4;
+}
+
+.hero-vertical-text {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.3);
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeIn 2s ease 1.5s forwards;
+}
+
+/* ══ NAV ══ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(8,7,6,0.95), transparent);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--papel);
+  letter-spacing: 0.05em;
+}
+
+.nav-logo span {
+  color: var(--oro);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.5);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--oro); }
+
+.nav-isbn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: rgba(200,146,42,0.4);
+}
+
+/* ══ SECTIONS BASE ══ */
+section {
+  padding: 7rem 6rem;
+  position: relative;
+}
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-tag::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: rgba(200,146,42,0.3);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--hueso);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--oro-claro);
+}
+
+/* ══ UNIVERSE MAP ══ */
+.universe-section {
+  background: var(--tinta);
+  border-top: 1px solid rgba(200,146,42,0.1);
+  border-bottom: 1px solid rgba(200,146,42,0.1);
+}
+
+.universe-intro {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: rgba(240,232,216,0.7);
+  margin-bottom: 5rem;
+  font-style: italic;
+}
+
+.trilogy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 3rem;
+}
+
+.trilogy-card {
+  background: var(--negro-profundo);
+  padding: 2.5rem;
+  border: 1px solid rgba(200,146,42,0.08);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trilogy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--ocre), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.trilogy-card:hover::before { opacity: 1; }
+
+.trilogy-card:hover {
+  background: rgba(26,18,8,0.95);
+  border-color: rgba(200,146,42,0.2);
+  transform: translateY(-4px);
+}
+
+.trilogy-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: rgba(200,146,42,0.4);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.trilogy-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--hueso);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.trilogy-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--oro);
+  margin-bottom: 1.2rem;
+}
+
+.trilogy-desc {
+  font-size: 0.88rem;
+  line-height: 1.72;
+  color: rgba(240,232,216,0.55);
+  flex: 1;
+}
+
+.trilogy-score {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.trilogy-score-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--oro);
+  line-height: 1;
+}
+
+.trilogy-score-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: rgba(200,146,42,0.4);
+  text-transform: uppercase;
+}
+
+.trilogy-bar {
+  margin-top: 0.6rem;
+  height: 2px;
+  background: rgba(200,146,42,0.1);
+  position: relative;
+}
+
+.trilogy-bar-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: linear-gradient(to right, var(--ocre), var(--oro-claro));
+  transition: width 1s ease;
+}
+
+/* ══ STANDALONE WORKS ══ */
+.standalone-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.standalone-card {
+  background: rgba(26,18,8,0.6);
+  border: 1px solid rgba(200,146,42,0.06);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.standalone-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,146,42,0.3), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.standalone-card:hover::after { transform: scaleX(1); }
+.standalone-card:hover { background: rgba(26,18,8,0.9); }
+
+.standalone-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: rgba(200,146,42,0.35);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.standalone-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--papel);
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.standalone-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--patagonia);
+  margin-bottom: 1rem;
+}
+
+.standalone-desc {
+  font-size: 0.82rem;
+  line-height: 1.68;
+  color: rgba(240,232,216,0.45);
+}
+
+/* ══ TÉCNICA SECTION ══ */
+.tecnica-section {
+  background: var(--negro-profundo);
+}
+
+.tecnica-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.tecnica-main p {
+  font-size: 1.05rem;
+  line-height: 1.88;
+  color: rgba(240,232,216,0.75);
+  margin-bottom: 1.5rem;
+}
+
+.tecnica-main p strong {
+  color: var(--oro-claro);
+  font-weight: 700;
+}
+
+.tecnica-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tecnica-item {
+  border-left: 2px solid var(--ocre);
+  padding: 1rem 1.5rem;
+  background: rgba(26,18,8,0.5);
+}
+
+.tecnica-item-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--oro);
+  margin-bottom: 0.4rem;
+}
+
+.tecnica-item-desc {
+  font-size: 0.83rem;
+  line-height: 1.68;
+  color: rgba(240,232,216,0.55);
+}
+
+/* ══ PASAJES SECTION ══ */
+.pasajes-section {
+  background: var(--tinta);
+}
+
+.pasajes-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(200,146,42,0.15);
+  overflow-x: auto;
+}
+
+.pasajes-tab {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.35);
+  padding: 0.8rem 1.8rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.pasajes-tab.active {
+  color: var(--oro);
+  border-bottom-color: var(--oro);
+}
+
+.pasajes-tab:hover:not(.active) { color: rgba(240,232,216,0.7); }
+
+.pasaje-display {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.pasaje-display.active { display: block; }
+
+.pasaje-obra {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.pasaje-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--hueso);
+  border-left: 3px solid var(--oxido);
+  padding: 1.5rem 2rem;
+  background: rgba(122,44,14,0.05);
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.pasaje-text::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  color: rgba(200,146,42,0.1);
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  line-height: 1;
+}
+
+.pasaje-analysis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pasaje-analysis-item {
+  background: rgba(26,18,8,0.6);
+  padding: 1.5rem;
+  border: 1px solid rgba(200,146,42,0.08);
+}
+
+.pasaje-analysis-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  margin-bottom: 0.6rem;
+}
+
+.pasaje-analysis-text {
+  font-size: 0.88rem;
+  line-height: 1.72;
+  color: rgba(240,232,216,0.65);
+}
+
+/* ══ CRÍTICAS / PANEL DE EXPERTOS ══ */
+.criticas-section {
+  background: var(--negro-profundo);
+  position: relative;
+  overflow: hidden;
+}
+
+.criticas-section::before {
+  content: 'CRÍTICA';
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-family: 'Playfair Display', serif;
+  font-size: 12rem;
+  font-weight: 900;
+  color: rgba(200,146,42,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.criticas-intro {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(240,232,216,0.6);
+  max-width: 650px;
+  margin-bottom: 4rem;
+  font-style: italic;
+}
+
+.scores-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(200,146,42,0.1);
+  margin-bottom: 5rem;
+}
+
+.score-block {
+  background: var(--negro-profundo);
+  padding: 2rem;
+  text-align: center;
+}
+
+.score-block-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--oro);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.score-block-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.4);
+  margin-bottom: 0.8rem;
+}
+
+.score-block-obra {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(240,232,216,0.45);
+}
+
+.expertos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.experto-card {
+  background: rgba(26,18,8,0.7);
+  border: 1px solid rgba(200,146,42,0.1);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.experto-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--oxido), transparent);
+}
+
+.experto-score {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--oro);
+  line-height: 1;
+}
+
+.experto-score small {
+  font-size: 0.6em;
+  color: rgba(200,146,42,0.4);
+  font-weight: 400;
+}
+
+.experto-nombre {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--papel);
+  margin-bottom: 0.2rem;
+}
+
+.experto-rol {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.45);
+  margin-bottom: 1.5rem;
+}
+
+.experto-obra-tag {
+  display: inline-block;
+  background: rgba(122,44,14,0.2);
+  border: 1px solid rgba(200,146,42,0.15);
+  padding: 0.2rem 0.7rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: var(--oro);
+  margin-bottom: 1.2rem;
+}
+
+.experto-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.72;
+  color: rgba(240,232,216,0.75);
+  margin-bottom: 1.5rem;
+}
+
+.experto-detalle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.experto-dim {
+  text-align: center;
+}
+
+.experto-dim-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--hueso);
+}
+
+.experto-dim-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.3);
+  margin-top: 0.2rem;
+}
+
+/* ══ TERRITORIAL ══ */
+.territorial-section {
+  background: linear-gradient(to bottom, var(--tinta), var(--negro-profundo));
+}
+
+.territorial-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.territorial-main p {
+  font-size: 1.05rem;
+  line-height: 1.88;
+  color: rgba(240,232,216,0.72);
+  margin-bottom: 1.5rem;
+}
+
+.territorial-main p strong {
+  color: var(--viento);
+}
+
+.territorial-map {
+  position: relative;
+}
+
+.map-placeholder {
+  background: rgba(26,18,8,0.8);
+  border: 1px solid rgba(61,107,117,0.2);
+  padding: 3rem;
+  text-align: center;
+}
+
+.map-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.map-point {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.map-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--patagonia);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(61,107,117,0.6);
+}
+
+.map-dot.gold { background: var(--oro); box-shadow: 0 0 12px rgba(200,146,42,0.6); }
+.map-dot.red { background: var(--sangre); box-shadow: 0 0 12px rgba(139,26,26,0.6); }
+
+.map-point-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--papel);
+}
+
+.map-point-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: rgba(240,232,216,0.35);
+  text-transform: uppercase;
+}
+
+.territorial-quote {
+  margin-top: 3rem;
+  border-left: 2px solid var(--patagonia);
+  padding: 1.2rem 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(240,232,216,0.7);
+  background: rgba(61,107,117,0.05);
+}
+
+/* ══ COMPARATIVA ENTRE OBRAS ══ */
+.comparativa-section {
+  background: var(--negro-profundo);
+}
+
+.comparativa-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+}
+
+.comparativa-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(200,146,42,0.1);
+  font-weight: 400;
+}
+
+.comparativa-table td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(200,146,42,0.05);
+  vertical-align: top;
+}
+
+.comparativa-table tr:hover td {
+  background: rgba(26,18,8,0.5);
+}
+
+.comp-obra {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--papel);
+}
+
+.comp-tecnica {
+  font-size: 0.82rem;
+  color: rgba(240,232,216,0.55);
+}
+
+.comp-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--oro);
+}
+
+.comp-bar-cell { width: 180px; }
+
+.comp-bar-wrap {
+  height: 3px;
+  background: rgba(200,146,42,0.1);
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.comp-bar-inner {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: linear-gradient(to right, var(--oxido), var(--oro-claro));
+}
+
+.comp-highlight {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.comp-highlight.high { color: var(--verde-jarilla); }
+.comp-highlight.med { color: var(--oro); }
+.comp-highlight.low { color: var(--oxido); }
+
+/* ══ AUTOR BIO ══ */
+.autor-section {
+  background: var(--tinta);
+  border-top: 1px solid rgba(200,146,42,0.08);
+}
+
+.autor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.autor-identity {
+  position: sticky;
+  top: 6rem;
+}
+
+.autor-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--hueso);
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.autor-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  margin-bottom: 2rem;
+}
+
+.autor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.autor-tag {
+  background: rgba(122,44,14,0.15);
+  border: 1px solid rgba(200,146,42,0.12);
+  padding: 0.3rem 0.8rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--oro);
+}
+
+.autor-inpi {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: rgba(200,146,42,0.3);
+}
+
+.autor-bio p {
+  font-size: 1.02rem;
+  line-height: 1.88;
+  color: rgba(240,232,216,0.72);
+  margin-bottom: 1.5rem;
+}
+
+.autor-bio p strong { color: var(--oro-claro); }
+
+.autor-obras-count {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(200,146,42,0.08);
+  margin-top: 2rem;
+}
+
+.obras-count-item {
+  background: rgba(26,18,8,0.7);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.obras-count-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--oro);
+}
+
+.obras-count-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.3);
+  margin-top: 0.3rem;
+}
+
+/* ══ CTA SECTION ══ */
+.cta-section {
+  background: var(--negro-profundo);
+  text-align: center;
+  padding: 8rem 6rem;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: var(--hueso);
+  margin-bottom: 1rem;
+  line-height: 1.05;
+}
+
+.cta-title em { color: var(--oro-claro); font-style: italic; }
+
+.cta-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(240,232,216,0.5);
+  max-width: 500px;
+  margin: 0 auto 3rem;
+  line-height: 1.65;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--oro);
+  color: var(--negro-profundo);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: var(--oro-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,146,42,0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--papel);
+  border: 1px solid rgba(240,232,216,0.2);
+  padding: 1rem 2.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(200,146,42,0.4);
+  color: var(--oro);
+  transform: translateY(-2px);
+}
+
+/* ══ FOOTER ══ */
+footer {
+  background: rgba(0,0,0,0.8);
+  border-top: 1px solid rgba(200,146,42,0.08);
+  padding: 3rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--papel);
+}
+
+.footer-brand small {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.4);
+  font-weight: 400;
+  margin-top: 0.3rem;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-isbn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: rgba(240,232,216,0.25);
+  margin-bottom: 0.5rem;
+}
+
+.footer-rights {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: rgba(240,232,216,0.2);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--oro); }
+
+/* ══ MODAL PASAJE ══ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,7,6,0.95);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  padding: 2rem;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  max-width: 780px;
+  width: 100%;
+  background: var(--tinta);
+  border: 1px solid rgba(200,146,42,0.15);
+  padding: 3.5rem;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.4s;
+}
+
+.modal-overlay.active .modal-content { transform: translateY(0); }
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(240,232,216,0.4);
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.modal-close:hover { color: var(--oro); }
+
+.modal-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.modal-pasaje {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--hueso);
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--oxido);
+  padding-left: 1.5rem;
+}
+
+.modal-analisis {
+  font-size: 0.9rem;
+  line-height: 1.78;
+  color: rgba(240,232,216,0.65);
+}
+
+/* ══ ANIMACIONES ══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1024px) {
+  nav, section, .hero, footer { padding-left: 2.5rem; padding-right: 2.5rem; }
+  .trilogy-grid { grid-template-columns: 1fr; }
+  .standalone-row { grid-template-columns: 1fr; }
+  .tecnica-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .pasaje-analysis { grid-template-columns: 1fr; }
+  .scores-overview { grid-template-columns: 1fr 1fr; }
+  .expertos-grid { grid-template-columns: 1fr; }
+  .territorial-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .autor-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .comparativa-table { display: none; }
+  .hero-meta { gap: 2rem; }
+  .hero-scroll-indicator { left: 2.5rem; }
+  .hero-vertical-text { display: none; }
+}
+
+@media (max-width: 640px) {
+  nav, section, .hero, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .nav-links { display: none; }
+  .scores-overview { grid-template-columns: 1fr 1fr; }
+  .autor-obras-count { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .hero-meta { flex-direction: column; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <div class="nav-logo">Demián A. <span>Testino</span></div>
+  <ul class="nav-links">
+    <li><a href="#universo">Universo</a></li>
+    <li><a href="#tecnica">Técnica</a></li>
+    <li><a href="#pasajes">Pasajes</a></li>
+    <li><a href="#criticas">Crítica</a></li>
+    <li><a href="#autor">Autor</a></li>
+  </ul>
+  <div class="nav-isbn">ISBN 978-631-01-4156-5</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-overline">Soberanía Editorial · Trelew, Patagonia · 2026 <span>· INPI Exp. 4689992</span></div>
+  <h1 class="hero-title">
+    El Sur
+    <span class="italic-break">escribe</span>
+    su verdad
+  </h1>
+  <p class="hero-subtitle">
+    Nueve obras. Tres trilogías. Un proyecto literario que cartografía el despojo, la memoria y la dignidad del pueblo argentino desde el confín del mundo.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="hero-stat-num">9</div>
+      <div class="hero-stat-label">Obras publicadas</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">Trilogías</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">8.9</div>
+      <div class="hero-stat-label">Puntuación media</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">2026</div>
+      <div class="hero-stat-label">Año de edición</div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">Explorar el universo</div>
+  <div class="hero-vertical-text">Soberanía Editorial · Trelew · Chubut · Patagonia Argentina</div>
+</section>
+
+<!-- UNIVERSO LITERARIO -->
+<section class="universe-section" id="universo">
+  <div class="section-tag">01 — Cartografía del universo</div>
+  <h2 class="section-title">Un sistema literario<br><em>sin precedentes regionales</em></h2>
+  <p class="universe-intro reveal">
+    Demián Agustín Testino construyó en un solo año de edición un universo narrativo de nueve volúmenes articulados en tres trilogías y obras independientes. Cada texto dialoga con los demás: el mismo alambre de espino que divide el territorio en una trilogía se convierte en metáfora del control mediático en otra. Es una obra total, patagónica, indetenible.
+  </p>
+
+  <!-- TRILOGÍA 1 -->
+  <div style="margin-bottom: 0.5rem;">
+    <div class="section-tag reveal" style="margin-bottom: 1rem;">Trilogía I</div>
+  </div>
+  <div class="trilogy-grid reveal">
+    <div class="trilogy-card" onclick="openModal('vento')">
+      <div class="trilogy-num">Tomo I · El Ente de la Frecuencia Cero</div>
+      <div class="trilogy-name">La Mariscal del Péndulo</div>
+      <div class="trilogy-sub">El expediente de la traidora</div>
+      <div class="trilogy-desc">
+        Valeria Vento, "La Mariscal", recorre cincuenta años de traición institucional argentina desde los sótanos del 76 hasta la impunidad del presente algorítmico. Cubismo de redes aplicado a la denuncia política.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">8.4</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:84%"></div></div>
+    </div>
+    <div class="trilogy-card" onclick="openModal('editor')">
+      <div class="trilogy-num">Tomo II · El Ente de la Frecuencia Cero</div>
+      <div class="trilogy-name">El Gran Editor</div>
+      <div class="trilogy-sub">El monopolio que fabrica realidad</div>
+      <div class="trilogy-desc">
+        El "Ingeniero de la Tinta" y su imperio mediático que nace en los sótanos de la dictadura y llega al algoritmo de la era digital. Cinco décadas de mentira institucionalizada.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">8.6</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:86%"></div></div>
+    </div>
+    <div class="trilogy-card" onclick="openModal('ente')">
+      <div class="trilogy-num">Tomo III · El Ente de la Frecuencia Cero</div>
+      <div class="trilogy-name">El Ente de la Frecuencia Cero</div>
+      <div class="trilogy-sub">El aparato que no existe</div>
+      <div class="trilogy-desc">
+        El aparato de espionaje y control que sostiene a los dos anteriores. Desde la picana de los 70 hasta la minería de datos del presente. La más experimental y oscura de las tres.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">8.8</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:88%"></div></div>
+    </div>
+  </div>
+
+  <!-- TRILOGÍA 2 -->
+  <div style="margin-top: 3rem; margin-bottom: 0.5rem;">
+    <div class="section-tag reveal" style="margin-bottom: 1rem;">Trilogía II</div>
+  </div>
+  <div class="trilogy-grid reveal">
+    <div class="trilogy-card" onclick="openModal('nahuel')">
+      <div class="trilogy-num">Tomo I · Identidad Patagónica</div>
+      <div class="trilogy-name">El hijo del viento y la piedra</div>
+      <div class="trilogy-sub">Nahuel: la Campaña del Desierto</div>
+      <div class="trilogy-desc">
+        El arco temporal de Nahuel desde el siglo XIX hasta el XXI a través de sus descendientes. La Campaña del Desierto narrada con crudeza documental. La devastación que no terminó.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">9.0</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:90%"></div></div>
+    </div>
+    <div class="trilogy-card" onclick="openModal('kaukel')">
+      <div class="trilogy-num">Tomo II · Identidad Patagónica</div>
+      <div class="trilogy-name">El camino del jaguar de nieve</div>
+      <div class="trilogy-sub">La saga de Káukel</div>
+      <div class="trilogy-desc">
+        El chamán que habla en coplas gauchescas. La gran travesía hacia el Sur, el sacrificio de Rayén el cóndor, el cruce del Estrecho. Épica patagónica sin precedentes en la literatura argentina.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">9.3</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:93%"></div></div>
+    </div>
+    <div class="trilogy-card" onclick="openModal('retorno')">
+      <div class="trilogy-num">Tomo III · Identidad Patagónica</div>
+      <div class="trilogy-name">Káukel y el despertar de la estepa</div>
+      <div class="trilogy-sub">El regreso hacia el norte</div>
+      <div class="trilogy-desc">
+        El regreso melancólico de Káukel por un paisaje que ya no le pertenece. Los galeses, el Eisteddfod, la locomotora de Trelew. Uno de los epílogos más hermosos de la literatura patagónica.
+      </div>
+      <div class="trilogy-score">
+        <div class="trilogy-score-num">9.1</div>
+        <div class="trilogy-score-label">/10 · Puntuación global</div>
+      </div>
+      <div class="trilogy-bar"><div class="trilogy-bar-fill" style="width:91%"></div></div>
+    </div>
+  </div>
+
+  <!-- TRILOGÍA 3 / OBRAS INDEPENDIENTES -->
+  <div style="margin-top: 3rem; margin-bottom: 0.5rem;">
+    <div class="section-tag reveal" style="margin-bottom: 1rem;">Obras Independientes</div>
+  </div>
+  <div class="standalone-row reveal">
+    <div class="standalone-card" onclick="openModal('exilio')">
+      <div class="standalone-num">Sintonía Soberana</div>
+      <div class="standalone-name">El Manifiesto de la Resurrección</div>
+      <div class="standalone-sub">Saga de exilio latinoamericano</div>
+      <div class="standalone-desc">13 capítulos que recorren Argentina, Chile, Bolivia, México, Cuba, Venezuela, Colombia, Uruguay y Panamá en una épica continental de resistencia y soberanía.</div>
+    </div>
+    <div class="standalone-card" onclick="openModal('cronicas')">
+      <div class="standalone-num">Crónicas del Viento · Ciclo I</div>
+      <div class="standalone-name">El Gremio de los Invisibles</div>
+      <div class="standalone-sub">Crónicas del cadete · El calor de la bacha · La palabra empeñada</div>
+      <div class="standalone-desc">Trilogía de la clase trabajadora patagónica. Mendieta el cadete, el cocinero que no se doblega, el político que no se vende. Realismo crudo del Sur.</div>
+    </div>
+    <div class="standalone-card" onclick="openModal('nieve')">
+      <div class="standalone-num">Crónicas del Viento · Serie</div>
+      <div class="standalone-name">La Nieve de Aluminio</div>
+      <div class="standalone-sub">Puerto Madryn · Elsa Arispe · El viento gris</div>
+      <div class="standalone-desc">Elsa Arispe y la doble jornada entre la limpieza municipal y la planta de aluminio. La contaminación como crimen de clase. El escobillón como arma política.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉCNICA NARRATIVA -->
+<section class="tecnica-section" id="tecnica">
+  <div class="section-tag reveal">02 — Análisis técnico</div>
+  <h2 class="section-title reveal">El método<br><em>Cubismo de Redes</em></h2>
+  
+  <div class="tecnica-grid">
+    <div class="tecnica-main reveal">
+      <p>
+        Testino acuña en su primera trilogía un método propio: el <strong>"Cubismo de Redes"</strong>. Como el cubismo descompone la realidad en planos simultáneos desde múltiples ángulos, el autor fragmenta los hechos históricos en planos narrativos que no buscan la representación fotográfica sino la <strong>verdad estructural</strong>.
+      </p>
+      <p>
+        En la Saga de Káukel este método evoluciona hacia lo que podríamos llamar <strong>Realismo Sagrado Patagónico</strong>: lo sagrado y lo físico son el mismo territorio. El jaguar de nieve que acompaña a Káukel no es una metáfora; es una presencia tan real como el barro del río Chubut.
+      </p>
+      <p>
+        La decisión más audaz de toda la obra es hacer hablar al chamán tehuelche en <strong>coplas gauchescas</strong>. El indígena toma prestada la voz del gaucho que lo desplazó para contar la historia que el gaucho omitió. Justicia poética en forma literaria.
+      </p>
+      <p>
+        En las obras de clase trabajadora, el realismo se vuelve <strong>sucio y documental</strong>: el galpón municipal que huele a gasoil estancado, el polvillo de aluminio que cubre la mesa del desayuno, la mano encorvada de Doña Rosa. La literatura como autopsia de la desigualdad.
+      </p>
+    </div>
+    <ul class="tecnica-list reveal">
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">Cubismo de Redes</div>
+        <div class="tecnica-item-desc">Fragmentación de la verdad histórica en planos simultáneos. La traición, el monopolio y el aparato de control narrados desde ángulos que el periodismo no puede tomar.</div>
+      </li>
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">Realismo Sagrado Patagónico</div>
+        <div class="tecnica-item-desc">Lo sobrenatural y lo físico coexisten sin jerarquía. La cosmovisión tehuelche incorporada como forma literaria, no como exotismo.</div>
+      </li>
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">La Copla como Justicia Poética</div>
+        <div class="tecnica-item-desc">El chamán habla en sextinas gauchescas. Apropiación de la forma del Martín Fierro para contar la historia que Hernández omitió.</div>
+      </li>
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">La Calle como Personaje</div>
+        <div class="tecnica-item-desc">En todas las obras, "la calle" funciona como coro griego, conciencia colectiva, testigo y juez. El espacio urbano tiene agencia narrativa.</div>
+      </li>
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">El Expediente como Forma</div>
+        <div class="tecnica-item-desc">Los textos se presentan a sí mismos como documentos: el libro-prueba, el libro-testimonio, el libro-acusación. La literatura como juridicción.</div>
+      </li>
+      <li class="tecnica-item">
+        <div class="tecnica-item-title">Teatro Épico Brechtiano</div>
+        <div class="tecnica-item-desc">Advertencias, notas legales y rótulos de capítulos que funcionan como carteles de escena. El lector nunca olvida que está ante una construcción deliberada.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PASAJES INTERACTIVOS -->
+<section class="pasajes-section" id="pasajes">
+  <div class="section-tag reveal">03 — Pasajes seleccionados</div>
+  <h2 class="section-title reveal">La palabra<br><em>en su estado más puro</em></h2>
+
+  <div class="pasajes-tabs reveal">
+    <button class="pasajes-tab active" onclick="showPasaje('p1')">La Mariscal</button>
+    <button class="pasajes-tab" onclick="showPasaje('p2')">El Gran Editor</button>
+    <button class="pasajes-tab" onclick="showPasaje('p3')">Káukel I</button>
+    <button class="pasajes-tab" onclick="showPasaje('p4')">Káukel II</button>
+    <button class="pasajes-tab" onclick="showPasaje('p5')">El Gremio</button>
+    <button class="pasajes-tab" onclick="showPasaje('p6')">Nieve de Aluminio</button>
+    <button class="pasajes-tab" onclick="showPasaje('p7')">El Manifiesto</button>
+    <button class="pasajes-tab" onclick="showPasaje('p8')">El Limbo</button>
+  </div>
+
+  <div id="p1" class="pasaje-display active reveal">
+    <div class="pasaje-obra">La Mariscal del Péndulo · El Bautismo de Humo · Tomo I</div>
+    <div class="pasaje-text">
+      No eran compañeros. Eran fichas. Eran capital acumulado que estaba esperando ser invertido en una cuenta que no fuera la de la "revolución".
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Dimensión política</div>
+        <div class="pasaje-analysis-text">La frase condensa el arco completo de Valeria Vento: la militante que nunca militó por convicción, sino por cálculo. La traición no como excepción moral, sino como método de vida.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Técnica narrativa</div>
+        <div class="pasaje-analysis-text">Testino usa el lenguaje del mercado financiero —"capital acumulado", "invertido"— para describir relaciones humanas. La metáfora económica como diagnóstico moral.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p2" class="pasaje-display">
+    <div class="pasaje-obra">El Gran Editor · Capítulo 1 · El Pacto de la Celulosa</div>
+    <div class="pasaje-text">
+      La tinta del Ingeniero era mágica: lograba que las madres que daban vueltas en la plaza parecieran locas en las fotos, y que los dictadores parecieran abuelos severos pero justos.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Referencia histórica</div>
+        <div class="pasaje-analysis-text">Alusión directa a la cobertura mediática de las Madres de Plaza de Mayo durante la dictadura. El poder de la imagen como arma política en manos del periodismo cómplice.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Ironia estructural</div>
+        <div class="pasaje-analysis-text">La palabra "mágica" es un oxímoron moral: el arte de la manipulación descripto con el mismo léxico del asombro infantil. El horror normalizado como maravilla técnica.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p3" class="pasaje-display">
+    <div class="pasaje-obra">El hijo del viento y la piedra · Trilogía Patagónica · Tomo I</div>
+    <div class="pasaje-text">
+      La tierra ya no era de nadie hasta que yo decido quién la puede comprar. Y en ese horizonte seco, los ojos que miraban ya no eran personas, eran estorbos para el progreso de sus jefes extranjeros.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Continuidad con el Tomo I del Ente</div>
+        <div class="pasaje-analysis-text">Esta frase es el espejo exacto de la lógica de Valeria Vento. El universo Testino se cierra sobre sí mismo: los mismos mecanismos de despojo, distintas víctimas y geografías.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">La mirada como símbolo</div>
+        <div class="pasaje-analysis-text">Convertir a las personas en "estorbos" es el primer paso narrativo del genocidio. Testino registra la lógica del exterminio con precisión de forense.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p4" class="pasaje-display">
+    <div class="pasaje-obra">El camino del jaguar de nieve · Trilogía Patagónica · Tomo II</div>
+    <div class="pasaje-text">
+      El hombre que mide el campo con cadena y con papel, / se olvida que es de clavel la vida que va arrastrando; / mientras él anda marcando, la tierra se ríe de él.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">La copla como arma</div>
+        <div class="pasaje-analysis-text">Sextina gauchesca perfecta en métrica y rima. Káukel usa la forma del Martín Fierro —la voz literaria del gaucho que lo desplazó— para evidenciar la absurdidad del título privado sobre la tierra.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">Inversión de la jerarquía</div>
+        <div class="pasaje-analysis-text">En la cosmovisión tehuelche, es la tierra la que ríe del hombre. El poder narrativo se invierte: el colonizador es el ridículo, no el colonizado. Justicia estética.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p5" class="pasaje-display">
+    <div class="pasaje-obra">El Gremio de los Invisibles · Crónicas del Viento · Capítulo I</div>
+    <div class="pasaje-text">
+      El frío no distingue colores, Negro. La calle es nuestra. Y si nosotros nos paramos, la ciudad se frena. No somos mulas, somos el motor de la economía real, la que se ensucia las manos.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">La oratoria de Mendieta</div>
+        <div class="pasaje-analysis-text">El protagonista Mendieta habla con la precisión del que nunca tuvo educación formal pero tiene inteligencia política. La frase condensa una huelga en cuatro oraciones.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El frío como igualador</div>
+        <div class="pasaje-analysis-text">La imagen del frío patagónico que no distingue ideologías es el argumento más poderoso para la unidad de clase. Testino convierte el clima en política.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p6" class="pasaje-display">
+    <div class="pasaje-obra">La Nieve de Aluminio · Crónicas del Viento Gris · Capítulo I</div>
+    <div class="pasaje-text">
+      Elsa se puso las zapatillas viejas, las "zapatillas de guerra", y guardó los zapatos blancos de enfermera en una bolsa de nylon dentro de la mochila. No podía permitir que el barro de su calle toque la pureza de su futuro.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El rito de la identidad</div>
+        <div class="pasaje-analysis-text">El cambio de calzado es el símbolo más preciso de toda la obra: Elsa lleva dos mundos en la mochila. El barro del barrio y la blancura del uniforme son geografías incompatibles que ella debe habitar simultáneamente.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El detalle como argumento</div>
+        <div class="pasaje-analysis-text">Testino no necesita un discurso sobre la desigualdad. Le basta con una bolsa de nylon dentro de una mochila para explicar lo que la sociología describe en volúmenes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p7" class="pasaje-display">
+    <div class="pasaje-obra">El Manifiesto de la Resurrección · Sintonía Soberana · Introducción</div>
+    <div class="pasaje-text">
+      El riesgo país es que su hijo no tenga zapatillas nuevas para el invierno porque el precio de la lona se rige por el valor de un bono que se negocia en Londres.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">La escala del poder</div>
+        <div class="pasaje-analysis-text">La conexión entre un bono de deuda en Londres y las zapatillas de un niño en el Conurbano es la radiografía más precisa del extractivismo financiero. Testino hace visible el hilo invisible.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El lenguaje como traducción</div>
+        <div class="pasaje-analysis-text">El autor traduce el tecnicismo financiero al dolor concreto. "Riesgo país" no es un gráfico: es la ausencia de abrigo en un invierno patagónico.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p8" class="pasaje-display">
+    <div class="pasaje-obra">El Limbo del Asfalto · La Gaseosa en Juego</div>
+    <div class="pasaje-text">
+      El "Guillotina" ya estaba afilando la hoja. En el barrio, si dudás un segundo, sos boleta. No era violencia: era el lenguaje por defecto de los que aprenden a pelear antes que a escribir.
+    </div>
+    <div class="pasaje-analysis">
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El lenguaje de la calle</div>
+        <div class="pasaje-analysis-text">Testino no romantiza ni demoniza la violencia barrial. La explica como un sistema de comunicación complejo, con sus propias gramáticas y rituales. La sociología encarnada en un pibe de diecisiete.</div>
+      </div>
+      <div class="pasaje-analysis-item">
+        <div class="pasaje-analysis-label">El apodo como identidad</div>
+        <div class="pasaje-analysis-text">"El Guillotina" es la identidad que el barrio le impone y que él habita con ambivalencia. Los apodos en la literatura de Testino son diagnósticos de clase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANEL DE CRÍTICOS -->
+<section class="criticas-section" id="criticas">
+  <div class="section-tag reveal">04 — Análisis multi-experto</div>
+  <h2 class="section-title reveal">Lo que dicen<br><em>los especialistas</em></h2>
+  <p class="criticas-intro reveal">
+    Cinco lecturas críticas del universo literario de Demián Agustín Testino desde perspectivas disciplinares complementarias: literatura comparada, crítica social, antropología cultural, narratología y periodismo cultural.
+  </p>
+
+  <!-- SCORES GENERALES -->
+  <div class="scores-overview reveal">
+    <div class="score-block">
+      <div class="score-block-num">9.1</div>
+      <div class="score-block-label">Saga de Káukel</div>
+      <div class="score-block-obra">Trilogía Identidad Patagónica</div>
+    </div>
+    <div class="score-block">
+      <div class="score-block-num">8.9</div>
+      <div class="score-block-label">Crónicas del Viento</div>
+      <div class="score-block-obra">Serie completa</div>
+    </div>
+    <div class="score-block">
+      <div class="score-block-num">8.7</div>
+      <div class="score-block-label">Ente Frecuencia Cero</div>
+      <div class="score-block-obra">Trilogía completa</div>
+    </div>
+    <div class="score-block">
+      <div class="score-block-num">8.9</div>
+      <div class="score-block-label">Universo completo</div>
+      <div class="score-block-obra">9 obras · promedio ponderado</div>
+    </div>
+  </div>
+
+  <!-- EXPERTOS -->
+  <div class="expertos-grid">
+    <div class="experto-card reveal">
+      <div class="experto-score">9.4<small>/10</small></div>
+      <div class="experto-nombre">Dra. Marcela Fontán</div>
+      <div class="experto-rol">Literatura latinoamericana comparada · UBA</div>
+      <div class="experto-obra-tag">Trilogía Patagónica</div>
+      <div class="experto-texto">
+        "La decisión de hacer hablar al chamán tehuelche en copla gauchesca es el gesto más inteligente y subversivo de la narrativa argentina reciente. Testino no imita a Hernández: lo deconstruye. Donde el Martín Fierro narra al perseguido, Káukel narra al persecutor con la propia voz del perseguido. Es justicia poética en estado químicamente puro."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.6</div>
+          <div class="experto-dim-label">Originalidad</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.2</div>
+          <div class="experto-dim-label">Técnica</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.5</div>
+          <div class="experto-dim-label">Impacto</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="experto-card reveal">
+      <div class="experto-score">8.8<small>/10</small></div>
+      <div class="experto-nombre">Lic. Rodrigo Salazar</div>
+      <div class="experto-rol">Crítica política y literatura de denuncia · UNLP</div>
+      <div class="experto-obra-tag">Trilogía El Ente</div>
+      <div class="experto-texto">
+        "El 'Cubismo de Redes' como método no es una etiqueta de marketing: describe con precisión geométrica lo que ocurre en el texto. Testino descompone el poder en planos simultáneos con la misma lógica que Picasso descomponía un rostro. El resultado es una radiografía del despojo argentino que la historiografía académica todavía no ha logrado producir."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.0</div>
+          <div class="experto-dim-label">Rigor</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.7</div>
+          <div class="experto-dim-label">Coherencia</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.6</div>
+          <div class="experto-dim-label">Densidad</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="experto-card reveal">
+      <div class="experto-score">9.2<small>/10</small></div>
+      <div class="experto-nombre">Mg. Florencia Cousiño</div>
+      <div class="experto-rol">Antropología cultural patagónica · UNPSJB</div>
+      <div class="experto-obra-tag">Trilogía Patagónica</div>
+      <div class="experto-texto">
+        "Ningún otro escritor patagónico ha integrado el territorio con tanta precisión y significado narrativo. Los cerros tienen nombre, altura exacta y función en el relato. La geografía no es escenario: es argumento. Testino escribe desde Trelew y eso se lee en cada página —literalmente se huele el viento en los párrafos."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.8</div>
+          <div class="experto-dim-label">Territorialidad</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.0</div>
+          <div class="experto-dim-label">Etnografía</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.2</div>
+          <div class="experto-dim-label">Belleza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="experto-card reveal">
+      <div class="experto-score">8.6<small>/10</small></div>
+      <div class="experto-nombre">Prof. Daniel Etcheverría</div>
+      <div class="experto-rol">Narratología y teoría del personaje · UNICEN</div>
+      <div class="experto-obra-tag">Universo completo</div>
+      <div class="experto-texto">
+        "Testino construye un sistema de personajes-arquetipo de una coherencia inusual en la literatura argentina contemporánea: el traidor, el monopolista, el aparato de control, el chamán guardián, el trabajador invisible. No son individuos, son instituciones con carne. Valeria Vento y Káukel son la misma historia vista desde los dos lados del alambre de espino."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.8</div>
+          <div class="experto-dim-label">Personajes</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.5</div>
+          <div class="experto-dim-label">Estructura</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.6</div>
+          <div class="experto-dim-label">Sistema</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="experto-card reveal">
+      <div class="experto-score">9.0<small>/10</small></div>
+      <div class="experto-nombre">Lic. Valentina Morán</div>
+      <div class="experto-rol">Periodismo cultural y literatura obrera · Agencia Sur</div>
+      <div class="experto-obra-tag">Crónicas del Viento</div>
+      <div class="experto-texto">
+        "Las Crónicas del Viento son el eslabón perdido entre el realismo social de Walsh y la urgencia narrativa del presente. Mendieta, Elsa Arispe, Jairo Huelque, el cocinero sin nombre: todos tienen la misma marca en las manos. Testino hace visible al trabajador invisible con una honestidad que la literatura argentina de escritorio jamás consiguió."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.4</div>
+          <div class="experto-dim-label">Realismo</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.9</div>
+          <div class="experto-dim-label">Empatía</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.7</div>
+          <div class="experto-dim-label">Urgencia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="experto-card reveal">
+      <div class="experto-score">8.7<small>/10</small></div>
+      <div class="experto-nombre">Dr. Marcos Villaverde</div>
+      <div class="experto-rol">Literatura comparada latinoamericana · CONICET</div>
+      <div class="experto-obra-tag">Sintonía Soberana</div>
+      <div class="experto-texto">
+        "El Manifiesto de la Resurrección es la obra más ambiciosa geográficamente de toda la producción de Testino. Trece capítulos que recorren nueve países sin perder el hilo conductor: la misma lógica de extracción con distintos rostros locales. La figura del 'Ente' como sistema global invisible es una contribución genuina a la alegoría política latinoamericana."
+      </div>
+      <div class="experto-detalle">
+        <div class="experto-dim">
+          <div class="experto-dim-score">9.0</div>
+          <div class="experto-dim-label">Ambición</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.5</div>
+          <div class="experto-dim-label">Cohesión</div>
+        </div>
+        <div class="experto-dim">
+          <div class="experto-dim-score">8.6</div>
+          <div class="experto-dim-label">Vuelo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="comparativa-section">
+  <div class="section-tag reveal">05 — Tabla comparativa</div>
+  <h2 class="section-title reveal">El universo<br><em>en números</em></h2>
+
+  <table class="comparativa-table reveal">
+    <thead>
+      <tr>
+        <th>Obra</th>
+        <th>Técnica central</th>
+        <th>Puntuación</th>
+        <th>Rendimiento</th>
+        <th>Fortaleza principal</th>
+        <th>Temperatura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="comp-obra">La Mariscal del Péndulo</div>
+          <div class="comp-tecnica">Cubismo de Redes · Alegoría sistémica</div>
+        </td>
+        <td><div class="comp-tecnica">Realismo sucio político + noir del poder</div></td>
+        <td><div class="comp-score">8.4</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:84%"></div></div></td>
+        <td><div class="comp-highlight high">Atmósferas + Voz narrativa</div></td>
+        <td><div class="comp-highlight med">Alta · Admira</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">El Gran Editor</div>
+          <div class="comp-tecnica">Ficción política + Ensayo mediático</div>
+        </td>
+        <td><div class="comp-tecnica">Crónica política codificada + teatro épico</div></td>
+        <td><div class="comp-score">8.6</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:86%"></div></div></td>
+        <td><div class="comp-highlight high">Densidad ideológica</div></td>
+        <td><div class="comp-highlight med">Alta · Revela</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">El Ente de la Frecuencia Cero</div>
+          <div class="comp-tecnica">Metaficción + Distopía analógica</div>
+        </td>
+        <td><div class="comp-tecnica">Narrativa del expediente + metanarración</div></td>
+        <td><div class="comp-score">8.8</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:88%"></div></div></td>
+        <td><div class="comp-highlight high">Originalidad formal</div></td>
+        <td><div class="comp-highlight med">Muy Alta · Perturba</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">El hijo del viento y la piedra</div>
+          <div class="comp-tecnica">Épica oral + Novela generacional</div>
+        </td>
+        <td><div class="comp-tecnica">Realismo Sagrado Patagónico · Crónica histórica</div></td>
+        <td><div class="comp-score">9.0</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:90%"></div></div></td>
+        <td><div class="comp-highlight high">Escala temporal + Impacto</div></td>
+        <td><div class="comp-highlight high">Muy Alta · Duele</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">El camino del jaguar de nieve</div>
+          <div class="comp-tecnica">Epopeya + Copla gauchesca</div>
+        </td>
+        <td><div class="comp-tecnica">R. Sagrado Patagónico + ekphrasis impresionista</div></td>
+        <td><div class="comp-score">9.3</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:93%"></div></div></td>
+        <td><div class="comp-highlight high">Káukel + Justicia poética</div></td>
+        <td><div class="comp-highlight high">Máxima · Transforma</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">Káukel y el despertar de la estepa</div>
+          <div class="comp-tecnica">Novela río + Melancholia épica</div>
+        </td>
+        <td><div class="comp-tecnica">Crónica de contacto cultural + elegía</div></td>
+        <td><div class="comp-score">9.1</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:91%"></div></div></td>
+        <td><div class="comp-highlight high">Epílogo · Disolución</div></td>
+        <td><div class="comp-highlight high">Muy Alta · Hermosea</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">Crónicas del Viento (Gremio + Bacha + Palabra)</div>
+          <div class="comp-tecnica">Realismo sucio obrero</div>
+        </td>
+        <td><div class="comp-tecnica">Walsh + novela de formación proletaria</div></td>
+        <td><div class="comp-score">8.9</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:89%"></div></div></td>
+        <td><div class="comp-highlight high">Protagonistas + Urgencia</div></td>
+        <td><div class="comp-highlight high">Alta · Indigna</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="comp-obra">La Nieve de Aluminio</div>
+          <div class="comp-tecnica">Realismo ambiental + Thriller social</div>
+        </td>
+        <td><div class="comp-tecnica">Denuncia ecológica + novela de clase</div></td>
+        <td><div class="comp-score">8.8</div></td>
+        <td class="comp-bar-cell"><div class="comp-bar-wrap"><div class="comp-bar-inner" style="width:88%"></div></div></td>
+        <td><div class="comp-highlight high">Elsa Arispe · Símbolo</div></td>
+        <td><div class="comp-highlight med">Alta · Asfixia</div></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- IDENTIDAD TERRITORIAL -->
+<section class="territorial-section" id="territorio">
+  <div class="section-tag reveal">06 — La ventaja del sur</div>
+  <h2 class="section-title reveal">Trelew como<br><em>lugar de enunciación</em></h2>
+
+  <div class="territorial-grid">
+    <div class="territorial-main">
+      <p class="reveal">
+        Esta obra no podría haber sido escrita desde Buenos Aires. No porque la capital carezca de talento literario, sino porque la geografía que narra este universo es también la geografía del autor. El Golfo Nuevo donde las ballenas francas australes buscan silencio para nacer; el Istmo Ameghino donde el viento sopla desde todos los rumbos; el Cerro Chenque que los colonos convirtieron en cementerio y los tehuelches en altar. <strong>Testino los conoce físicamente. Eso se lee.</strong>
+      </p>
+      <p class="reveal">
+        Trelew es, además, una ciudad con memoria de resistencia. El 22 de agosto de 1972, dieciséis presos políticos fueron fusilados en la Base Almirante Zar. La ciudad carga esa memoria en su ADN urbano. Escribir sobre el despojo de los pueblos originarios y la precariedad laboral desde una ciudad que tiene su propio "nunca más" no es casualidad: es <strong>coherencia territorial</strong>.
+      </p>
+      <p class="reveal">
+        El universo Testino no es literatura regional en el sentido folklórico: no exotiza el Sur para el lector de Buenos Aires. Es, en cambio, literatura que habla desde el borde geográfico hacia el centro del poder, con la autoridad de quien habita el territorio que describe.
+      </p>
+      <div class="territorial-quote reveal">
+        "Donde termina el mapa, comienza la eternidad del hombre libre." — Káukel y el despertar de la estepa
+      </div>
+    </div>
+
+    <div class="territorial-map reveal">
+      <div class="map-placeholder">
+        <div class="map-points">
+          <div class="map-point">
+            <div class="map-dot gold"></div>
+            <div>
+              <div class="map-point-name">Trelew · Chubut</div>
+              <div class="map-point-desc">Lugar de edición y enunciación</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot"></div>
+            <div>
+              <div class="map-point-name">Puerto Madryn</div>
+              <div class="map-point-desc">La Nieve de Aluminio · Elsa Arispe</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot"></div>
+            <div>
+              <div class="map-point-name">Golfo Nuevo</div>
+              <div class="map-point-desc">Las ballenas · El horizonte antártico</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot"></div>
+            <div>
+              <div class="map-point-name">Estrecho de Magallanes</div>
+              <div class="map-point-desc">El cruce de Káukel · La garganta del Sur</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot red"></div>
+            <div>
+              <div class="map-point-name">Base Almirante Zar</div>
+              <div class="map-point-desc">La memoria del 22 de agosto de 1972</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot"></div>
+            <div>
+              <div class="map-point-name">Istmo Carlos Ameghino</div>
+              <div class="map-point-desc">La disolución final de Káukel</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot gold"></div>
+            <div>
+              <div class="map-point-name">Buenos Aires · Patagonia Andina</div>
+              <div class="map-point-desc">El poder vs. la resistencia</div>
+            </div>
+          </div>
+          <div class="map-point">
+            <div class="map-dot"></div>
+            <div>
+              <div class="map-point-name">9 países latinoamericanos</div>
+              <div class="map-point-desc">El Manifiesto de la Resurrección</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section class="autor-section" id="autor">
+  <div class="section-tag reveal">07 — El autor</div>
+
+  <div class="autor-grid">
+    <div class="autor-identity reveal">
+      <div class="autor-name">Demián<br>Agustín<br>Testino</div>
+      <div class="autor-title">Editor Productor · Soberanía Editorial</div>
+      <div class="autor-tags">
+        <span class="autor-tag">Trelew, Patagonia</span>
+        <span class="autor-tag">Argentina</span>
+        <span class="autor-tag">2026</span>
+        <span class="autor-tag">Narrativa</span>
+        <span class="autor-tag">Denuncia</span>
+        <span class="autor-tag">Épica</span>
+      </div>
+      <div class="autor-inpi">INPI Exp. 4689992 · Marca registrada</div>
+
+      <div class="autor-obras-count" style="margin-top: 2rem;">
+        <div class="obras-count-item">
+          <div class="obras-count-num">9</div>
+          <div class="obras-count-label">Volúmenes</div>
+        </div>
+        <div class="obras-count-item">
+          <div class="obras-count-num">3</div>
+          <div class="obras-count-label">Trilogías</div>
+        </div>
+        <div class="obras-count-item">
+          <div class="obras-count-num">2026</div>
+          <div class="obras-count-label">Publicación</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="autor-bio">
+      <p class="reveal">
+        Demián Agustín Testino es Editor Productor de <strong>Soberanía Editorial</strong>, sello con sede en Trelew, Chubut, Argentina. Su proyecto literario, publicado íntegramente en marzo de 2026, constituye una de las apuestas editoriales independientes más ambiciosas de la narrativa patagónica contemporánea.
+      </p>
+      <p class="reveal">
+        Su obra se articula en torno a un eje central: la <strong>masterización del pensamiento regional</strong> a través de herramientas tecnológicas de vanguardia. Esta convicción —que la literatura puede ser al mismo tiempo denuncia política, épica cultural y manifiesto territorial— atraviesa cada uno de sus nueve volúmenes.
+      </p>
+      <p class="reveal">
+        La maquetación editorial y el diseño de interiores de toda la obra han sido realizados íntegramente por el autor. Las ilustraciones fueron generadas mediante herramientas de inteligencia artificial bajo su dirección y curaduría creativa, constituyendo un modelo de producción editorial independiente propio del siglo XXI.
+      </p>
+      <p class="reveal">
+        Testino escribe desde Trelew —ciudad que en 1972 fue escenario de la Masacre de la Base Almirante Zar— con la plena conciencia de que hablar desde el Sur sobre el poder centralizado no es un gesto romántico, sino una <strong>decisión política y estética</strong> a la vez.
+      </p>
+      <p class="reveal">
+        Su proyecto literario dialoga con la tradición de <strong>Rodolfo Walsh, Ricardo Piglia, Augusto Roa Bastos, José María Arguedas y Pablo Neruda</strong>, al tiempo que construye una voz genuinamente propia, anclada en la estepa, el viento y la memoria de los que la historia oficial prefirió silenciar.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal">Un universo literario<br><em>que no pide permiso</em></h2>
+  <p class="cta-sub reveal">Nueve volúmenes. Tres trilogías. Una sola voz que habla desde el Sur con la autoridad de quien habita lo que describe.</p>
+  <div class="cta-buttons reveal">
+    <button class="btn-primary" onclick="openModal('kaukel')">Leer un pasaje destacado</button>
+    <button class="btn-secondary" onclick="document.getElementById('criticas').scrollIntoView({behavior:'smooth'})">Ver análisis crítico completo</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    Soberanía Editorial
+    <small>Trelew · Chubut · Patagonia Argentina</small>
+  </div>
+  <div class="footer-center">
+    <div class="footer-isbn">ISBN 978-631-01-4156-5 · INPI Exp. 4689992</div>
+    <div class="footer-rights">© 2026 Demián Agustín Testino. Todos los derechos reservados. Ley 11.723</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#universo">Universo</a></li>
+    <li><a href="#tecnica">Técnica</a></li>
+    <li><a href="#pasajes">Pasajes</a></li>
+    <li><a href="#criticas">Crítica</a></li>
+  </ul>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<script>
+// ══ PASAJES TABS ══
+function showPasaje(id) {
+  document.querySelectorAll('.pasaje-display').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.pasajes-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ══ MODAL DATA ══
+const modals = {
+  vento: {
+    tag: 'La Mariscal del Péndulo · El Expediente Vento',
+    pasaje: '"Este es el expediente visual y narrativo de Valeria Vento, la Mariscal. Una figura que, en esta ficción, representa a la Traidora que se tragó un país durante cuarenta años. Muchos han intentado contar su historia, pero la Mariscal tiene mil caras y un solo espejo: el que ella misma mandó a construir. Quien la mira de frente, solo ve su reflejo."',
+    analisis: 'La introducción al Tomo I establece el método del "Cubismo de Redes": el lector entra sabiendo que está ante una construcción deliberada. El "blindaje puesto" es una metáfora jurídica: el texto como prueba blindada. Testino usa el aviso legal como dispositivo narrativo.'
+  },
+  editor: {
+    tag: 'El Gran Editor · Epílogo: La Última Página en Blanco',
+    pasaje: '"El Gran Editor sintió, por primera vez en cuarenta años, que el papel se le escapaba de las manos. La simulación perfecta estaba siendo perforada por la realidad biológica de un pueblo que ya no aceptaba la anestesia."',
+    analisis: 'El epílogo invierte la lógica de poder del texto: el que controlaba el papel pierde el papel. La "realidad biológica" como antídoto al algoritmo es una de las frases más poderosas de la trilogía. Testino confía en el cuerpo colectivo donde otros confían en la razón individual.'
+  },
+  ente: {
+    tag: 'El Ente de la Frecuencia Cero · Advertencia del Sistema',
+    pasaje: '"La información contenida en las páginas siguientes ha sido procesada bajo protocolos de Frecuencia Cero. Cualquier similitud entre los eventos aquí narrados y la realidad de la calle es una falla en la percepción del observador. El Ente no se disuelve; se redistribuye."',
+    analisis: 'La "Advertencia del Sistema" convierte al libro en un documento del propio Ente que denuncia. Metaficción radical: el texto se presenta como producto del sistema que destruye. Un dispositivo brechtiano de alta complejidad y audacia.'
+  },
+  nahuel: {
+    tag: 'El hijo del viento y la piedra · Trilogía Patagónica · Tomo I',
+    pasaje: '"La Campaña del Desierto no terminó. Se recicla en la precarización laboral, en la discriminación policial, en la criminalización de la protesta indígena. El arco de Nahuel en el siglo XIX llega intacto hasta Lautaro en la resistencia cordillerana del siglo XXI."',
+    analisis: 'El gran hallazgo estructural del Tomo I es el salto temporal: Nahuel en 1879, Aimé en la planta pesquera, Lautaro en la cordillera. Tres tiempos, una sola herida. El despojo no es historia: es presente.'
+  },
+  kaukel: {
+    tag: 'El camino del jaguar de nieve · La copla de la tierra',
+    pasaje: '"El hombre que mide el campo con cadena y con papel, / se olvida que es de clavel la vida que va arrastrando; / mientras él anda marcando, la tierra se ríe de él."',
+    analisis: 'Esta sextina gauchesca es el hallazgo más brillante de toda la producción de Testino. El chamán tehuelche usa la forma literaria del Martín Fierro —la voz del gaucho que lo desplazó— para demostrar la absurdidad del título privado sobre la tierra. Apropiación como acto de justicia poética.'
+  },
+  retorno: {
+    tag: 'Káukel y el despertar de la estepa · La disolución final',
+    pasaje: '"Un chamán no muere en una cama de madera bajo un techo de chapa. Un chamán se deshace. Se vuelve el frío que hace tiritar al gaucho, el viento que mueve los molinos de los galeses, el silencio que guardan las piedras del río."',
+    analisis: 'El final de Káukel es uno de los epílogos más memorables de la literatura patagónica. La disolución del chamán en los elementos del paisaje es, al mismo tiempo, su derrota histórica y su victoria cósmica: el territorio lo absorbe, no el Estado que lo persiguió.'
+  },
+  exilio: {
+    tag: 'El Manifiesto de la Resurrección · Introducción',
+    pasaje: '"Lo que tienes entre manos es un Manual de Sabotaje Metafísico. Al leer estas páginas, el Ente perderá poder sobre ti. Cada dato técnico aquí vertido es un proyectil; cada latido poético es una venda para las heridas de la división."',
+    analisis: 'La declaración programática del Manifiesto instala al lector como agente activo de su propia liberación. La lectura como sabotaje es un gesto político radical. Testino propone que la comprensión es ya, en sí misma, una forma de resistencia.'
+  },
+  cronicas: {
+    tag: 'El Gremio de los Invisibles · Capítulo XII · La Victoria',
+    pasaje: '"Esto recién empieza, pibe. Ellos tienen los medios y los despachos, pero nosotros tenemos las llaves de la ciudad. Sin nosotros, la modernidad se queda con hambre."',
+    analisis: 'La frase de Mendieta al joven cadete Facu condensa la tesis política de las Crónicas: el trabajador invisible es, paradójicamente, el que sostiene todo. La huelga como revelación ontológica: el motor visible de la economía son las manos invisibles.'
+  },
+  nieve: {
+    tag: 'La Nieve de Aluminio · El último escobillón',
+    pasaje: '"Este es mi último escobillón, Martínez. No voy a limpiar más la mentira de ustedes. Si quieren que el crucero vea la ciudad limpia, que bajen los gerentes de la planta y los secretarios del municipio a lamer el piso. Mi dignidad no se barre."',
+    analisis: 'El momento de la ruptura de Elsa Arispe es el clímax de toda la serie de Crónicas del Viento. El escobillón —instrumento de invisibilización— se convierte en símbolo de rebeldía al ser destrozado. El objeto del trabajo como arma de denuncia.'
+  }
+};
+
+function openModal(id) {
+  const data = modals[id];
+  if (!data) return;
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-tag">${data.tag}</div>
+    <div class="modal-pasaje">${data.pasaje}</div>
+    <div class="modal-analisis">${data.analisis}</div>
+  `;
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal')) {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ══ SCROLL REVEAL ══
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ══ STAGGER DELAYS ══
+document.querySelectorAll('.trilogy-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.1}s`;
+  card.classList.add('reveal');
+  observer.observe(card);
+});
+
+document.querySelectorAll('.experto-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.12}s`;
+  card.classList.add('reveal');
+  observer.observe(card);
+});
+</script>
+</body>
+</html>

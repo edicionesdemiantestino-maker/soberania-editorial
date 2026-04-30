@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cubismo · Saga de Exilio Latinoamericano · Soberanía Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0806;
+    --ink: #1a140e;
+    --sepia: #2e1f0e;
+    --rust: #8b3a1e;
+    --copper: #b05c2a;
+    --amber: #c8831e;
+    --parchment: #f0e6d0;
+    --cream: #faf5ec;
+    --white: #fdfcf9;
+    --grey-light: #e8dcc8;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 5rem 0;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 70% 30%, rgba(139,58,30,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(46,31,14,0.6) 0%, transparent 50%),
+      linear-gradient(170deg, #0a0806 0%, #1a100a 40%, #0d0906 100%);
+  }
+
+  /* Cubismo grid overlay */
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,131,30,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,131,30,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 70%);
+  }
+
+  /* Geometric cubism shapes */
+  .hero-shapes {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .hero-shapes svg {
+    position: absolute;
+    right: -2%;
+    top: 5%;
+    width: 55%;
+    max-width: 700px;
+    opacity: 0.18;
+  }
+
+  .hero-signal {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    opacity: 0.6;
+    text-transform: uppercase;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 8% 0 8%;
+    max-width: 900px;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-label::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--copper);
+    opacity: 0.5;
+  }
+
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--amber);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--grey-light);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    line-height: 1.5;
+  }
+
+  .hero-meta {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta-item {
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+  }
+  .meta-value {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--parchment);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,8,6,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,131,30,0.15);
+    padding: 1rem 8%;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+
+  .nav-brand {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--grey-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--copper);
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .section-tag::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--copper);
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SYNOPSIS ── */
+  .synopsis {
+    background: var(--ink);
+    border-left: 3px solid var(--amber);
+    padding: 4rem 8%;
+  }
+
+  .synopsis-text {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--grey-light);
+    max-width: 700px;
+  }
+
+  /* ── CHAPTERS ── */
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: rgba(200,131,30,0.1);
+    border: 1px solid rgba(200,131,30,0.1);
+    margin-top: 3rem;
+  }
+
+  .chapter-item {
+    background: var(--black);
+    padding: 2rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .chapter-item:hover { background: var(--ink); }
+
+  .chapter-num {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 0.75rem;
+  }
+
+  .chapter-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--parchment);
+    line-height: 1.3;
+  }
+
+  /* ── FRASES ── */
+  .quotes-section {
+    background: var(--sepia);
+    padding: 6rem 8%;
+  }
+
+  .quote-block {
+    position: relative;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(200,131,30,0.12);
+    max-width: 800px;
+  }
+  .quote-block:last-child { border-bottom: none; }
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 0;
+    color: var(--rust);
+    opacity: 0.4;
+    position: absolute;
+    top: 2.5rem;
+    left: -0.5rem;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--cream);
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .quote-origin {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+    padding-left: 2rem;
+  }
+
+  /* ── PERSONAJES ── */
+  .characters-section {
+    padding: 6rem 8%;
+  }
+
+  .characters-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 3rem;
+    background: rgba(200,131,30,0.08);
+  }
+
+  .character-card {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .character-card:hover {
+    border-color: var(--amber);
+    background: var(--ink);
+  }
+
+  .char-freq {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+  }
+
+  .char-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .char-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--grey-light);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── ANÁLISIS ── */
+  .analysis-section {
+    background: linear-gradient(135deg, var(--ink) 0%, var(--sepia) 100%);
+    padding: 6rem 8%;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .analysis-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .analysis-col h3 {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(200,131,30,0.2);
+  }
+
+  .analysis-col p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--grey-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  /* ── SCORE ── */
+  .score-section {
+    padding: 6rem 8%;
+    text-align: center;
+  }
+
+  .score-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    background: rgba(200,131,30,0.08);
+    max-width: 900px;
+    margin: 3rem auto 0;
+  }
+
+  .score-item {
+    flex: 1;
+    min-width: 140px;
+    background: var(--black);
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .score-platform {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+  }
+
+  .score-value {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .score-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--grey-light);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .score-stars {
+    color: var(--amber);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .analysis-opinion {
+    max-width: 750px;
+    margin: 4rem auto 0;
+    text-align: left;
+    background: var(--ink);
+    padding: 3rem;
+    border-left: 3px solid var(--rust);
+  }
+
+  .analysis-opinion p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--grey-light);
+    line-height: 1.9;
+    font-style: italic;
+  }
+
+  .opinion-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* ── LEGALES ── */
+  .legal-section {
+    background: var(--ink);
+    padding: 4rem 8%;
+    border-top: 1px solid rgba(200,131,30,0.15);
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .legal-item {
+    padding: 1.5rem;
+    border: 1px solid rgba(200,131,30,0.12);
+  }
+
+  .legal-item h4 {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-item p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--grey-light);
+    line-height: 1.6;
+  }
+
+  .isbn-highlight {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--amber);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #040302;
+    border-top: 1px solid rgba(200,131,30,0.1);
+    padding: 3rem 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--copper);
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  .footer-links {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--grey-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--amber); }
+
+  /* ── DIVIDER ── */
+  .freq-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 8%;
+    margin: 0;
+  }
+  .freq-divider::before,
+  .freq-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,131,30,0.3), transparent);
+  }
+  .freq-divider span {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Scroll animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 600px) {
+    section, .synopsis, .quotes-section, .characters-section,
+    .analysis-section, .score-section, .legal-section { padding: 4rem 5%; }
+    .hero-content { padding: 0 5%; }
+    nav { padding: 1rem 5%; }
+    .nav-links { gap: 1rem; }
+    footer { padding: 2.5rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://soberania-editorial.vercel.app/" class="nav-brand">← Soberanía Editorial</a>
+  <ul class="nav-links">
+    <li><a href="#frases">Frases</a></li>
+    <li><a href="#analisis">Análisis</a></li>
+    <li><a href="#puntuacion">Puntuación</a></li>
+    <li><a href="#legales">Legales</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0; max-width:none;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-shapes">
+    <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="100,50 500,80 550,350 400,600 80,580 20,300" fill="none" stroke="rgba(176,92,42,0.6)" stroke-width="1"/>
+      <polygon points="200,20 520,120 480,400 300,650 100,500 50,200" fill="none" stroke="rgba(200,131,30,0.3)" stroke-width="0.5"/>
+      <line x1="100" y1="50" x2="550" y2="350" stroke="rgba(139,58,30,0.4)" stroke-width="0.5"/>
+      <line x1="500" y1="80" x2="80" y2="580" stroke="rgba(139,58,30,0.3)" stroke-width="0.5"/>
+      <line x1="550" y1="350" x2="20" y2="300" stroke="rgba(200,131,30,0.2)" stroke-width="0.5"/>
+      <circle cx="300" cy="320" r="180" fill="none" stroke="rgba(200,131,30,0.08)" stroke-width="1"/>
+      <rect x="150" y="100" width="300" height="400" fill="none" stroke="rgba(176,92,42,0.15)" stroke-width="0.5"/>
+      <polygon points="300,50 530,250 440,540 160,540 70,250" fill="none" stroke="rgba(200,131,30,0.2)" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-signal">◈ FRECUENCIA ACTIVA · DOSSIER TÉCNICO · SOBERANÍA EDITORIAL ◈</div>
+
+  <div class="hero-content">
+    <div class="hero-label">Saga de Exilio Latinoamericano</div>
+    <h1 class="hero-title">
+      <em>Cubismo</em>
+    </h1>
+    <p class="hero-subtitle">Una historia alternativa fragmentada como el cubismo: la realidad se parte no para romperse, sino para mostrar todas sus caras al mismo tiempo.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="meta-label">Autor</span>
+        <span class="meta-value">Demián Agustín Testino</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Publicación</span>
+        <span class="meta-value">Marzo 2026 · Trelew, Argentina</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Género</span>
+        <span class="meta-value">Ficción histórica · Narrativa experimental</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Capítulos</span>
+        <span class="meta-value">8 + Prólogo + Epílogo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SINOPSIS -->
+<div class="synopsis">
+  <div class="section-tag">Sinopsis</div>
+  <p class="synopsis-text">
+    Este libro no es un registro oficial ni una cronología de fechas frías en un archivo estatal. Es una obra construida desde la óptica del cubismo: la realidad se fragmenta no para romperse, sino para mostrar todas sus caras al mismo tiempo. El dolor de la partida, la disonancia del nuevo idioma y el brillo de la resistencia conviven en un solo plano, desafiando la lógica de quienes quisieron imponer un relato único y gris. Ocho vidas, ocho frecuencias: Alfredo Zitarrosa, Julián, Atahualpa Yupanqui, Isabel Allende, Astor Piazzolla, Mercedes Sosa, Sergio, Sofía. El «Ente» los persigue. La música, la palabra y la memoria los salvan.
+  </p>
+</div>
+
+<div class="freq-divider"><span>▸ estructura de la obra ◂</span></div>
+
+<!-- CAPÍTULOS -->
+<section id="estructura" style="padding-top:5rem;">
+  <div class="section-tag fade-in">Arquitectura narrativa</div>
+  <h2 class="section-title fade-in">Ocho Frecuencias<br>del Exilio</h2>
+
+  <div class="chapters-grid fade-in">
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 1 · 440 Hz</div>
+      <div class="chapter-title">La Estática del Despegue</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 2 · 12.5 MHz</div>
+      <div class="chapter-title">La Química del Olvido</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 3 · Banda Corta</div>
+      <div class="chapter-title">La Niña del Teletipo</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 4 · Frecuencia Sur</div>
+      <div class="chapter-title">La Partitura del Retorno</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 5 · Señal Viva</div>
+      <div class="chapter-title">La Voz que Habita el Viento</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 6 · Tierra que Anda</div>
+      <div class="chapter-title">La Piedra que Canta</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 7 · Transmisión</div>
+      <div class="chapter-title">La Palabra que Encarna</div>
+    </div>
+    <div class="chapter-item">
+      <div class="chapter-num">Cap. 8 · Frecuencia Final</div>
+      <div class="chapter-title">El Sonido del Asfalto Herido</div>
+    </div>
+    <div class="chapter-item" style="grid-column: 1/-1; background: var(--ink);">
+      <div class="chapter-num">Epílogo</div>
+      <div class="chapter-title">El Regreso de las Sombras — La Octava Frecuencia</div>
+    </div>
+  </div>
+</section>
+
+<div class="freq-divider"><span>▸ mejores frases de la obra ◂</span></div>
+
+<!-- FRASES -->
+<section id="frases" class="quotes-section" style="max-width:none; padding:6rem 8%;">
+  <div class="section-tag fade-in">Frases de la obra</div>
+  <h2 class="section-title fade-in">Las Palabras que<br>Sobrevivieron al «Ente»</h2>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Tuvieron que meter su vida en una maleta de veinte kilos y descubrieron que el alma pesaba mucho más.</p>
+    <div class="quote-origin">Prólogo · El ángulo de la memoria</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El aire en Montevideo se ha vuelto sólido. No se respira, se mastica. Es un compuesto químico de gasoil de camión militar y el miedo agrio que emana de los poros de quienes esperan en la fila.</p>
+    <div class="quote-origin">Cap. 1 · La Estática del Despegue</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La guitarra pesa mil kilos. Lleva dentro el silencio forzado de un millón y medio de personas.</p>
+    <div class="quote-origin">Cap. 1 · La Estática del Despegue</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Montevideo se queda atrás, reducida a un punto de estática en el retrovisor del alma.</p>
+    <div class="quote-origin">Cap. 1 · La Estática del Despegue</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">No entiende que el mensaje es la vibración misma. La madera absorbe la humedad de la mano del represor y Alfredo siente un asco físico, un reflujo que le quema la garganta. Esa mano está ensuciando la frecuencia.</p>
+    <div class="quote-origin">Cap. 1 · La Estática del Despegue</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El papel obra de 70 gramos se resiste al fuego al principio, se encrespa, se vuelve negro por los bordes como si le doliera. Las fotos de los asados, los boletines sindicales, las listas de nombres que ahora son sentencias de muerte. Todo colapsa en la cerámica blanca de la bañera.</p>
+    <div class="quote-origin">Cap. 2 · La Química del Olvido</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Escribir en el exilio no es un acto de creación, es un acto de restitución de frecuencia. Cada tecla que pulsa es un intento de sintonizar con los que están dispersos.</p>
+    <div class="quote-origin">Cap. 3 · La Niña del Teletipo</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La literatura es el último berretín, el escondite donde la verdad se disfraza de metáfora para no ser fusilada.</p>
+    <div class="quote-origin">Cap. 3 · La Niña del Teletipo</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Si él escribe sobre la mujer en la cabina telefónica, esa mujer deja de ser un fantasma. Si pone en palabras el olor a madera de la guitarra, la madera vuelve a vibrar.</p>
+    <div class="quote-origin">Cap. 3 · La Niña del Teletipo</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Margen de la partitura: «Venceremos». No es una instrucción, es un acto de voluntad.</p>
+    <div class="quote-origin">Cap. 4 · La Partitura del Retorno</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El pueblo unido jamás será vencido. La frase no tiene melodía aún, es pura energía potencial, dinamita semántica a punto de detonar.</p>
+    <div class="quote-origin">Cap. 4 · La Partitura del Retorno</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Su ausencia no es un vacío, es una frecuencia que seguimos sintonizando.</p>
+    <div class="quote-origin">Prólogo · Dedicatoria a los que ya no están</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Astor ya no está en la cama de la clínica. Es el viento que silba en las esquinas, es el paso apurado de los oficinistas, es la lluvia que golpea los vidrios de los cafés.</p>
+    <div class="quote-origin">Cap. 8 · El Sonido del Asfalto Herido</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El «Ente» de la división ha sido derrotado. Ya no hay muros entre los que se fueron y los que se quedaron; hoy, todos habitan la misma memoria.</p>
+    <div class="quote-origin">Epílogo · El Regreso de las Sombras</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El exilio no fue una huida, sino la expansión dolorosa de un continente que no cabía en sus propias fronteras.</p>
+    <div class="quote-origin">Epílogo · La Octava Frecuencia</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El exilio fue, ante todo, una profunda y humana soledad que solo el arte pudo curar.</p>
+    <div class="quote-origin">Epílogo · La Octava Frecuencia</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La identidad no se perdió en la aduana, sino que se multiplicó para volverse universal.</p>
+    <div class="quote-origin">Prólogo · El ángulo de la memoria</div>
+  </div>
+</section>
+
+<div class="freq-divider"><span>▸ personajes y frecuencias ◂</span></div>
+
+<!-- PERSONAJES -->
+<section id="personajes" class="characters-section" style="max-width:none; padding:6rem 8%;">
+  <div class="section-tag fade-in">Constelación de personajes</div>
+  <h2 class="section-title fade-in">Las Ocho Voces<br>del Tapiz</h2>
+
+  <div class="characters-list fade-in">
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 001 · Cap. 1</div>
+      <div class="char-name">Alfredo Zitarrosa</div>
+      <div class="char-desc">El hombre que cruza el Atlántico con un estuche de guitarra que pesa el silencio de un millón y medio de personas. La madera de su instrumento como único mapa confiable del destierro.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 002 · Cap. 2</div>
+      <div class="char-name">Elena / Julián</div>
+      <div class="char-desc">El insilio: la resistencia desde adentro. Queman su historia en una bañera de Balvanera. Quedarse también fue un acto de heroísmo silencioso.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 003 · Cap. 3</div>
+      <div class="char-name">Esteban y Sofía</div>
+      <div class="char-desc">El escritor uruguayo en México DF que ensambla artefactos explosivos de papel. La niña que aprende a cantar hacia adentro cuando el «Ente» cierra las bocas.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 004 · Cap. 4</div>
+      <div class="char-name">Sergio Ortega</div>
+      <div class="char-desc">El compositor que le pone melodía a la resistencia. Baja los brazos solo cuando el eco del último «Venceremos» todavía vibra en el aire de París.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 005 · Cap. 5</div>
+      <div class="char-name">Mercedes Sosa</div>
+      <div class="char-desc">La voz que habita el viento. Su canto en Madrid busca el color de la tierra tucumana en el cielo español, porque hay voces que no caben en ningún exilio.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 006 · Cap. 6</div>
+      <div class="char-name">Atahualpa Yupanqui</div>
+      <div class="char-desc">La piedra que caminó por el mundo recordando que somos «tierra que anda» y que la patria es un camino, no una frontera.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 007 · Cap. 7</div>
+      <div class="char-name">Isabel Allende</div>
+      <div class="char-desc">La arquitecta de las casas de papel. Escribe cartas a un abuelo muerto para no sentirse huérfana de pasado. Mientras haya alguien que cuente la historia, los desaparecidos existen.</div>
+    </div>
+    <div class="character-card">
+      <div class="char-freq">FRECUENCIA 008 · Cap. 8</div>
+      <div class="char-name">Astor Piazzolla</div>
+      <div class="char-desc">El exiliado de su propia tradición que se convierte en el único dueño del aire que su país respira. La ciudad absorbe su identidad: Astor Piazzolla es ahora la atmósfera.</div>
+    </div>
+  </div>
+</section>
+
+<div class="freq-divider"><span>▸ análisis literario multiplataforma ◂</span></div>
+
+<!-- ANÁLISIS -->
+<section id="analisis" class="analysis-section" style="max-width:none; padding:6rem 8%;">
+  <div class="section-tag fade-in">Análisis literario · Narrativa comparada</div>
+  <h2 class="section-title fade-in">La Obra en el Espejo<br>de la Crítica</h2>
+
+  <div class="analysis-grid fade-in">
+    <div class="analysis-col">
+      <h3>Técnica narrativa</h3>
+      <p><em>Cubismo</em> apela a una estructura deliberadamente fragmentada que replica la estética plástica del movimiento pictórico homónimo: cada capítulo es un plano diferente de la misma realidad, sin jerarquía entre el testimonio histórico, la ficción y el documento de inteligencia cifrado. Esta polifonía de voces produce una densidad narrativa inhabitual en la literatura del Cono Sur contemporáneo.</p>
+      <p>La decisión de intercalar «Capas de Información» —registros de vigilancia, informes de inteligencia falsificados, frecuencias de radio— genera una tensión documental que ancla la ficción a la historia sin reducirla a ella. El lector habita al mismo tiempo el relato y el mecanismo que lo persigue.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>Tradición y ruptura</h3>
+      <p>La obra dialoga con la gran narrativa del exilio latinoamericano —desde Cortázar hasta Benedetti— pero la supera en formalismo experimental. Donde esa tradición tendía al lirismo de la distancia, <em>Cubismo</em> opta por la fricción acústica: el ruido como gramática política.</p>
+      <p>El «Ente» —la vigilancia omnipresente sin nombre propio— es el antagonista más logrado de la novela: no tiene cuerpo, no tiene voz propia, solo tiene frecuencias que intentan silenciar otras frecuencias. Su derrota final no es militar sino semiótica.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>La música como resistencia</h3>
+      <p>Ninguna obra argentina reciente ha sabido integrar de manera tan orgánica el universo musical a su arquitectura narrativa. Zitarrosa, Piazzolla, Yupanqui y Sosa no son «referencias culturales» decorativas: son personajes cuyas biografías funcionan como metáforas perfectas de las distintas formas que adopta el destierro. La guitarra de Alfredo que «pesa mil kilos» es la imagen más poderosa del exilio latinoamericano en años.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>Dimensión política y territorial</h3>
+      <p>Publicada desde Trelew en 2026, la obra reivindica la Patagonia como lugar de enunciación de una narrativa continental. No es casualidad: el Sur como punto de resistencia geográfica y cultural es una clave de lectura que atraviesa toda la obra. El autor escribe desde la periferia hacia el centro, subvirtiendo la lógica de los circuitos literarios hegemónicos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUNTUACIÓN -->
+<section id="puntuacion" class="score-section" style="max-width:none; padding:6rem 8%;">
+  <div class="section-tag fade-in" style="justify-content:center; text-align:center;">Puntuación · Análisis comparativo</div>
+  <h2 class="section-title fade-in">Evaluación<br>Multiplataforma</h2>
+  <p class="fade-in" style="font-family:var(--font-body); font-style:italic; color:var(--grey-light); max-width:600px; margin:0 auto 1rem; font-size:1rem; line-height:1.7;">Análisis basado en criterios de narrativa experimental, coherencia estructural, riqueza léxica, impacto emocional y originalidad temática en el contexto de la literatura latinoamericana contemporánea.</p>
+
+  <div class="score-container">
+    <div class="score-item">
+      <div class="score-platform">Narrativa</div>
+      <div class="score-value">9.2</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Estructura experimental de alto rigor formal</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Originalidad</div>
+      <div class="score-value">9.5</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Propuesta única en la literatura del exilio</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Impacto</div>
+      <div class="score-value">9.0</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Alta resonancia emocional y política</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Prosa</div>
+      <div class="score-value">9.3</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Densidad poética sostenida</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Puntuación Global</div>
+      <div class="score-value" style="font-size:3.5rem; color:var(--amber);">9.2</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Obra destacada de la narrativa experimental argentina</div>
+    </div>
+  </div>
+
+  <div class="analysis-opinion fade-in">
+    <div class="opinion-label">Lectura curatorial · Soberanía Editorial</div>
+    <p>
+      <em>Cubismo</em> es una de las obras más ambiciosas de la narrativa argentina reciente. Su apuesta por la forma —la fragmentación cubista como estructura dramática— no es un ornamento estilístico sino la médula misma del argumento: la realidad del exilio solo puede ser representada desde múltiples ángulos simultáneos porque una sola perspectiva siempre miente. La novela plantea que la literatura no describe el exilio: lo reproduce en su forma misma. Ese gesto es, en sí, un acto político de primer orden.
+    </p>
+  </div>
+</section>
+
+<div class="freq-divider"><span>▸ datos legales y editoriales ◂</span></div>
+
+<!-- LEGALES -->
+<section id="legales" class="legal-section" style="max-width:none; padding:4rem 8%;">
+  <div class="section-tag fade-in">Datos legales y editoriales</div>
+  <h2 class="section-title fade-in" style="font-size:1.8rem;">Ficha Legal de la Obra</h2>
+
+  <div class="legal-grid fade-in">
+    <div class="legal-item">
+      <h4>ISBN Digital</h4>
+      <p class="isbn-highlight">978-631-01-4407-8</p>
+      <p>Edición digital · Libro de edición argentina</p>
+    </div>
+    <div class="legal-item">
+      <h4>Depósito Legal</h4>
+      <p>Hecho el depósito que marca la Ley 11.723 de Propiedad Intelectual.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Autoría y derechos</h4>
+      <p>© 2026, Demián Agustín Testino. Todos los derechos reservados. Las infracciones están penadas por las leyes 11.723 y 25.446.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Producción editorial</h4>
+      <p>Maquetación e interiores íntegramente por el autor. Las ilustraciones fueron generadas mediante IA bajo dirección y curaduría creativa de Demián A. Testino. La autoría intelectual de la narrativa pertenece exclusivamente al autor.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Marca registrada</h4>
+      <p>Soberanía Editorial · INPI Exp. 4689992 · Trelew, Chubut, Argentina</p>
+    </div>
+    <div class="legal-item">
+      <h4>Lugar y fecha</h4>
+      <p>Editado en Trelew, Argentina. Primera edición digital: Marzo de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    Soberanía Editorial<br>
+    Trelew, Patagonia Argentina<br>
+    INPI Exp. 4689992 · © 2026
+  </div>
+  <div class="footer-links">
+    <a href="https://soberania-editorial.vercel.app/">Inicio</a>
+    <a href="https://a.co/d/093TUwgN">Amazon Global</a>
+    <a href="https://articulo.mercadolibre.com.ar/MLA-3095990540-ebook-saga-de-exilio-latinoamericano-cubismo-pdf-_JM">Mercado Libre</a>
+    <a href="https://instagram.com/demiantestinoautor">@demiantestinoautor</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

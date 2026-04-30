@@ -1,6 +1,58 @@
 ;(function () {
   var C = window.SOBERANIA || {}
 
+  var metaDefaultsSnapshot = null
+
+  function snapshotMetaDefaults() {
+    if (metaDefaultsSnapshot) return metaDefaultsSnapshot
+    function gc(id, attr) {
+      var el = document.getElementById(id)
+      if (!el) return ''
+      return attr ? el.getAttribute(attr) || '' : el.textContent || ''
+    }
+    metaDefaultsSnapshot = {
+      title: document.title,
+      description: gc('meta-description', 'content'),
+      ogTitle: gc('meta-og-title', 'content'),
+      ogDescription: gc('meta-og-description', 'content'),
+      twitterTitle: gc('meta-twitter-title', 'content'),
+      twitterDescription: gc('meta-twitter-description', 'content'),
+    }
+    return metaDefaultsSnapshot
+  }
+
+  function applyRouteMeta(mode) {
+    snapshotMetaDefaults()
+    var d = metaDefaultsSnapshot
+    var use =
+      mode === 'contenidos'
+        ? {
+            title:
+              'Podcast, YouTube & Instagram | Soberanía Editorial — Demián Testino',
+            description:
+              'Podcast del sello, canal Ediciones Demián Testino en YouTube (vídeos con métricas públicas), reels en Instagram y señal editorial desde Trelew, Patagonia. Marca INPI.',
+            ogTitle: 'Contenidos · Soberanía Editorial — audio, vídeo y redes',
+            ogDescription:
+              'Podcast, canal @edicionesdemiantestino en YouTube e Instagram del sello. Infra editorial con Soberanía Vault.',
+            twitterTitle: 'Contenidos · Soberanía Editorial — podcast y YouTube',
+            twitterDescription:
+              'Podcast, canal de YouTube oficial y reels @demiantestinoautor.',
+          }
+        : d
+
+    document.title = use.title
+    var md = document.getElementById('meta-description')
+    if (md) md.setAttribute('content', use.description)
+    var og = document.getElementById('meta-og-title')
+    if (og) og.setAttribute('content', use.ogTitle)
+    var ogd = document.getElementById('meta-og-description')
+    if (ogd) ogd.setAttribute('content', use.ogDescription)
+    var tw = document.getElementById('meta-twitter-title')
+    if (tw) tw.setAttribute('content', use.twitterTitle)
+    var twd = document.getElementById('meta-twitter-description')
+    if (twd) twd.setAttribute('content', use.twitterDescription)
+  }
+
   var APP = (function () {
     var raw = (C.APP_BASE || '').trim()
     if (!raw) return 'https://v0-editorial-control-station.vercel.app'
@@ -34,6 +86,15 @@
       var el = document.getElementById(id)
       if (el && digHref) el.href = digHref
     })
+    var yt = String(C.YOUTUBE_CHANNEL_URL || '').trim()
+    var ytNav = document.getElementById('youtube-channel-link')
+    if (ytNav && yt) {
+      try {
+        ytNav.href = new URL(yt).href
+      } catch (e) {
+        ytNav.href = yt
+      }
+    }
   }
 
   function injectJsonLd() {
@@ -100,6 +161,191 @@
     }
   }
 
+  function formatYtDate(iso) {
+    if (!iso) return ''
+    try {
+      var d = new Date(iso)
+      if (isNaN(d.getTime())) return ''
+      return d.toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' })
+    } catch (e) {
+      return ''
+    }
+  }
+
+  function wireYouTube() {
+    var C = window.SOBERANIA || {}
+    var iframe = document.getElementById('youtube-main-embed')
+    var loadingEl = document.getElementById('youtube-player-loading')
+    var featuredLabel = document.getElementById('youtube-featured-label')
+    var channelVideos = document.getElementById('youtube-all-videos-link')
+
+    var ytBase = String(C.YOUTUBE_CHANNEL_URL || '').trim().replace(/\/$/, '')
+    if (channelVideos && ytBase) {
+      try {
+        channelVideos.href = ytBase + '/videos'
+      } catch (e) {
+        channelVideos.href = 'https://www.youtube.com/@edicionesdemiantestino/videos'
+      }
+    }
+
+    function hideLoading() {
+      if (loadingEl) loadingEl.style.display = 'none'
+    }
+
+    function showEmbedError(msg) {
+      hideLoading()
+      if (iframe) iframe.removeAttribute('src')
+      if (featuredLabel)
+        featuredLabel.textContent = msg || 'No se pudo cargar el reproductor. Abrí el canal en YouTube.'
+    }
+
+    var listEl = document.getElementById('youtube-latest-inner')
+    if (!listEl) return
+
+    fetch('/api/youtube-feed')
+      .then(function (r) {
+        if (!r.ok) throw new Error('youtube-feed')
+        return r.json()
+      })
+      .then(function (data) {
+        var noteEl = document.getElementById('youtube-metrics-source-note')
+        if (noteEl) noteEl.textContent = data.metricsNote || ''
+
+        var vids = data.videos || []
+        if (!vids.length) {
+          showEmbedError('Sin videos en el feed por ahora.')
+          listEl.innerHTML =
+            '<li class="text-[13px] text-slate-500 italic">No hay datos del feed. Probá más tarde o abrí el canal en YouTube.</li>'
+          return
+        }
+
+        var first = vids[0]
+        if (iframe && first && first.videoId) {
+          iframe.src =
+            'https://www.youtube.com/embed/' +
+            encodeURIComponent(first.videoId) +
+            '?rel=0&modestbranding=1'
+          hideLoading()
+          if (featuredLabel) {
+            featuredLabel.textContent =
+              'Última subida · ' + String(first.title || '').slice(0, 120)
+          }
+        } else {
+          showEmbedError()
+        }
+
+        function trunc(s, n) {
+          s = String(s || '')
+          if (s.length <= n) return s
+          return s.slice(0, n) + '…'
+        }
+        listEl.innerHTML = vids
+          .map(function (v) {
+            var meta = formatYtDate(v.published)
+            var parts = []
+            if (typeof v.views === 'number' && v.views >= 0) {
+              parts.push(v.views.toLocaleString('es-AR') + ' vistas')
+            }
+            if (v.likes != null && !isNaN(v.likes)) {
+              parts.push(v.likes.toLocaleString('es-AR') + ' mg')
+            }
+            if (v.commentCount != null && !isNaN(v.commentCount)) {
+              parts.push(v.commentCount.toLocaleString('es-AR') + ' coment.')
+            }
+            var metrics =
+              parts.length > 0 ? ' · ' + parts.join(' · ') : ''
+            var titleEsc = String(v.title || '')
+              .replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/"/g, '&quot;')
+            var href = String(v.url || '#').replace(/"/g, '&quot;')
+            var thumb = String(v.thumb || '').replace(/"/g, '&quot;')
+            var prev = v.commentsPreview || []
+            var previewHtml = ''
+            if (prev.length) {
+              previewHtml =
+                '<div style="margin-top:10px;padding-left:0;font-size:11px;color:#94a3b8;line-height:1.45;font-style:italic;border-top:1px solid rgba(255,255,255,0.06);padding-top:8px">' +
+                prev
+                  .slice(0, 3)
+                  .map(function (c) {
+                    var a = String(c.author || '').replace(/</g, '&lt;')
+                    var t = trunc(String(c.text || '').replace(/</g, '&lt;'), 160)
+                    var lk =
+                      c.likes != null && !isNaN(c.likes)
+                        ? ' · ' + Number(c.likes).toLocaleString('es-AR') + ' ♥'
+                        : ''
+                    return (
+                      '<div style="margin-bottom:6px"><strong style="color:#cbd5e1;font-style:normal">' +
+                      a +
+                      '</strong>' +
+                      lk +
+                      '<div style="margin-top:2px">' +
+                      t +
+                      '</div></div>'
+                    )
+                  })
+                  .join('') +
+                '</div>'
+            }
+            var vidRaw = String(v.videoId || '').replace(/"/g, '')
+            return (
+              '<li data-yt-vid="' +
+              vidRaw +
+              '" style="border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.28);overflow:hidden;margin-bottom:12px;padding:12px;cursor:default">' +
+              '<a href="' +
+              href +
+              '" target="_blank" rel="noopener noreferrer" style="display:flex;gap:12px;text-decoration:none;color:#e2e8f0;align-items:flex-start">' +
+              '<img src="' +
+              thumb +
+              '" alt="" width="120" height="68" style="width:120px;height:68px;object-fit:cover;border-radius:9px;border:1px solid rgba(255,255,255,0.12);flex-shrink:0">' +
+              '<span style="min-width:0">' +
+              '<span style="display:block;font-size:13px;font-weight:700;font-style:italic;color:#fff;line-height:1.35">' +
+              titleEsc +
+              '</span>' +
+              '<span style="display:block;font-size:11px;color:#64748b;margin-top:6px;font-style:italic">' +
+              meta +
+              metrics +
+              '</span>' +
+              '</span>' +
+              '</a>' +
+              previewHtml +
+              '</li>'
+            )
+          })
+          .join('')
+
+        listEl.addEventListener('click', function onYtFeedClick(e) {
+          var a = e.target.closest && e.target.closest('a[href*="youtube"]')
+          if (!a || !iframe) return
+          var li = a.closest && a.closest('li[data-yt-vid]')
+          if (!li) return
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0)
+            return
+          var vid = li.getAttribute('data-yt-vid')
+          if (!vid) return
+          e.preventDefault()
+          iframe.src =
+            'https://www.youtube.com/embed/' +
+            encodeURIComponent(vid) +
+            '?rel=0&modestbranding=1'
+          hideLoading()
+          if (featuredLabel) {
+            var ts = a.querySelector('[style*="font-weight:700"]')
+            var tit =
+              ts && ts.textContent ? ts.textContent.trim().slice(0, 120) : ''
+            featuredLabel.textContent = tit
+              ? 'Reproduciendo · ' + tit
+              : 'Reproduciendo'
+          }
+        })
+      })
+      .catch(function () {
+        showEmbedError()
+        listEl.innerHTML =
+          '<li class="text-[13px] text-slate-500 italic">No se pudo cargar el feed (¿abrís el sitio desde file:// ? Usá la URL en Vercel). Podés ver todo en el canal de YouTube.</li>'
+      })
+  }
+
   function wirePodcast() {
     var a = document.getElementById('podcast-audio')
     if (!a) return
@@ -125,6 +371,8 @@
       ['iframe-universo', I.universo],
       ['iframe-kaukel', I.kaukel],
       ['iframe-ente', I.ente],
+      ['iframe-cubismo', I.cubismo],
+      ['iframe-cronicas', I.cronicas],
     ]
     map.forEach(function (pair) {
       var el = document.getElementById(pair[0])
@@ -306,56 +554,68 @@
 
   window.SoberaniaSPA = {
     go: function (mode) {
-      if (mode === 'scroll-vidriera' || mode === 'scroll-catalogo' || mode === 'scroll-preview' || mode === 'scroll-servicios' || mode === 'scroll-contacto') {
-        document.querySelectorAll('.spa-view').forEach(function (el) {
-          el.classList.add('hidden')
-        })
-        if (siteScroll) siteScroll.classList.remove('hidden')
-        if (spaShell) spaShell.classList.add('spa-min')
-        var id =
-          mode === 'scroll-vidriera'
-            ? 'vidriera'
-            : mode === 'scroll-catalogo'
-              ? 'catalogo'
-              : mode === 'scroll-preview'
-                ? 'preview'
-                : mode === 'scroll-servicios'
-                  ? 'servicios'
-                  : 'contacto'
-        setNavActive(mode)
-        requestAnimationFrame(function () {
-          var target = document.getElementById(id)
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        })
-        return
-      }
+      try {
+        if (
+          mode === 'scroll-vidriera' ||
+          mode === 'scroll-catalogo' ||
+          mode === 'scroll-preview' ||
+          mode === 'scroll-servicios' ||
+          mode === 'scroll-contacto'
+        ) {
+          document.querySelectorAll('.spa-view').forEach(function (el) {
+            el.classList.add('hidden')
+          })
+          if (siteScroll) siteScroll.classList.remove('hidden')
+          if (spaShell) spaShell.classList.add('spa-min')
+          var id =
+            mode === 'scroll-vidriera'
+              ? 'vidriera'
+              : mode === 'scroll-catalogo'
+                ? 'catalogo'
+                : mode === 'scroll-preview'
+                  ? 'preview'
+                  : mode === 'scroll-servicios'
+                    ? 'servicios'
+                    : 'contacto'
+          setNavActive(mode)
+          requestAnimationFrame(function () {
+            var target = document.getElementById(id)
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          })
+          return
+        }
 
-      if (mode === 'home') {
+        if (mode === 'home') {
+          document.querySelectorAll('.spa-view').forEach(function (el) {
+            el.classList.toggle('hidden', el.id !== 'view-home')
+          })
+          if (siteScroll) siteScroll.classList.remove('hidden')
+          if (spaShell) spaShell.classList.remove('spa-min')
+          setNavActive('home')
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          return
+        }
+
+        var viewId = 'view-' + mode
         document.querySelectorAll('.spa-view').forEach(function (el) {
-          el.classList.toggle('hidden', el.id !== 'view-home')
+          el.classList.toggle('hidden', el.id !== viewId)
         })
-        if (siteScroll) siteScroll.classList.remove('hidden')
+        if (siteScroll) siteScroll.classList.add('hidden')
         if (spaShell) spaShell.classList.remove('spa-min')
-        setNavActive('home')
+        setNavActive(mode)
         window.scrollTo({ top: 0, behavior: 'smooth' })
-        return
+      } finally {
+        applyRouteMeta(mode)
       }
-
-      var viewId = 'view-' + mode
-      document.querySelectorAll('.spa-view').forEach(function (el) {
-        el.classList.toggle('hidden', el.id !== viewId)
-      })
-      if (siteScroll) siteScroll.classList.add('hidden')
-      if (spaShell) spaShell.classList.remove('spa-min')
-      setNavActive(mode)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     },
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     wireLinks()
     injectJsonLd()
+    snapshotMetaDefaults()
     wirePodcast()
+    wireYouTube()
     wireInformes()
     buildReels()
     window.SoberaniaSPA.go('home')

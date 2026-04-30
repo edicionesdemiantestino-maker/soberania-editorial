@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crónicas del Viento · Ciclo I · Soberanía Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;700&family=Abril+Fatface&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #060a10;
+    --dark-blue: #0d1520;
+    --slate: #162030;
+    --steel: #1e3048;
+    --wind: #2d4a6e;
+    --ice: #5b8db8;
+    --sky: #9bbdda;
+    --silver: #c8d8e8;
+    --white: #f0f5fa;
+    --cream: #f8f4ee;
+    --rust-earth: #8b4513;
+    --desert: #c4884a;
+    --patagonia: #6b8fa0;
+    --font-display: 'Abril Fatface', 'Georgia', serif;
+    --font-body: 'Libre Baskerville', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--night);
+    color: var(--silver);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(6,10,16,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(91,141,184,0.15);
+    padding: 1rem 7%;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .nav-brand {
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.2em; color: var(--patagonia);
+    text-transform: uppercase; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.15em; color: var(--sky); text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 0 5rem 0; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 0%, rgba(45,74,110,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 10% 90%, rgba(107,143,160,0.15) 0%, transparent 50%),
+      linear-gradient(200deg, #0d1520 0%, #060a10 50%, #0a0e14 100%);
+  }
+
+  /* Wind lines */
+  .hero-wind {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .hero-wind svg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+
+  /* Patagonia landscape silhouette */
+  .hero-landscape {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 45%;
+    pointer-events: none;
+  }
+  .hero-landscape svg {
+    width: 100%; height: 100%;
+    opacity: 0.12;
+  }
+
+  .hero-signal {
+    position: absolute; top: 2rem; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; color: var(--ice); opacity: 0.5;
+    text-transform: uppercase; animation: windpulse 6s ease-in-out infinite;
+    white-space: nowrap;
+  }
+  @keyframes windpulse { 0%,100%{opacity:0.2;transform:translateX(-50%) translateX(-3px)} 50%{opacity:0.6;transform:translateX(-50%) translateX(3px)} }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 7%; max-width: 950px;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.28em; color: var(--patagonia);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-label::before {
+    content: ''; width: 30px; height: 1px; background: var(--patagonia); opacity: 0.6;
+  }
+
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  h1.hero-title .sub {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    letter-spacing: 0.3em;
+    color: var(--ice);
+    font-weight: 300;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-ciclo {
+    font-family: var(--font-mono); font-size: 0.65rem;
+    letter-spacing: 0.4em; color: var(--patagonia);
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+
+  .hero-intro {
+    font-family: var(--font-body); font-size: 1.1rem;
+    font-style: italic; color: var(--sky);
+    max-width: 600px; line-height: 1.7; margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-label {
+    font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 0.2em; color: var(--patagonia); text-transform: uppercase;
+  }
+  .meta-value {
+    font-family: var(--font-body); font-size: 0.9rem; color: var(--silver);
+  }
+
+  /* PÓRTICO */
+  .portico {
+    background: var(--dark-blue);
+    border-left: 3px solid var(--ice);
+    padding: 4rem 7%;
+  }
+  .portico-text {
+    font-family: var(--font-body); font-size: 1.15rem;
+    font-style: italic; line-height: 1.9; color: var(--sky);
+    max-width: 750px;
+  }
+
+  /* SECTION TAGS */
+  .section-tag {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.3em; color: var(--patagonia);
+    text-transform: uppercase; display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--patagonia); }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05; color: var(--white); margin-bottom: 1.5rem;
+  }
+
+  section {
+    padding: 5rem 7%; max-width: 1200px; margin: 0 auto;
+  }
+
+  /* DIVIDER */
+  .wind-divider {
+    display: flex; align-items: center; gap: 1.5rem; padding: 0 7%; overflow: hidden;
+  }
+  .wind-divider::before, .wind-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91,141,184,0.3), transparent);
+  }
+  .wind-divider span {
+    font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 0.25em; color: var(--wind); text-transform: uppercase; white-space: nowrap;
+  }
+
+  /* SIETE ESTACIONES */
+  .estaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px; background: rgba(91,141,184,0.08);
+    border: 1px solid rgba(91,141,184,0.08);
+    margin-top: 3rem;
+  }
+
+  .estacion-card {
+    background: var(--night);
+    padding: 2.5rem 2rem;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .estacion-card:hover {
+    border-color: var(--ice);
+    background: var(--dark-blue);
+  }
+
+  .estacion-num {
+    font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 0.25em; color: var(--wind); margin-bottom: 0.5rem;
+  }
+
+  .estacion-name {
+    font-family: var(--font-display); font-size: 1.1rem;
+    color: var(--white); margin-bottom: 0.5rem; line-height: 1.2;
+  }
+
+  .estacion-protagonista {
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.15em; color: var(--ice); margin-bottom: 0.75rem;
+  }
+
+  .estacion-desc {
+    font-family: var(--font-body); font-size: 0.85rem;
+    color: var(--sky); font-style: italic; line-height: 1.6;
+  }
+
+  /* QUOTES */
+  .quotes-section {
+    background: var(--slate);
+    padding: 6rem 7%; max-width: none;
+  }
+
+  .quote-block {
+    position: relative; padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(91,141,184,0.1);
+    max-width: 820px;
+  }
+  .quote-block:last-child { border-bottom: none; }
+
+  .quote-mark {
+    font-family: var(--font-display); font-size: 5rem;
+    line-height: 0; color: var(--wind); opacity: 0.4;
+    position: absolute; top: 2.5rem; left: -0.5rem; pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: var(--font-body); font-size: 1.2rem;
+    font-style: italic; line-height: 1.75; color: var(--silver);
+    padding-left: 2rem; margin-bottom: 1rem;
+  }
+
+  .quote-origin {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.18em; color: var(--patagonia);
+    text-transform: uppercase; padding-left: 2rem;
+  }
+
+  /* WIND IMAGE */
+  .wind-illustration {
+    background: var(--dark-blue);
+    padding: 5rem 7%; text-align: center;
+    position: relative; overflow: hidden;
+    max-width: none;
+  }
+
+  .wind-illustration svg {
+    max-width: 800px; width: 100%; margin: 0 auto;
+    display: block;
+  }
+
+  .wind-caption {
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.2em; color: var(--patagonia);
+    text-transform: uppercase; margin-top: 2rem;
+  }
+
+  /* ANÁLISIS */
+  .analysis-section {
+    background: linear-gradient(160deg, var(--dark-blue) 0%, var(--slate) 100%);
+    padding: 6rem 7%; max-width: none;
+  }
+
+  .analysis-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-top: 3rem;
+  }
+  @media (max-width: 768px) { .analysis-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .analysis-col h3 {
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.22em; color: var(--ice);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid rgba(91,141,184,0.2);
+  }
+
+  .analysis-col p {
+    font-family: var(--font-body); font-size: 0.98rem;
+    color: var(--sky); line-height: 1.85; margin-bottom: 1rem;
+  }
+
+  /* SCORE */
+  .score-section {
+    padding: 6rem 7%; text-align: center; max-width: none;
+  }
+
+  .score-container {
+    display: flex; justify-content: center;
+    align-items: stretch; gap: 1px; flex-wrap: wrap;
+    max-width: 1000px; margin: 3rem auto 0;
+    background: rgba(91,141,184,0.08);
+  }
+
+  .score-item {
+    flex: 1; min-width: 140px; background: var(--night);
+    padding: 2.5rem 1.5rem; display: flex;
+    flex-direction: column; align-items: center; gap: 0.6rem;
+    transition: background 0.3s;
+  }
+  .score-item:hover { background: var(--dark-blue); }
+
+  .score-platform {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.18em; color: var(--patagonia); text-transform: uppercase;
+  }
+
+  .score-value {
+    font-family: var(--font-display); font-size: 3rem; color: var(--ice); line-height: 1;
+  }
+
+  .score-stars { color: var(--ice); font-size: 0.8rem; letter-spacing: 0.1em; }
+
+  .score-label {
+    font-family: var(--font-body); font-size: 0.78rem;
+    color: var(--sky); font-style: italic; text-align: center; line-height: 1.4;
+  }
+
+  .analysis-opinion {
+    max-width: 760px; margin: 4rem auto 0; text-align: left;
+    background: var(--dark-blue); padding: 3rem;
+    border-left: 3px solid var(--wind);
+  }
+  .analysis-opinion p {
+    font-family: var(--font-body); font-size: 1.05rem;
+    color: var(--sky); line-height: 1.9; font-style: italic;
+  }
+  .opinion-label {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.2em; color: var(--patagonia);
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+
+  /* LEGALES */
+  .legal-section {
+    background: var(--dark-blue); padding: 4rem 7%;
+    border-top: 1px solid rgba(91,141,184,0.12); max-width: none;
+  }
+
+  .legal-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+
+  .legal-item {
+    padding: 1.5rem; border: 1px solid rgba(91,141,184,0.1);
+    background: rgba(6,10,16,0.5);
+  }
+  .legal-item h4 {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.2em; color: var(--patagonia);
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .legal-item p {
+    font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--sky); line-height: 1.6;
+  }
+
+  .isbn-note {
+    font-family: var(--font-mono); font-size: 0.85rem;
+    color: var(--ice); font-weight: 700; letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #03050a; border-top: 1px solid rgba(91,141,184,0.1);
+    padding: 3rem 7%; display: flex;
+    align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-brand {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.2em; color: var(--patagonia);
+    text-transform: uppercase; line-height: 1.8;
+  }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.15em; color: var(--sky); text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* fade-in */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    section, .portico, .quotes-section, .analysis-section,
+    .score-section, .legal-section { padding: 4rem 5%; }
+    nav { padding: 1rem 5%; }
+    .nav-links { gap: 1rem; }
+    footer { padding: 2.5rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://soberania-editorial.vercel.app/" class="nav-brand">← Soberanía Editorial</a>
+  <ul class="nav-links">
+    <li><a href="#estaciones">Estaciones</a></li>
+    <li><a href="#frases">Frases</a></li>
+    <li><a href="#analisis">Análisis</a></li>
+    <li><a href="#legales">Legales</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0; max-width:none;">
+  <div class="hero-bg"></div>
+
+  <!-- Animated wind lines -->
+  <div class="hero-wind">
+    <svg viewBox="0 0 1400 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.08;">
+      <g stroke="rgba(91,141,184,0.8)" stroke-width="0.5" fill="none">
+        <path d="M0,120 Q250,80 500,130 T1000,110 T1400,140"/>
+        <path d="M0,200 Q180,160 380,210 T800,190 T1400,220"/>
+        <path d="M0,310 Q300,270 600,320 T1200,300 T1400,330"/>
+        <path d="M0,420 Q220,380 500,430 T1000,410 T1400,440"/>
+        <path d="M0,540 Q350,500 700,550 T1400,530"/>
+        <path d="M0,65 Q400,30 800,70 T1400,50"/>
+        <path d="M0,640 Q300,600 600,645 T1200,625 T1400,650"/>
+      </g>
+      <g stroke="rgba(107,143,160,0.4)" stroke-width="0.3" fill="none">
+        <path d="M0,160 Q150,130 350,165 T700,150 T1100,170 T1400,155"/>
+        <path d="M0,260 Q200,225 450,265 T900,248 T1400,270"/>
+        <path d="M0,370 Q280,335 560,375 T1050,358 T1400,380"/>
+        <path d="M0,480 Q250,445 520,484 T1000,468 T1400,490"/>
+        <path d="M0,590 Q300,555 620,592 T1200,578 T1400,595"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Patagonia silhouette -->
+  <div class="hero-landscape">
+    <svg viewBox="0 0 1400 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,300 L0,180 Q50,170 100,160 L150,140 Q200,120 250,130 L320,110 Q380,90 440,100 L480,85 Q540,70 600,80 L650,65 Q700,50 760,60 L820,45 Q880,30 940,42 L1000,35 Q1060,25 1120,38 L1180,28 Q1240,18 1300,30 L1360,20 Q1380,18 1400,22 L1400,300 Z" fill="rgba(22,32,48,1)"/>
+      <path d="M0,300 L0,200 Q80,185 160,195 L240,175 Q320,160 400,172 L460,158 Q520,145 580,155 L640,140 Q700,128 760,138 L820,125 Q880,112 940,122 L1000,110 Q1060,98 1120,108 L1180,95 Q1240,82 1300,95 L1360,85 Q1380,80 1400,88 L1400,300 Z" fill="rgba(13,21,32,1)"/>
+    </svg>
+  </div>
+
+  <div class="hero-signal">◈ FRECUENCIA SUR · CICLO I · TRELEW, CHUBUT, PATAGONIA ◈</div>
+
+  <div class="hero-content">
+    <div class="hero-label">Ciclo I · Siete Estaciones del Viento</div>
+    <h1 class="hero-title">
+      Crónicas<br>del Viento
+      <span class="sub">CICLO I · PATAGONIA ARGENTINA</span>
+    </h1>
+    <div class="hero-ciclo">Demián Agustín Testino · 2026</div>
+    <p class="hero-intro">Un mapa de resistencia dividido en siete estaciones. Siete momentos en la vida de un ciudadano común que decidió no ser el mantel sucio de una mesa ajena y salió a buscar su verdad en medio de la ráfaga.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Autor</span>
+        <span class="meta-value">Demián Agustín Testino</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Edición</span>
+        <span class="meta-value">2026 · Trelew, Chubut</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Género</span>
+        <span class="meta-value">Crónica social · Narrativa patagónica</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Estaciones</span>
+        <span class="meta-value">7 crónicas + epílogos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PÓRTICO -->
+<div class="portico">
+  <div class="section-tag">Pórtico · Las siete estaciones</div>
+  <p class="portico-text">
+    La Patagonia que habita estas páginas no se mira desde una postal; se padece en la piel, se respira en el polvillo de la ruta y se limpia con el esfuerzo de quien no tiene más que sus manos para forjar un destino. Bienvenido a la frecuencia del Sur. Bienvenido a la verdad de los que caminan contra el viento.
+  </p>
+</div>
+
+<div class="wind-divider"><span>▸ las siete estaciones ◂</span></div>
+
+<!-- SIETE ESTACIONES -->
+<section id="estaciones" style="padding-top:5rem;">
+  <div class="section-tag fade-in">Arquitectura de la obra</div>
+  <h2 class="section-title fade-in">Las Siete Crónicas<br>del Viento</h2>
+
+  <div class="estaciones-grid fade-in">
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación I · Cadete</div>
+      <div class="estacion-name">El Gremio de los Invisibles</div>
+      <div class="estacion-protagonista">Protagonista: Mendieta · Cadete de reparto · Trelew</div>
+      <div class="estacion-desc">El trabajador de plataforma que sale a las cinco de la mañana con el frío que busca los huecos en las costuras de la campera. La historia del primer gremio de cadetes patagónicos y la resistencia al algoritmo que los convierte en mulas con GPS. 12 capítulos + epílogo.</div>
+    </div>
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación II · Gastronómica</div>
+      <div class="estacion-name">El Calor de la Bacha</div>
+      <div class="estacion-protagonista">Protagonista: el bachero · Cocina profesional</div>
+      <div class="estacion-desc">La primera vez que cruzás el umbral de una cocina profesional, el aire te golpea como una advertencia. Una densidad química de detergente industrial y sudor ajeno. La bacha como sumidero de las miserias del restaurante y también como escuela de dignidad. 4 capítulos + epílogo.</div>
+    </div>
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación III · Política</div>
+      <div class="estacion-name">La Palabra Empeñada</div>
+      <div class="estacion-protagonista">Protagonista: Jairo Huelque · Las Plumas — Comodoro</div>
+      <div class="estacion-desc">El destierro de Las Plumas al colegio de los curas en Comodoro. El pibe que aprendió en el internado que la información más importante nunca se dice a viva voz. La forja de un dirigente político en los pasillos del poder patagónico. 9 capítulos + epílogo.</div>
+    </div>
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación IV · Testimonio</div>
+      <div class="estacion-name">Mi Origen, Mi Pesar y Mi Destino</div>
+      <div class="estacion-protagonista">Crónica autobiográfica · Patagonia</div>
+      <div class="estacion-desc">Moneda, pan y corridas. Tajos, golpes y zafadas. La mala junta y los doctores. Del show al lamparazo. Una crónica de siete estampas que trazan el mapa de una vida en la intemperie patagónica. Del farolazo al sistema.</div>
+    </div>
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación V · Enfermería</div>
+      <div class="estacion-name">Blanco sobre Barro</div>
+      <div class="estacion-protagonista">Protagonista: Irina Méndez · Enfermera · Trelew</div>
+      <div class="estacion-desc">El despertador son las 5:30 de la mañana. El ambo blanco colgado tras la puerta como mancha de luz en la oscuridad. Irina Méndez lleva en ese pedazo de tela almidonada el crédito que no tiene, el auto que imagina y la dignidad que el sistema intenta arrebatarle. 12 capítulos + epílogo.</div>
+    </div>
+
+    <div class="estacion-card">
+      <div class="estacion-num">Estación VI · Industria</div>
+      <div class="estacion-name">La Nieve de Aluminio</div>
+      <div class="estacion-protagonista">Crónicas del Viento Gris · Trabajadoras industriales</div>
+      <div class="estacion-desc">La liturgia del hierro y la retama. Las manos de las mujeres trabajadoras que procesan el aluminio patagónico mientras la nieve de ceniza les cubre los pulmones en silencio. La asamblea del barro como última forma de resistencia visible. 13 capítulos + epílogo.</div>
+    </div>
+
+    <div class="estacion-card" style="grid-column: 1 / -1; background: var(--dark-blue);">
+      <div class="estacion-num">Estación VII · Juventud</div>
+      <div class="estacion-name">El Limbo del Asfalto</div>
+      <div class="estacion-protagonista">Protagonista: Guille · Generación del cemento · Patagonia</div>
+      <div class="estacion-desc">La generación del cemento: los fichines, la plaza, el boliche y el mensaje de texto que costaba centavos que no tenían. Hoy, la tiranía de los algoritmos y la dopamina barata de las redes. Ser adolescente en Argentina es, y parece que será siempre, un acto de resistencia. 14 estampas narrativas + epílogo.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WIND ILLUSTRATION -->
+<div class="wind-illustration">
+  <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Patagonian wind map - abstract geographic -->
+    <defs>
+      <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(13,21,32,1)"/>
+        <stop offset="100%" style="stop-color:rgba(22,48,72,1)"/>
+      </linearGradient>
+      <radialGradient id="moonGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:rgba(155,189,218,0.5)"/>
+        <stop offset="100%" style="stop-color:rgba(155,189,218,0)"/>
+      </radialGradient>
+    </defs>
+
+    <rect width="800" height="300" fill="url(#skyGrad)"/>
+
+    <!-- Moon -->
+    <circle cx="680" cy="60" r="40" fill="url(#moonGrad)"/>
+    <circle cx="680" cy="60" r="28" fill="none" stroke="rgba(155,189,218,0.3)" stroke-width="0.5"/>
+
+    <!-- Stars -->
+    <g fill="rgba(200,216,232,0.6)">
+      <circle cx="50" cy="30" r="1"/>
+      <circle cx="120" cy="15" r="1.2"/>
+      <circle cx="200" cy="40" r="0.8"/>
+      <circle cx="300" cy="20" r="1"/>
+      <circle cx="450" cy="35" r="0.8"/>
+      <circle cx="550" cy="12" r="1.2"/>
+      <circle cx="620" cy="25" r="0.8"/>
+      <circle cx="740" cy="18" r="1"/>
+      <circle cx="780" cy="42" r="0.8"/>
+    </g>
+
+    <!-- Wind currents -->
+    <g stroke="rgba(91,141,184,0.5)" stroke-width="0.8" fill="none">
+      <path d="M0,90 Q100,70 200,95 T400,85 T600,100 T800,90"/>
+      <path d="M0,130 Q120,110 240,135 T480,125 T720,140 T800,130"/>
+      <path d="M0,170 Q80,150 200,170 T400,160 T600,175"/>
+    </g>
+    <g stroke="rgba(107,143,160,0.25)" stroke-width="0.4" fill="none">
+      <path d="M0,110 Q150,90 300,115 T600,105 T800,115"/>
+      <path d="M0,150 Q100,130 250,152 T500,142 T800,152"/>
+    </g>
+
+    <!-- Mountain silhouette -->
+    <path d="M0,300 L0,220 L60,190 L100,200 L150,170 L200,180 L240,155 L280,165 L320,140 L360,152 L400,130 L440,145 L480,120 L520,135 L560,110 L600,125 L640,105 L680,118 L720,95 L760,108 L800,90 L800,300 Z" fill="rgba(13,21,32,0.95)"/>
+    <path d="M0,300 L0,240 L80,215 L140,225 L200,200 L260,210 L320,188 L380,200 L440,178 L500,190 L560,168 L620,180 L680,160 L740,172 L800,152 L800,300 Z" fill="rgba(6,10,16,0.95)"/>
+
+    <!-- Small moto silhouette -->
+    <g transform="translate(350,238)" opacity="0.6">
+      <ellipse cx="0" cy="0" rx="18" ry="3" fill="rgba(91,141,184,0.2)"/>
+      <circle cx="-10" cy="-4" r="6" fill="none" stroke="rgba(91,141,184,0.7)" stroke-width="1.2"/>
+      <circle cx="10" cy="-4" r="6" fill="none" stroke="rgba(91,141,184,0.7)" stroke-width="1.2"/>
+      <path d="M-10,-4 L0,-12 L12,-4" fill="none" stroke="rgba(91,141,184,0.6)" stroke-width="1"/>
+      <ellipse cx="0" cy="-12" rx="4" ry="5" fill="none" stroke="rgba(155,189,218,0.4)" stroke-width="0.8"/>
+    </g>
+
+    <!-- Text overlay -->
+    <text x="400" y="275" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(91,141,184,0.5)" letter-spacing="4">TRELEW · CHUBUT · PATAGONIA ARGENTINA</text>
+  </svg>
+  <div class="wind-caption">Patagonia · Latitud Sur · La frecuencia de los que caminan contra el viento</div>
+</div>
+
+<div class="wind-divider"><span>▸ frases de la obra ◂</span></div>
+
+<!-- FRASES -->
+<section id="frases" class="quotes-section" style="padding:6rem 7%;">
+  <div class="section-tag fade-in">Las voces de las siete estaciones</div>
+  <h2 class="section-title fade-in">Frases que el Viento<br>no se Llevó</h2>
+
+  <!-- Estación I -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:2rem 0 0.5rem 2rem;">Estación I · El Gremio de los Invisibles</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El aire de las cinco de la mañana en Trelew tiene filo. Mendieta sintió cómo la helada le buscaba los huecos en las costuras de la campera, encontrando siempre el camino hacia la piel. No era solo el clima; era esa presión constante en el pecho que te obliga a encogerte sobre el manubrio para no desarmarte.</p>
+    <div class="quote-origin">Cap. I · El Frío no Distingue Colores</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">A la App le chupa un huevo si vos sos zurdo o si vos sos peronista. Le servimos porque estamos divididos. Ellos facturan en dólares y nosotros peleamos por las migajas de una tarifa que no sube desde el año pasado. Nos usan como mulas, nos dibujan el blanqueo con el monotributo y nos dejan a pata si nos accidentamos.</p>
+    <div class="quote-origin">Cap. I · El Frío no Distingue Colores · Mendieta</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Si acepto un sueldo del sindicato y me encierro en una oficina, voy a dejar de sentir este viento. Y si dejo de sentir el viento, me voy a olvidar de lo que es que te duela el bolsillo.</p>
+    <div class="quote-origin">Cap. I · El Frío no Distingue Colores · Mendieta</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Si vos sos un "colaborador" es para no decirnos la verdad: que somos mulas con un chip. El patrón no paga tu jubilación, no paga tu obra social, no paga si te rompes un hueso contra el asfalto. Vos sos el que pone la moto, la nafta, el aceite, el cuerpo y, encima, le pagás al Estado el impuesto para que ellos figuren como una "plataforma de servicios".</p>
+    <div class="quote-origin">Cap. I · El Frío no Distingue Colores · Mendieta</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">El Gremio de los Invisibles acababa de dar su primer paso.</p>
+    <div class="quote-origin">Cap. I · El Frío no Distingue Colores · Cierre</div>
+  </div>
+
+  <!-- Estación II -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:3rem 0 0.5rem 2rem;">Estación II · El Calor de la Bacha</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La primera vez que cruzás el umbral de una cocina profesional, el aire te golpea como una advertencia. No es el aroma a comida que uno imagina desde afuera; es una densidad química, una amalgama de detergente industrial, grasa quemada y el sudor de otros hombres y mujeres que llevan horas ahí adentro.</p>
+    <div class="quote-origin">Cap. I · El Bautismo de Grasa</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La bacha no es solo un fregadero; es el sumidero de las miserias del restaurante. Allí llega lo que el cliente desprecia, lo que el mozo descarta y lo que el cocinero quema.</p>
+    <div class="quote-origin">Cap. I · El Bautismo de Grasa</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La cocina no pide permiso; te devora o te moldea.</p>
+    <div class="quote-origin">Cap. I · El Bautismo de Grasa</div>
+  </div>
+
+  <!-- Estación III -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:3rem 0 0.5rem 2rem;">Estación III · La Palabra Empeñada</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Mi viejo decía que las palabras eran como el agua: si las gastabas al divino botón, te quedabas seco cuando de verdad importaba. Por eso, en mi casa, el silencio era un integrante más de la familia, uno que se sentaba a la mesa entre mis cinco hermanos y yo, compartiendo el guiso y el pan casero que mi vieja horneaba con las manos agrietadas por la helada.</p>
+    <div class="quote-origin">Cap. I · El Frío del Internado · Jairo Huelque</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Ese fue mi primer destierro.</p>
+    <div class="quote-origin">Cap. I · El Frío del Internado · Jairo Huelque</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Llegar a Comodoro Rivadavia fue como chocar contra una pared de cemento y salitre. El mar, que yo nunca había visto, no me pareció lindo; me pareció una bestia gris que rugía igual que los motores de los pozos petroleros.</p>
+    <div class="quote-origin">Cap. I · El Frío del Internado · Jairo Huelque</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Aprendí la primera lección de la política, aunque entonces no lo sabía: la información más importante nunca se dice a viva voz. Se dice en el recreo, contra el paredón que da al mar, cuando el viento tapa las palabras.</p>
+    <div class="quote-origin">Cap. I · El Frío del Internado · Jairo Huelque</div>
+  </div>
+
+  <!-- Estación V -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:3rem 0 0.5rem 2rem;">Estación V · Blanco sobre Barro</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">En Trelew, a esa hora, el silencio tiene un peso específico, una densidad que solo se rompe por el zumbido eléctrico de la heladera vieja y el silbido del viento que busca entrar por la rendija del taparrollo.</p>
+    <div class="quote-origin">Cap. I · El umbral de la vigilia · Irina Méndez</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Ese pedazo de tela almidonada representa el crédito que todavía no tiene, el auto que imagina estacionado afuera y la dignidad que el sistema intenta arrebatarle cada vez que le pagan una miseria por sus horas de guardia.</p>
+    <div class="quote-origin">Cap. I · El umbral de la vigilia · sobre el ambo blanco de Irina</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Recuerda a su padre. Él siempre decía que el mate de la mañana era para «acomodar el alma». Irina siente que la suya está un poco desacomodada, repartida entre los apuntes de Anatomía, los problemas de sus hermanos y esa sensación de que el futuro es una zanahoria que siempre está un paso más allá de su alcance.</p>
+    <div class="quote-origin">Cap. I · El umbral de la vigilia · Irina Méndez</div>
+  </div>
+
+  <!-- Estación VII -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:3rem 0 0.5rem 2rem;">Estación VII · El Limbo del Asfalto</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Ser adolescente en Argentina es, y parece que será siempre, un acto de resistencia. Entre el bardo y el estudio, entre la mala junta y la familia, cada generación de «Guillotes» busca su propia plaza, sus propias nubes y su propia voz.</p>
+    <div class="quote-origin">Epílogo · El Limbo Eterno</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">La verdadera libertad no era escapar de la realidad, sino tener la fuerza para transformarla, de a un paso por vez.</p>
+    <div class="quote-origin">Epílogo · El Limbo Eterno · Guille</div>
+  </div>
+
+  <!-- Pórtico general -->
+  <p style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--wind);text-transform:uppercase;margin:3rem 0 0.5rem 2rem;">Pórtico · Dedicatoria</p>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">A los que salen a ganarle el día a la calle cuando la ciudad todavía duerme. A los que llevan la mochila al hombro y el honor en el pecho. A los delegados de base que nunca aceptaron un escritorio si eso significaba olvidar el frío de la calle.</p>
+    <div class="quote-origin">Dedicatoria · Crónicas del Viento Ciclo I</div>
+  </div>
+
+  <div class="quote-block fade-in">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">A la memoria de los mártires de Chicago y la Patagonia Rebelde: su fuego todavía nos calienta las manos.</p>
+    <div class="quote-origin">Dedicatoria · Crónicas del Viento Ciclo I</div>
+  </div>
+</section>
+
+<div class="wind-divider"><span>▸ análisis literario ◂</span></div>
+
+<!-- ANÁLISIS -->
+<section id="analisis" class="analysis-section" style="padding:6rem 7%;">
+  <div class="section-tag fade-in">Análisis literario · Crónica social argentina</div>
+  <h2 class="section-title fade-in">La Obra en el Espejo<br>de la Crítica</h2>
+
+  <div class="analysis-grid fade-in">
+    <div class="analysis-col">
+      <h3>Tradición de la crónica</h3>
+      <p>Testino se inscribe en la más noble tradición de la crónica latinoamericana —desde Walsh hasta Villoro— pero la ancla radicalmente en el territorio patagónico, rompiendo con la hegemonía porteña que suele reducir «Argentina» a «Buenos Aires». El Sur como punto de enunciación es aquí una decisión ideológica y estética al mismo tiempo.</p>
+      <p>La estructura de siete «estaciones» —término que conjuga el ciclo climático con la parada de micro y la etapa sindical— es un hallazgo formal que unifica relatos en principio autónomos bajo una lógica de correspondencias temáticas.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>El trabajador como héroe épico</h3>
+      <p><em>Crónicas del Viento</em> es, en su médula, una reivindicación del trabajador como sujeto de la épica contemporánea. Mendieta, Irina, Jairo Huelque, el bachero: todos son figuras que el canon literario argentino mainstream relegó al costumbrismo o al folklore. Testino los convierte en protagonistas de una narrativa de alta tensión.</p>
+      <p>El viento patagónico no es aquí metáfora decorativa sino condición de posibilidad de toda la acción: define el ritmo de trabajo, la salud de los cuerpos, el estado de ánimo de los personajes. Pocas novelas argentinas han hecho del clima un protagonista de este modo.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>La uberización como tema literario</h3>
+      <p>La crónica del cadete Mendieta es probablemente el primer tratamiento literario serio de la «uberización» del trabajo en Argentina. La figura del «socio-colaborador» como eufemismo del esclavo moderno, el algoritmo como patrón sin rostro, la tarifa que no sube: todo esto se narra desde adentro, desde el manubrio mojado de la moto, con una precisión sociológica que ningún paper académico logra igualar.</p>
+    </div>
+    <div class="analysis-col">
+      <h3>Registro lingüístico patagónico</h3>
+      <p>El lenguaje de <em>Crónicas del Viento</em> merece atención especial: Testino no folkloriza el habla patagónica ni la corrige hacia un español neutro. La mezcla de términos obreros, jergal sindical y modismos regionales produce una textura sonora que es en sí misma un argumento político: estas voces tienen el derecho de hablar así, de existir así en la literatura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUNTUACIÓN -->
+<section id="puntuacion" class="score-section" style="background: var(--dark-blue); padding:6rem 7%;">
+  <div class="section-tag fade-in" style="justify-content:center; text-align:center;">Puntuación · Evaluación multiplataforma</div>
+  <h2 class="section-title fade-in">Evaluación<br>Multiplataforma</h2>
+  <p class="fade-in" style="font-family:var(--font-body);font-style:italic;color:var(--sky);max-width:600px;margin:0 auto 1rem;font-size:1rem;line-height:1.7;">Análisis basado en criterios de crónica social latinoamericana, coherencia territorial, riqueza narrativa, impacto político-social y originalidad de registro lingüístico.</p>
+
+  <div class="score-container fade-in">
+    <div class="score-item">
+      <div class="score-platform">Narrativa</div>
+      <div class="score-value">9.0</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Crónica social de alta densidad descriptiva</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Territorio</div>
+      <div class="score-value">9.6</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">La Patagonia como protagonista literario sin precedente</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Impacto social</div>
+      <div class="score-value">9.4</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Denuncia y afecto en equilibrio sostenido</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Registro</div>
+      <div class="score-value">9.1</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Lenguaje patagónico sin folklorismo</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">Puntuación Global</div>
+      <div class="score-value" style="font-size:3.5rem; color:var(--ice);">9.3</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-label">Obra fundacional de la narrativa obrera patagónica</div>
+    </div>
+  </div>
+
+  <div class="analysis-opinion fade-in">
+    <div class="opinion-label">Lectura curatorial · Soberanía Editorial</div>
+    <p>
+      <em>Crónicas del Viento</em> instala la Patagonia como sujeto literario propio, no como paisaje de fondo ni como escenario pintoresquista. Sus siete estaciones construyen una cartografía del trabajo argentino contemporáneo que no tiene equivalente en la literatura nacional: el cadete de plataforma, la enfermera pública, el bachero gastronómico, el dirigente político venido del campo, la obrera industrial. Testino los hace existir como figuras épicas sin idealizarlos, narrando desde el frío real de las cinco de la mañana con una honestidad que se vuelve, en sí misma, un acto político.
+    </p>
+  </div>
+</section>
+
+<div class="wind-divider"><span>▸ datos legales ◂</span></div>
+
+<!-- LEGALES -->
+<section id="legales" class="legal-section" style="padding:4rem 7%;">
+  <div class="section-tag fade-in">Datos legales y editoriales</div>
+  <h2 class="section-title fade-in" style="font-size:1.8rem;">Ficha Legal de la Obra</h2>
+
+  <div class="legal-grid fade-in">
+    <div class="legal-item">
+      <h4>ISBN Digital</h4>
+      <p class="isbn-note">En trámite · DNDA Argentina</p>
+      <p>Edición digital — Ciclo I · Libro de edición argentina</p>
+    </div>
+    <div class="legal-item">
+      <h4>Depósito Legal</h4>
+      <p>Queda hecho el depósito que marca la Ley 11.723 de Propiedad Intelectual. Registrado ante la DNDA de la República Argentina.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Autoría y derechos</h4>
+      <p>© 2026, Demián Agustín Testino. Todos los derechos reservados. Las infracciones están penadas por las leyes 11.723 y 25.446.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Edición y diseño</h4>
+      <p>Diseño de portada: Demián Agustín Testino. No se permite la reproducción total o parcial de esta obra por cualquier medio sin permiso previo y escrito del autor.</p>
+    </div>
+    <div class="legal-item">
+      <h4>Marca registrada</h4>
+      <p>Soberanía Editorial · INPI Exp. 4689992 · Trelew, Chubut, Argentina</p>
+    </div>
+    <div class="legal-item">
+      <h4>Lugar y fecha</h4>
+      <p>Editado en Trelew, Chubut, Argentina. Primera edición: 2026. Impreso en Argentina / Printed in Argentina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    Soberanía Editorial<br>
+    Trelew, Patagonia Argentina<br>
+    INPI Exp. 4689992 · © 2026
+  </div>
+  <div class="footer-links">
+    <a href="https://soberania-editorial.vercel.app/">Inicio</a>
+    <a href="https://a.co/d/0d8TRlga">Amazon Global</a>
+    <a href="https://drive.google.com/file/d/1aZ9NmwkOrpFdOTlieTKDg6BryJ9tykzg/view?usp=sharing">Preview</a>
+    <a href="https://instagram.com/demiantestinoautor">@demiantestinoautor</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -3,6 +3,9 @@
  *
  * PODCAST_SRC — ruta relativa al audio o URL absoluta si está en otro servidor.
  * REELS — cada ítem: enlace a Instagram + imagen de vista previa opcional.
+ *
+ * APP_BASE debe ser exactamente la misma URL base que NEXT_PUBLIC_APP_URL en el panel
+ * Next (v0-editorial-control-station en Vercel), incluido dominio propio si lo configurás.
  */
 window.SOBERANIA = {
   /** URL pública principal del catálogo (SEO, Open Graph, JSON-LD). Sin barra final. */
@@ -13,8 +16,8 @@ window.SOBERANIA = {
    */
   MAKE_CONTACT_WEBHOOK_URL:
     'https://hook.us2.make.com/258uh8m2r4u0z9ldqyp3m46kuv5tt3o3',
-  /** App Next en Vercel: solo para enlaces al panel (login, Vault, precios, blog). El contacto no pasa por acá. */
-  APP_BASE: 'https://v0-editorial-control-station-kasswdea0.vercel.app',
+  /** Panel Next (login, Vault, precios, blog). Sin barra final; mismo host que NEXT_PUBLIC_APP_URL. */
+  APP_BASE: 'https://v0-editorial-control-station.vercel.app',
 
   /** Soberanía Digital (presupuestos y desarrollo web). Sitio independiente; sin barra final. */
   DIGITAL_SITE_URL: 'https://soberania-digital-web.vercel.app',
@@ -23,13 +26,25 @@ window.SOBERANIA = {
   PODCAST_TITLE: 'Nueve libros para apagar Wall Street',
   PODCAST_SUB: 'Audio · podcast',
 
+  /** Canal YouTube oficial (misma señal editorial). URL sin parámetros ?si= */
+  YOUTUBE_CHANNEL_URL: 'https://www.youtube.com/@edicionesdemiantestino',
+  /** Id del canal (para RSS); podés sobreescribir con variable en Vercel si migrás canal */
+  YOUTUBE_CHANNEL_ID: 'UCBPbTyB4YyZRNlNrD3KUzZQ',
+  /**
+   * Lista “Uploads” del canal en YouTube: mismo id que el canal pero prefijo UU en lugar de UC.
+   * Sirve para embed tipo playlist (últimos videos del canal).
+   */
+  YOUTUBE_UPLOADS_PLAYLIST_ID: 'UUBPbTyB4YyZRNlNrD3KUzZQ',
+
   /** Subí este número cuando cambies un HTML en informes/ para que el iframe no use caché vieja. */
-  INFORMES_CACHE: '3',
+  INFORMES_CACHE: '4',
 
   INFORMES: {
     universo: 'informes/testino_universo_literario.html',
     kaukel: 'informes/informe_trilogia_kaukel.html',
     ente: 'informes/informe_trilogia_frecuencia_cero.html',
+    cubismo: 'informes/cubismo_dossier.html',
+    cronicas: 'informes/cronicas_del_viento_dossier.html',
   },
 
   REELS: [

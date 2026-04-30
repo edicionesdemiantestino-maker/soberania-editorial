@@ -1,0 +1,18 @@
+================================================================================
+  SOBERANÍA EDITORIAL — Propuesta general (referencia para web y materiales)
+================================================================================
+
+Somos un sello editorial boutique con infraestructura digital propia: sitio
+público con catálogo, dossiers curatoriales y blog; y aplicación web (Vault)
+con planes, pagos recurrentes y espacio de autor — sin sustituir la curaduría,
+masterización ni la distribución física/legal, que siguen siendo trabajo humano.
+
+Ofrecemos lectura profesional, ISBN/legal cuando corresponde, producción técnica
+para Amazon y canales locales, y relación directa con autores desde Patagonia.
+
+Soberanía Digital es la marca aparte para presupuestos de desarrollo web y
+presencia digital; no confundir con el sello literario.
+
+Este texto es la línea base de la propuesta comercial alineada al stack desplegado.
+
+================================================================================

@@ -1,0 +1,5 @@
+Este espacio agrupa varios proyectos. El Git del sitio Soberania Editorial está en la subcarpeta:
+
+  sitio-web\
+
+Abrila en Cursor o ejecutá Git desde esa ruta.
